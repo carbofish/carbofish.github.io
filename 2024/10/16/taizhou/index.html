@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="carbofish">
+    
+    <title>
+        
+            台州市赛 - Reverse 方向 |
+        
+        Carbo
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#1abc9c","title":"Carbo","author":"carbofish","avatar":"/images/avatar.jpg","logo":"/images/logo.png","favicon":"/images/logo.png"},"menu":{"home":"/","tags":"/tags","links":"/links","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg-white.jpg","background_img_dark":"/images/bg.jpg","description":"白雪却嫌春色晚，欲穿庭树作飞花。","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"vercel","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"title":"朋友们 1"},{"name":"XPoet","link":"https://xpoet.cn","description":"懒惰是程序员第一生产力","avatar":"https://xpoet.cn/images/avatar.png"},{"name":"不知名艺术家","link":"https://jinzhanqi.com/","description":"love artist, love code.","avatar":"https://s3.ax1x.com/2020/11/17/DVvkB4.jpg"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Carbo
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        台州市赛 - Reverse 方向
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">carbofish</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-10-16 19:00:00</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Nov 07 2024 15:38:58 GMT+0800">2024-11-07 15:38:58</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reverse/">Reverse</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p><code>台州市赛 Reverse 方向</code></p>
+<span id="more"></span>
+<h3 id="nanomites"><a href="#nanomites" class="headerlink" title="nanomites"></a>nanomites</h3><p>主函数<br><img lazyload="" alt="image.png" data-src="https://oss.carbo.ink/old_imgs/202410162151834.png"></p>
+<p>查看函数 <code>sub_40195C</code><br>这里使用了Windows API中的<code>CreateProcessA</code>和<code>WaitForDebugEvent</code>等函数。创建了一个新的进程并进入调试模式，通过处理调试事件（如创建线程、异常、退出等）来控制进程的执行</p>
+<p><img lazyload="" alt="image.png" data-src="https://oss.carbo.ink/old_imgs/202410162145463.png"></p>
+<p>这里利用 <code>dwDebugEventCode</code> 来执行程序逻辑<br>常见的 <code>dwDebugEventCode</code> 事件类型及其对应的常量值如下：</p>
+<ol>
+<li><code>EXCEPTION_DEBUG_EVENT</code> (值：<code>1</code>)：<ul>
+<li>表示一个异常发生了。调试器可以捕获各种类型的异常，包括访问冲突、除零、断点异常等。异常信息保存在 <code>DEBUG_EVENT.u.Exception</code> 中。</li>
+</ul>
+</li>
+<li><code>CREATE_THREAD_DEBUG_EVENT</code> (值：<code>2</code>)：<ul>
+<li>表示被调试的进程创建了一个新的线程。调试器可以通过该事件获取新线程的句柄。线程信息保存在 <code>DEBUG_EVENT.u.CreateThread</code> 中。</li>
+</ul>
+</li>
+<li><code>CREATE_PROCESS_DEBUG_EVENT</code> (值：<code>3</code>)：<ul>
+<li>表示被调试的进程启动。此事件发生在调试器启动的进程开始运行时。进程信息（如句柄）保存在 <code>DEBUG_EVENT.u.CreateProcessInfo</code> 中。</li>
+</ul>
+</li>
+<li><code>EXIT_THREAD_DEBUG_EVENT</code> (值：<code>4</code>)：<ul>
+<li>表示一个线程已经退出。调试器可以使用这个事件来清理和跟踪已退出的线程。退出信息保存在 <code>DEBUG_EVENT.u.ExitThread</code> 中。</li>
+</ul>
+</li>
+<li><code>EXIT_PROCESS_DEBUG_EVENT</code> (值：<code>5</code>)：<ul>
+<li>表示被调试的进程已经退出。调试器可以使用这个事件来获取进程的退出码并进行清理工作。退出信息保存在 <code>DEBUG_EVENT.u.ExitProcess</code> 中。</li>
+</ul>
+</li>
+<li><code>LOAD_DLL_DEBUG_EVENT</code> (值：<code>6</code>)：<ul>
+<li>表示被调试的进程加载了一个新的动态链接库（DLL）。调试器可以使用这个事件来获取DLL的句柄和路径。DLL信息保存在 <code>DEBUG_EVENT.u.LoadDll</code> 中。</li>
+</ul>
+</li>
+</ol>
+<p>核心加密逻辑是 case1 那个 <code>EXCEPTION_DEBUG_EVENT</code> 后面会讲到，我们一步一步看<br>我们看另外一个函数 <code>sub_401C38</code></p>
+<p><img lazyload="" alt="image.png" data-src="https://oss.carbo.ink/old_imgs/202410162151344.png"></p>
+<p>这里有一个运行时载入代码，我们把 unk_412020 导出然后 使用 ida 分析</p>
+<p><img lazyload="" alt="image.png" data-src="https://oss.carbo.ink/old_imgs/202410162152571.png"></p>
+<p>可以看到主要逻辑是把传入的输入的数据加载一个字节到 r12 寄存器，然后对 r11 寄存器进行复制异或和循环位移，然后关键是 ud2 指令，这个是抛出异常，再联想到上面 <code>EXCEPTION_DEBUG_EVENT</code><br>就可以知道加密逻辑了</p>
+<p><img lazyload="" alt="image.png" data-src="https://oss.carbo.ink/old_imgs/202410162154132.png"></p>
+<p><code>sub_401584</code>是加密函数，密文在 r11 寄存器中，然后只比较 r13 寄存器为 1 的情况，上面那么多 r13 为 0 的情况是假的<br>把上面 dump 出来的热加载的 shellcode disasm 然后用 python 提取出含有 <code>mov r13, 1</code> 的片段，然后我们就得计算出每个片段对应的 r11 值，也就是密文，这里考虑到精度，使用 unicorn 计算比较好</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> unicorn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> unicorn.x86_const <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">mu = Uc(UC_ARCH_X86, UC_MODE_64)</span><br><span class="line"></span><br><span class="line">ADDRESS = <span class="number">0x1000</span></span><br><span class="line">mu.mem_map(ADDRESS, <span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">"asm.txt"</span>, <span class="string">"r"</span>).read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">executer</span>(<span class="params">imm1, imm2, imm3</span>):</span><br><span class="line">    mov_r11 = <span class="string">b'\x49\xbb'</span> + imm1.to_bytes(<span class="number">8</span>, byteorder=<span class="string">'little'</span>)</span><br><span class="line">    xor_r11 = <span class="string">b'\x49\x81\xf3'</span> + imm2.to_bytes(<span class="number">4</span>, byteorder=<span class="string">'little'</span>)</span><br><span class="line">    ror_r11 = <span class="string">b'\x49\xc1\xcb'</span> + imm3.to_bytes(<span class="number">1</span>, byteorder=<span class="string">'little'</span>)</span><br><span class="line">    CODE = mov_r11 + xor_r11 + ror_r11</span><br><span class="line">    mu.mem_write(ADDRESS, CODE)</span><br><span class="line">    mu.reg_write(UC_X86_REG_R11, <span class="number">0</span>)  <span class="comment"># 初始化 R11 寄存器</span></span><br><span class="line">    mu.emu_start(ADDRESS, ADDRESS + <span class="built_in">len</span>(CODE))</span><br><span class="line">    r11_value = mu.reg_read(UC_X86_REG_R11)</span><br><span class="line">    <span class="keyword">return</span> r11_value</span><br><span class="line"></span><br><span class="line">result = []</span><br><span class="line"></span><br><span class="line">sp = f.split(<span class="string">"; ---------------------------------------------------------------------------\n"</span>)</span><br><span class="line"><span class="keyword">for</span> part <span class="keyword">in</span> sp:</span><br><span class="line">    pt = [_.strip() <span class="keyword">for</span> _ <span class="keyword">in</span> part.split(<span class="string">"\n"</span>)[:-<span class="number">1</span>]]</span><br><span class="line">    symbol = pt[<span class="number">4</span>]</span><br><span class="line">    <span class="keyword">if</span> symbol == <span class="string">"mov     r13, 1"</span>:</span><br><span class="line">        num1 = <span class="built_in">int</span>(<span class="string">"0x"</span> + re.findall(<span class="string">r"[\dA-Z]+h"</span>, pt[<span class="number">1</span>])[<span class="number">0</span>][:-<span class="number">1</span>], <span class="number">16</span>)</span><br><span class="line">        num2 = <span class="built_in">int</span>(<span class="string">"0x"</span> + re.findall(<span class="string">r"[\dA-Z]+h"</span>, pt[<span class="number">2</span>])[<span class="number">0</span>][:-<span class="number">1</span>], <span class="number">16</span>)</span><br><span class="line">        num3 = <span class="built_in">int</span>(<span class="string">"0x"</span> + re.findall(<span class="string">r"[\dA-Z]+h"</span>, pt[<span class="number">3</span>])[<span class="number">0</span>][:-<span class="number">1</span>], <span class="number">16</span>)</span><br><span class="line">        result.append(executer(num1, num2, num3))</span><br><span class="line">        <span class="comment"># print(f"{num1:#x}, {num2:#x}, {num3:#x}, {result[-1]: #x}")</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">for</span> enc <span class="keyword">in</span> result:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"<span class="subst">{enc:#x}</span>, "</span>, end=<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+
+<p>得到密文表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0x84db9614</span>, <span class="number">0x174760d3</span>, <span class="number">0x7ac80e2c</span>, <span class="number">0x3194ec2e</span>, <span class="number">0x70a549c3</span>, <span class="number">0x41dedf66</span>, <span class="number">0x7f69c81e</span>, <span class="number">0x37b76e13</span>, <span class="number">0x37b76e13</span>, <span class="number">0x41dedf66</span>, <span class="number">0xb99d68d8</span>, <span class="number">0xcfef5b0b</span>, <span class="number">0x174760d3</span>, <span class="number">0xb78ac2e7</span>, <span class="number">0xea1b9f56</span>, <span class="number">0xee54ef8e</span>, <span class="number">0x174760d3</span>, <span class="number">0xb99d68d8</span>, <span class="number">0xf2475372</span>, <span class="number">0xdc310a37</span>, <span class="number">0xee54ef8e</span>, <span class="number">0x37b76e13</span>, <span class="number">0x3194ec2e</span>, <span class="number">0x37b76e13</span>, <span class="number">0xea1b9f56</span>, <span class="number">0xee54ef8e</span>, <span class="number">0xb99d68d8</span>, <span class="number">0xea1b9f56</span>, <span class="number">0xb78ac2e7</span>, <span class="number">0x9d07d8da</span>, <span class="number">0xee54ef8e</span>, <span class="number">0x41dedf66</span>, <span class="number">0x8288d321</span>, <span class="number">0x174760d3</span>, <span class="number">0x9d07d8da</span>, <span class="number">0x174760d3</span>, <span class="number">0x8288d321</span>, <span class="number">0xdc310a37</span>, <span class="number">0x45e26648</span>, <span class="number">0x41dedf66</span>, <span class="number">0x8288d321</span>, <span class="number">0x8288d321</span>, <span class="number">0x930b26e3</span>, <span class="number">0xabef6fef</span>]</span><br></pre></td></tr></table></figure>
+
+<p>观察异常处理中的加密函数</p>
+<p><img lazyload="" alt="image.png" data-src="https://oss.carbo.ink/old_imgs/202410162159530.png"></p>
+<p>是一系列较为复杂的位移操作，应该是可以解的，但是笔者采取了一个投巧的方法，用x64dbg下断在 <code>0x0000000000401862</code></p>
+<p><img lazyload="" alt="image.png" data-src="https://oss.carbo.ink/old_imgs/202410162159263.png"></p>
+<p>由于可视字符太多，所以笔者写了一个脚本来自动打印到日志</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">run                               </span><br><span class="line">log SYM:<span class="string">"{mem;1@61F726}"</span>: <span class="string">"{rax}"</span></span><br><span class="line">ret                               </span><br></pre></td></tr></table></figure>
+
+<p>然后在flag输入处输入全可打印字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\\]^_`{|}~</span><br></pre></td></tr></table></figure>
+
+<p>提取出对应表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{<span class="number">2596959767</span>: <span class="string">'!'</span>, <span class="number">3278025627</span>: <span class="string">'"'</span>, <span class="number">1199340385</span>: <span class="string">'#'</span>, <span class="number">3652842418</span>: <span class="string">'$'</span>, <span class="number">3416942461</span>: <span class="string">'%'</span>, <span class="number">723666731</span>: <span class="string">'&amp;'</span>, <span class="number">280982008</span>: <span class="string">"'"</span>, <span class="number">3348210159</span>: <span class="string">'('</span>, <span class="number">1029965590</span>: <span class="string">')'</span>, <span class="number">1646217348</span>: <span class="string">'*'</span>, <span class="number">1509106344</span>: <span class="string">'+'</span>, <span class="number">1884266855</span>: <span class="string">','</span>, <span class="number">3998543758</span>: <span class="string">'-'</span>, <span class="number">10365811</span>: <span class="string">'.'</span>, <span class="number">3246951466</span>: <span class="string">'/'</span>, <span class="number">4064760690</span>: <span class="string">'0'</span>, <span class="number">3927678806</span>: <span class="string">'1'</span>, <span class="number">2190005025</span>: <span class="string">'2'</span>, <span class="number">2634537178</span>: <span class="string">'3'</span>, <span class="number">3418004561</span>: <span class="string">'4'</span>, <span class="number">3079324391</span>: <span class="string">'5'</span>, <span class="number">3488570123</span>: <span class="string">'6'</span>, <span class="number">1172465224</span>: <span class="string">'7'</span>, <span class="number">2466981603</span>: <span class="string">'8'</span>, <span class="number">3694201399</span>: <span class="string">'9'</span>, <span class="number">1612783687</span>: <span class="string">':'</span>, <span class="number">693140910</span>: <span class="string">';'</span>, <span class="number">3726077530</span>: <span class="string">'&lt;'</span>, <span class="number">1307370518</span>: <span class="string">'='</span>, <span class="number">726644641</span>: <span class="string">'&gt;'</span>, <span class="number">1786144152</span>: <span class="string">'?'</span>, <span class="number">2537538325</span>: <span class="string">'@'</span>, <span class="number">390553811</span>: <span class="string">'A'</span>, <span class="number">934768147</span>: <span class="string">'B'</span>, <span class="number">831843374</span>: <span class="string">'C'</span>, <span class="number">2228983316</span>: <span class="string">'D'</span>, <span class="number">3114100952</span>: <span class="string">'E'</span>, <span class="number">1105125222</span>: <span class="string">'F'</span>, <span class="number">2398680771</span>: <span class="string">'G'</span>, <span class="number">3353174339</span>: <span class="string">'H'</span>, <span class="number">3250317036</span>: <span class="string">'I'</span>, <span class="number">870428025</span>: <span class="string">'J'</span>, <span class="number">3051147020</span>: <span class="string">'K'</span>, <span class="number">120575263</span>: <span class="string">'L'</span>, <span class="number">1208782285</span>: <span class="string">'M'</span>, <span class="number">2708701790</span>: <span class="string">'N'</span>, <span class="number">84861922</span>: <span class="string">'O'</span>, <span class="number">2027386979</span>: <span class="string">'P'</span>, <span class="number">1073431481</span>: <span class="string">'Q'</span>, <span class="number">867118355</span>: <span class="string">'R'</span>, <span class="number">2059931180</span>: <span class="string">'S'</span>, <span class="number">1889880515</span>: <span class="string">'T'</span>, <span class="number">4144402592</span>: <span class="string">'U'</span>, <span class="number">157475374</span>: <span class="string">'V'</span>, <span class="number">3597550946</span>: <span class="string">'W'</span>, <span class="number">3904163235</span>: <span class="string">'X'</span>, <span class="number">3052880830</span>: <span class="string">'Y'</span>, <span class="number">1826329493</span>: <span class="string">'Z'</span>, <span class="number">3635011357</span>: <span class="string">'['</span>, <span class="number">2712232590</span>: <span class="string">'\\'</span>, <span class="number">2987677768</span>: <span class="string">']'</span>, <span class="number">2851724154</span>: <span class="string">'^'</span>, <span class="number">2131826772</span>: <span class="string">'_'</span>, <span class="number">2472816263</span>: <span class="string">'`'</span>, <span class="number">291415938</span>: <span class="string">'a'</span>, <span class="number">1891737825</span>: <span class="string">'b'</span>, <span class="number">4106698431</span>: <span class="string">'c'</span>, <span class="number">51373921</span>: <span class="string">'d'</span>, <span class="number">3596199336</span>: <span class="string">'e'</span>, <span class="number">86081972</span>: <span class="string">'f'</span>, <span class="number">429896102</span>: <span class="string">'g'</span>, <span class="number">1213478405</span>: <span class="string">'h'</span>, <span class="number">1178941954</span>: <span class="string">'i'</span>, <span class="number">2136545382</span>: <span class="string">'j'</span>, <span class="number">1319470528</span>: <span class="string">'k'</span>, <span class="number">2682404089</span>: <span class="string">'l'</span>, <span class="number">2376513170</span>: <span class="string">'m'</span>, <span class="number">3465855092</span>: <span class="string">'n'</span>, <span class="number">1867828354</span>: <span class="string">'o'</span>, <span class="number">2685652659</span>: <span class="string">'p'</span>, <span class="number">1457933662</span>: <span class="string">'q'</span>, <span class="number">3227490855</span>: <span class="string">'r'</span>, <span class="number">3060405360</span>: <span class="string">'s'</span>, <span class="number">1697040329</span>: <span class="string">'t'</span>, <span class="number">294797628</span>: <span class="string">'u'</span>, <span class="number">2577271396</span>: <span class="string">'v'</span>, <span class="number">1420360541</span>: <span class="string">'w'</span>, <span class="number">260209567</span>: <span class="string">'x'</span>, <span class="number">2851528244</span>: <span class="string">'y'</span>, <span class="number">2240464916</span>: <span class="string">'z'</span>, <span class="number">2137638942</span>: <span class="string">'{'</span>, <span class="number">808490953</span>: <span class="string">'|'</span>, <span class="number">2884595695</span>: <span class="string">'}'</span>, <span class="number">3702355519</span>: <span class="string">'~'</span>}</span><br></pre></td></tr></table></figure>
+
+<p>然后一一查询，就可以得到flag <code>DASCTF{BBFE6A51-AE09-BCB1-E153-F2A3A297F228}</code></p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                台州市赛 - Reverse 方向
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/10/16/taizhou/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">carbofish</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-10-16 19:00</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Reverse/">Reverse</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/10/30/funny_pwn1/"
+                                   title="记一道有趣的障眼法 PWN 题"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">记一道有趣的障眼法 PWN 题</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/10/16/2024qiangwang/"
+                                   title="台州市赛 - Reverse 方向"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">台州市赛 - Reverse 方向</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#nanomites"><span class="nav-number">1.</span> <span class="nav-text">nanomites</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">carbofish</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#nanomites"><span class="nav-number">1.</span> <span class="nav-text">nanomites</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="carbofish">
+    
+    <title>
+        
+            2024 N1CTF - Reverse |
+        
+        Carbo
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#1abc9c","title":"Carbo","author":"carbofish","avatar":"/images/avatar.jpg","logo":"/images/logo.png","favicon":"/images/logo.png"},"menu":{"home":"/","tags":"/tags","links":"/links","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"https://oss.carbo.ink/wallpaper/115959359_p0_r.jpg","background_img_dark":"https://oss.carbo.ink/wallpaper/115959359_p0_r.jpg","description":"白雪却嫌春色晚，欲穿庭树作飞花。","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"vercel","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"name":"PangBai","link":"https://pangbai.work/","avatar":"http://pangbai.work/images/avatar.jpg","description":"Bangbai | d180"},{"name":"void2eye","link":"https://void2eye.fun/","avatar":"https://void2eye.fun/img/808.png","description":"政治家"},{"name":"C3ngH","link":"https://c3ngh.top","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","description":"包罗万象哥"},{"name":"A1ic3","link":"https://a1ic3.cn/","avatar":"https://a1ic3.cn/images/avatar1.jpg","description":"小密码王"},{"name":"enllus1on","link":"https://enllus1on.github.io/","description":"Pwn神","avatar":"https://enllus1on.github.io/images/kano.jpg"},{"name":"AsaL1n","link":"https://asal1n.github.io/","avatar":"https://asal1n.github.io/img/head.jpg","description":"血怒哥"},{"name":"Straw","link":"https://straw-233.github.io/","avatar":"https://straw-233.github.io/avatar/meinasi.png","description":"午门痴"},{"name":"CHHHCHHOH","link":"http://www.chhhchhoh.cn/","avatar":"https://s2.loli.net/2024/10/20/9EXmLyYuU6b5tVh.png","description":"吃了乙酸的乙醇不会梦到乙酸乙酯"},{"name":"Lunatic","link":"https://goodlunatic.github.io/","avatar":"https://www.nssctf.cn/files/2024/4/28/7f130a1387.png","description":"Mind and Hand :)"},{"name":"Fup1p1","link":"https://www.fup1p1.cn/","avatar":"https://www.nssctf.cn/files/2024/4/29/524400904c.jpeg","description":"逆向寻真理"},{"name":"X1ao","link":"https://www.x1aoblog.top/","avatar":"http://www.x1aoblog.top/upload/mmexport1681277516546.png","description":"大密码王"},{"name":"Xux","link":"https://www.xuxblog.top","avatar":"https://avatars.githubusercontent.com/u/82816273?s=64&v=4","description":"神仙 Web 👴"},{"name":"Woodwhale","avatar":"https://www.woodwhale.cn/woodwhale.png","link":"https://www.woodwhale.cn","description":"全栈神"},{"name":"Xunflash","avatar":"https://www.xunflash.top/icon.png","link":"https://www.xunflash.top/","description":"澳爷"},{"name":"bi0x","avatar":"https://blog.bi0x.com/img/avatar.png","link":"https://blog.bi0x.com/","description":"字节👴"},{"name":"huanghunr","link":"https://blog.huanghunr.top","avatar":"https://pic.imgdb.cn/item/670b4202d29ded1a8c807e7e.jpg","description":"喵喵喵?!还没想好"},{"name":"温婳霂","link":"https://somokel.github.io","avatar":"https://s2.loli.net/2024/10/21/GixfX61nsPMkN4r.jpg","description":"春祺夏安，秋绥冬宁。"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Carbo
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        2024 N1CTF - Reverse
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">carbofish</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-11 19:00:00</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Nov 12 2024 19:02:12 GMT+0800">2024-11-12 19:02:12</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reverse/">Reverse</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p><code>2024 N1CTF Reverse 方向 Writes UP</code></p>
+<span id="more"></span>
+
+<p>refantazio 三血，嘻嘻<br><img lazyload="" alt="d83af494cb946b57c5e5333d2d53ff77" data-src="https://oss.carbo.ink/imgs/d83af494cb946b57c5e5333d2d53ff77.png" style="zoom: 67%;"></p>
+<h3 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h3><h4 id="ezapk"><a href="#ezapk" class="headerlink" title="ezapk"></a>ezapk</h4><p><img lazyload="" alt="image-20241110001711563" data-src="https://oss.carbo.ink/imgs/image-20241110001711563.png"></p>
+<p>enc 注册在 libnative1 里面，加密逻辑在 libnative2 里面，在三处 call 寄存器的地方下断点</p>
+<p><img lazyload="" alt="image-20241110001800606" data-src="https://oss.carbo.ink/imgs/image-20241110001800606.png"></p>
+<p><img lazyload="" alt="image-20241110001805677" data-src="https://oss.carbo.ink/imgs/image-20241110001805677.png"></p>
+<p><img lazyload="" alt="image-20241110001811360" data-src="https://oss.carbo.ink/imgs/image-20241110001811360.png"></p>
+<p>得到加密逻辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># iusp9aVAyoMI 异或 rand()</span><br><span class="line"># SZ3pMtlDTA7Q RC4 密钥是 rand()出来的</span><br><span class="line"># UqhYy0F049n5 base64编码</span><br></pre></td></tr></table></figure>
+
+<p>由 RC4 的对称性可以想到一个简便解法，用 frida 下断在 JNI 函数处，覆写 GetStringUTFChars 得到的内存地址</p>
+<p><img lazyload="" alt="image-20241110001951632" data-src="https://oss.carbo.ink/imgs/image-20241110001951632.png"></p>
+<p>然后再在 ret 的位置 hook 拿到解密后的内容就可得到 flag</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inter = <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">getModuleByName</span>(<span class="string">"libnative1.so"</span>);</span><br><span class="line">        <span class="keyword">var</span> write_data = [<span class="number">0x89</span>,<span class="number">0x1a</span>,<span class="number">0xcb</span>,<span class="number">0xeb</span>,<span class="number">0x7b</span>,<span class="number">0x6f</span>,<span class="number">0x7b</span>,<span class="number">0xe1</span>,<span class="number">0xfb</span>,<span class="number">0xdb</span>,<span class="number">0x08</span>,<span class="number">0xeb</span>,<span class="number">0xfc</span>,<span class="number">0x71</span>,<span class="number">0xe2</span>,<span class="number">0xc2</span>,<span class="number">0x55</span>,<span class="number">0x6e</span>,<span class="number">0xe5</span>,<span class="number">0x16</span>,<span class="number">0x54</span>,<span class="number">0xf5</span>,<span class="number">0x70</span>,<span class="number">0xdc</span>,<span class="number">0x23</span>,<span class="number">0xb0</span>];</span><br><span class="line">        <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x1B188</span>), {</span><br><span class="line">            <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">                <span class="keyword">var</span> reg = <span class="variable language_">this</span>.<span class="property">context</span>.<span class="property">x0</span>.<span class="title function_">and</span>(<span class="number">0xFFFFFFFFFFFF</span>)</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hexdump</span>(reg, {<span class="attr">length</span>: <span class="number">100</span>, <span class="attr">ansi</span>: <span class="literal">true</span>}))</span><br><span class="line">                <span class="title function_">ptr</span>(reg).<span class="title function_">writeByteArray</span>(write_data)</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hexdump</span>(reg, {<span class="attr">length</span>: <span class="number">100</span>, <span class="attr">ansi</span>: <span class="literal">true</span>}))</span><br><span class="line">            }</span><br><span class="line">        })</span><br><span class="line">        <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x1B458</span>), {</span><br><span class="line">            <span class="attr">onEnter</span>: <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">                <span class="keyword">var</span> reg = <span class="variable language_">this</span>.<span class="property">context</span>.<span class="property">x0</span>.<span class="title function_">and</span>(<span class="number">0xFFFFFFFFFFFF</span>)</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hexdump</span>(reg, {<span class="attr">length</span>: <span class="number">100</span>, <span class="attr">ansi</span>: <span class="literal">true</span>}))</span><br><span class="line">            }</span><br><span class="line">        })</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"Hook successful!"</span>)</span><br><span class="line">        <span class="built_in">clearInterval</span>(inter)</span><br><span class="line">    } <span class="keyword">catch</span> {}</span><br><span class="line">}, <span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+
+<img lazyload="" alt="image-20241110002048062" data-src="https://oss.carbo.ink/imgs/image-20241110002048062.png" style="zoom: 67%;">
+
+<img lazyload="" alt="image-20241110002054945" data-src="https://oss.carbo.ink/imgs/image-20241110002054945.png" style="zoom:67%;">
+
+<h4 id="ReFantazio"><a href="#ReFantazio" class="headerlink" title="ReFantazio"></a>ReFantazio</h4><p>三血嘻嘻</p>
+<p>到手发现一个很大的 so，ida 查看字符串发现 frida 字样，那么大概是个内置 frida-gum 的程序</p>
+<p>第一步，先还原符号</p>
+<p>去拉一份最新的 frida 源码，先编译一遍，生成 <code>frida-android-arm64</code> 后修改内容</p>
+<img lazyload="" alt="image-20241110200309006" data-src="https://oss.carbo.ink/imgs/image-20241110200309006.png" style="zoom:67%;">
+
+<p>先关优化，然后去修改 <code>subprojects\frida-core\tools</code> 下的 <code>post-process.py</code></p>
+<img lazyload="" alt="image-20241110200443810" data-src="https://oss.carbo.ink/imgs/image-20241110200443810.png" style="zoom:67%;">
+
+<p>关闭 strip</p>
+<p>然后就可以 bindiff 了</p>
+<p>在还原大部分符号后，可以发现这个从 bytes 创建脚本，那么大胆猜测是加载明文脚本</p>
+<img lazyload="" alt="image-20241110200630153" data-src="https://oss.carbo.ink/imgs/image-20241110200630153.png" style="zoom:67%;">
+
+<p>所以可以写一个脚本 dump 所有内存段，然后搜索 Java.use 定位即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> allMemoryData = [];</span><br><span class="line">        <span class="keyword">let</span> totalSize = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">const</span> ranges = <span class="title class_">Process</span>.<span class="title function_">enumerateRangesSync</span>({</span><br><span class="line">            <span class="attr">protection</span>: <span class="string">'---'</span>,</span><br><span class="line">            <span class="attr">coalesce</span>: <span class="literal">true</span></span><br><span class="line">        });</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> range <span class="keyword">of</span> ranges) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                <span class="keyword">const</span> current = range.<span class="property">base</span>;</span><br><span class="line">                <span class="keyword">const</span> size = range.<span class="property">size</span>;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(current, size)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">const</span> memoryData = <span class="title class_">Memory</span>.<span class="title function_">readByteArray</span>(current, size);</span><br><span class="line">                <span class="keyword">if</span> (memoryData) {</span><br><span class="line">                    allMemoryData.<span class="title function_">push</span>(memoryData);</span><br><span class="line">                    totalSize += size;</span><br><span class="line">                }</span><br><span class="line">            } <span class="keyword">catch</span> {}</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> finalBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(totalSize);</span><br><span class="line">        <span class="keyword">const</span> finalArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(finalBuffer);</span><br><span class="line">        <span class="keyword">let</span> offset = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> data <span class="keyword">of</span> allMemoryData) {</span><br><span class="line">            <span class="keyword">const</span> tempArray = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(data);</span><br><span class="line">            finalArray.<span class="title function_">set</span>(tempArray, offset);</span><br><span class="line">            offset += tempArray.<span class="property">length</span>;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">const</span> timestamp = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line">        <span class="keyword">const</span> filename = <span class="string">`/data/data/com.android.refantazio/memory_dump_<span class="subst">${timestamp}</span>.bin`</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> file = <span class="keyword">new</span> <span class="title class_">File</span>(filename, <span class="string">"wb"</span>);</span><br><span class="line">        file.<span class="title function_">write</span>(finalBuffer);</span><br><span class="line">        file.<span class="title function_">flush</span>();</span><br><span class="line">        file.<span class="title function_">close</span>();</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`[+] Saved <span class="subst">${finalBuffer.byteLength}</span> bytes to <span class="subst">${filename}</span>`</span>);</span><br><span class="line">    }, <span class="number">3000</span>)</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="comment">// /data/data/com.android.refantazio/memory_dump_1731235293045.bin</span></span><br><span class="line"><span class="comment">// /data/data/com.android.refantazio/memory_dump_1731235318417.bin</span></span><br></pre></td></tr></table></figure>
+
+<p>得到转储文件后用 010 去搜</p>
+<img lazyload="" alt="image-20241110200946965" data-src="https://oss.carbo.ink/imgs/image-20241110200946965.png" style="zoom:67%;">
+
+<p>就可以秒了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> t = [],</span><br><span class="line">n = <span class="string">"n1cTfOwO"</span>.<span class="property">length</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">256</span>; e++) t[e] = e;</span><br><span class="line"><span class="keyword">let</span> o = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">256</span>; e++) o = (o + t[e] + <span class="string">"n1cTfOwO"</span>.<span class="title function_">charCodeAt</span>(e % n)) % <span class="number">256</span>,</span><br><span class="line">[t[e], t[o]] = [t[o], t[e]];</span><br><span class="line"><span class="keyword">let</span> r = <span class="number">0</span>;</span><br><span class="line">o = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> i = [<span class="number">59</span>, <span class="number">67</span>, <span class="number">58</span>, <span class="number">32</span>, <span class="number">172</span>, <span class="number">94</span>, <span class="number">161</span>, <span class="number">232</span>, <span class="number">59</span>, <span class="number">225</span>, <span class="number">56</span>, <span class="number">210</span>, <span class="number">206</span>, <span class="number">94</span>, <span class="number">123</span>, <span class="number">253</span>, <span class="number">112</span>, <span class="number">252</span>, <span class="number">41</span>, <span class="number">136</span>, <span class="number">71</span>, <span class="number">102</span>, <span class="number">81</span>, <span class="number">80</span>, <span class="number">128</span>, <span class="number">39</span>, <span class="number">22</span>, <span class="number">44</span>, <span class="number">176</span>, <span class="number">41</span>, <span class="number">205</span>, <span class="number">197</span>, <span class="number">5</span>, <span class="number">247</span>, <span class="number">68</span>, <span class="number">151</span>, <span class="number">127</span>, <span class="number">29</span>, <span class="number">251</span>, <span class="number">58</span>, <span class="number">85</span>];</span><br><span class="line"><span class="keyword">var</span> dt = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> n = <span class="number">0</span>; n &lt; <span class="number">41</span>; n++) {</span><br><span class="line">    o = (o + t[r = (r + <span class="number">1</span>) % <span class="number">256</span>]) % <span class="number">256</span>,</span><br><span class="line">    [t[r], t[o]] = [t[o], t[r]];</span><br><span class="line">    <span class="keyword">let</span> l = t[(t[r] + t[o]) % <span class="number">256</span>];</span><br><span class="line">    dt.<span class="title function_">push</span>(<span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(i[n] ^ l));</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(dt.<span class="title function_">join</span>(<span class="string">""</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="BrokenApp"><a href="#BrokenApp" class="headerlink" title="BrokenApp"></a>BrokenApp</h4><p>一个简单鸿蒙题目，比赛的时候没想到 add xxx 是吧 栈顶取出然后在前面加上 xxx，导致 0 加到了字符串末尾，所以就一直解不出来。。。。。。<br>拿到题目后第一步先反 <code>modules.abc</code>，这里我用的是 <a class="link" target="_blank" rel="noopener" href="https://github.com/ohos-decompiler/abc-decompiler">abc-decompiler<i class="fas fa-external-link-alt"></i></a></p>
+<p><img lazyload="" alt="image-20241112184348779" data-src="https://oss.carbo.ink/imgs/image-20241112184348779.png"></p>
+<p>arkjs 层的代码是假的，关键去看 abc.def<br>abc.def 是被魔改了的，我们去 <code>libark_runtime.so</code> 分析一下<br>关键逻辑在这里，先把魔改的头部改回 PANDA，原本是 N1CTF</p>
+<p><img lazyload="" alt="image-20241112184540939" data-src="https://oss.carbo.ink/imgs/image-20241112184540939.png"></p>
+<p>然后把输入的 flag 填入 abc.def 以 <code>0x1B5A80</code> 开头的 40 个字节，</p>
+<p><img lazyload="" alt="image-20241112184724196" data-src="https://oss.carbo.ink/imgs/image-20241112184724196.png"></p>
+<p>然后继续加载，abc.def 没法反成 java 代码，所以我用了 <a class="link" target="_blank" rel="noopener" href="https://github.com/Yricky/abcde/tree/main">abcde<i class="fas fa-external-link-alt"></i></a> 反汇编，然后手动分析</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">newlexenv <span class="number">2</span>     </span><br><span class="line">tryldglobalbyname <span class="number">0</span> <span class="string">"require"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">lda.str <span class="string">"@babel/core"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda v0     </span><br><span class="line">callarg1 <span class="number">1</span> v1     </span><br><span class="line">stconsttoglobalrecord <span class="number">3</span> <span class="string">"babel"</span>   </span><br><span class="line"></span><br><span class="line">tryldglobalbyname <span class="number">4</span> <span class="string">"require"</span></span><br><span class="line">sta v0     </span><br><span class="line">lda.str <span class="string">"@babel/parser"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda v0     </span><br><span class="line">callarg1 <span class="number">5</span> v1     </span><br><span class="line">stconsttoglobalrecord <span class="number">7</span> <span class="string">"parser"</span>  </span><br><span class="line"></span><br><span class="line">tryldglobalbyname <span class="number">8</span> <span class="string">"require"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">lda.str <span class="string">"@babel/traverse"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda v0     </span><br><span class="line">callarg1 <span class="number">9</span> v1     </span><br><span class="line">ldobjbyname <span class="number">11</span> <span class="string">"default"</span>     </span><br><span class="line">stconsttoglobalrecord <span class="number">13</span> <span class="string">"traverse"</span>  </span><br><span class="line"></span><br><span class="line">tryldglobalbyname <span class="number">14</span> <span class="string">"require"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">lda.str <span class="string">"@babel/types"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda v0     </span><br><span class="line">callarg1 <span class="number">15</span> v1     </span><br><span class="line">stconsttoglobalrecord <span class="number">17</span> <span class="string">"t"</span>     </span><br><span class="line"></span><br><span class="line">tryldglobalbyname <span class="number">18</span> <span class="string">"require"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">lda.str <span class="string">"@babel/generator"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda v0     </span><br><span class="line">callarg1 <span class="number">19</span> v1     </span><br><span class="line">ldobjbyname <span class="number">21</span> <span class="string">"default"</span>     </span><br><span class="line">stconsttoglobalrecord <span class="number">23</span> <span class="string">"generator"</span>    </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 上面都在导库 翻译过来就是</span></span><br><span class="line"><span class="comment">const babel = require('@babel/core');</span></span><br><span class="line"><span class="comment">const parser = require('@babel/parser');</span></span><br><span class="line"><span class="comment">const traverse = require('@babel/traverse').default;</span></span><br><span class="line"><span class="comment">const t = require('@babel/types');</span></span><br><span class="line"><span class="comment">const generator = require('@babel/generator').default;</span></span><br><span class="line"><span class="comment">const fs = require("fs");</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">lda.str <span class="string">"N1CTF{padding_the_flag_here_XXXXXXXXXXX}"</span>     </span><br><span class="line">stconsttoglobalrecord <span class="number">24</span> <span class="string">"FLAG"</span>     </span><br><span class="line"></span><br><span class="line"><span class="comment">// const FLAG = "N1CTF{padding_the_flag_here_XXXXXXXXXXX}"</span></span><br><span class="line"></span><br><span class="line">lda.str <span class="string">"</span></span><br><span class="line"><span class="string">const u = [</span></span><br><span class="line"><span class="string">        "</span>viKok6<span class="string">",</span></span><br><span class="line"><span class="string">        "</span>xznLka<span class="string">",</span></span><br><span class="line"><span class="string">        ... 这里省略</span></span><br><span class="line"><span class="string">    ];</span></span><br><span class="line"><span class="string">"</span>     </span><br><span class="line">stconsttoglobalrecord <span class="number">25</span> <span class="string">"code"</span>     </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> code = "</span></span><br><span class="line"><span class="comment">    const u = [</span></span><br><span class="line"><span class="comment">            "viKok6",</span></span><br><span class="line"><span class="comment">            "xznLka",</span></span><br><span class="line"><span class="comment">            ... 这里省略</span></span><br><span class="line"><span class="comment">        ];</span></span><br><span class="line"><span class="comment"> "   </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">createemptyarray <span class="number">26</span>     </span><br><span class="line">stconsttoglobalrecord <span class="number">27</span> <span class="string">"u_"</span>     </span><br><span class="line"></span><br><span class="line"><span class="comment">// const u_ = [];</span></span><br><span class="line"></span><br><span class="line">tryldglobalbyname <span class="number">28</span> <span class="string">"parser"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">ldobjbyname <span class="number">29</span> <span class="string">"parse"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">tryldglobalbyname <span class="number">31</span> <span class="string">"code"</span>     </span><br><span class="line">sta v2     </span><br><span class="line">lda v1     </span><br><span class="line">callthis1 <span class="number">32</span> v0 v2     </span><br><span class="line">stconsttoglobalrecord <span class="number">34</span> <span class="string">"ast"</span>     </span><br><span class="line"></span><br><span class="line"><span class="comment">// const ast = parser.parse(code);</span></span><br><span class="line"></span><br><span class="line">tryldglobalbyname <span class="number">35</span> <span class="string">"traverse"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">tryldglobalbyname <span class="number">36</span> <span class="string">"ast"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">createobjectwithbuffer <span class="number">37</span> { <span class="number">3</span> [ str:<span class="string">"enter"</span>, Method:_GLOBAL.#*<span class="meta">#enter, MethodAffiliate:1,  ]}     </span></span><br><span class="line">sta v2     </span><br><span class="line">lda v0     </span><br><span class="line">callargs2 <span class="number">38</span> v1 v2     </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这里是 调用 traverse, _GLOBAL.#*#enter之类的代码我已经提前翻译好了</span></span><br><span class="line"><span class="comment">traverse(ast, {</span></span><br><span class="line"><span class="comment">    enter: function(path) {</span></span><br><span class="line"><span class="comment">        if (t.isArrayExpression(path.node)) {</span></span><br><span class="line"><span class="comment">            path.node.elements.forEach((arg0, arg1) =&gt; {</span></span><br><span class="line"><span class="comment">                if (t.isStringLiteral(arg0)) {</span></span><br><span class="line"><span class="comment">                    if (arg1 &gt; 150 &amp;&amp; arg1 &lt; 182) {</span></span><br><span class="line"><span class="comment">                        const value = arg0.value;</span></span><br><span class="line"><span class="comment">                        const index = (arg1 + 2) % 6;</span></span><br><span class="line"><span class="comment">                        const result = value[index];</span></span><br><span class="line"><span class="comment">                        u_.push(result);</span></span><br><span class="line"><span class="comment">                    }</span></span><br><span class="line"><span class="comment">                }</span></span><br><span class="line"><span class="comment">            });</span></span><br><span class="line"><span class="comment">        }</span></span><br><span class="line"><span class="comment">    }</span></span><br><span class="line"><span class="comment">});</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">tryldglobalbyname <span class="number">40</span> <span class="string">"FLAG"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">ldobjbyname <span class="number">41</span> <span class="string">"startsWith"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda.str <span class="string">"N1CTF{"</span>     </span><br><span class="line">sta v2     </span><br><span class="line">lda v1     </span><br><span class="line">callthis1 <span class="number">43</span> v0 v2     </span><br><span class="line">sta v0     </span><br><span class="line">callruntime.isfalse <span class="number">45</span>     </span><br><span class="line">jnez <span class="number">27</span>     </span><br><span class="line">tryldglobalbyname <span class="number">46</span> <span class="string">"FLAG"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">ldobjbyname <span class="number">47</span> <span class="string">"endsWith"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda.str <span class="string">"}"</span>     </span><br><span class="line">sta v2     </span><br><span class="line">lda v1     </span><br><span class="line">callthis1 <span class="number">49</span> v0 v2     </span><br><span class="line">sta v0     </span><br><span class="line">lda v0     </span><br><span class="line">callruntime.isfalse <span class="number">51</span>     </span><br><span class="line">jnez <span class="number">107</span>     </span><br><span class="line"></span><br><span class="line"><span class="comment">// if (FLAG.startsWith("N1CTF{") &amp;&amp; FLAG.endsWith("}")) </span></span><br><span class="line"></span><br><span class="line">tryldglobalbyname <span class="number">52</span> <span class="string">"FLAG"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">ldobjbyname <span class="number">53</span> <span class="string">"substring"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">tryldglobalbyname <span class="number">55</span> <span class="string">"FLAG"</span>     </span><br><span class="line">ldobjbyname <span class="number">56</span> <span class="string">"length"</span>     </span><br><span class="line">sta v2     </span><br><span class="line">ldai <span class="number">1</span>     </span><br><span class="line">sub2 <span class="number">58</span> v2     </span><br><span class="line">sta v2     </span><br><span class="line">ldai <span class="number">6</span>     </span><br><span class="line">sta v3     </span><br><span class="line">lda v1     </span><br><span class="line">callthis2 <span class="number">59</span> v0 v3 v2     </span><br><span class="line">sta v0 </span><br><span class="line"></span><br><span class="line"><span class="comment">// const flagContent = FLAG.substring(6, FLAG.length - 1);</span></span><br><span class="line"></span><br><span class="line">lda.str <span class="string">"0"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">tryldglobalbyname <span class="number">61</span> <span class="string">"u_"</span>     </span><br><span class="line">sta v2     </span><br><span class="line">ldobjbyname <span class="number">62</span> <span class="string">"join"</span>     </span><br><span class="line">sta v3     </span><br><span class="line">lda.str <span class="string">""</span>     </span><br><span class="line">sta v4     </span><br><span class="line">lda v3     </span><br><span class="line">callthis1 <span class="number">64</span> v2 v4     </span><br><span class="line">add2 <span class="number">66</span> v1 </span><br><span class="line"></span><br><span class="line"><span class="comment">// 就是这里被坑惨了, arkts 的 add 是 操作数 + 栈顶值, 比赛的时候我是 u_.join("") + "0" 死活做不出。。。。。。</span></span><br><span class="line"></span><br><span class="line">stricteq <span class="number">67</span> v0     </span><br><span class="line">callruntime.isfalse <span class="number">68</span>     </span><br><span class="line"></span><br><span class="line"><span class="comment">// flagContent === "0" + u_.join("")</span></span><br><span class="line">    </span><br><span class="line">jnez <span class="number">20</span>     </span><br><span class="line">tryldglobalbyname <span class="number">69</span> <span class="string">"print"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">lda.str <span class="string">"You're awesome!"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda v0     </span><br><span class="line">callarg1 <span class="number">70</span> v1     </span><br><span class="line">jmp <span class="number">18</span>     </span><br><span class="line">tryldglobalbyname <span class="number">72</span> <span class="string">"print"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">lda.str <span class="string">"What's wrong?"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda v0     </span><br><span class="line">callarg1 <span class="number">73</span> v1     </span><br><span class="line">ldundefined     </span><br><span class="line">returnundefined     </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">if (FLAG.startsWith("N1CTF{") &amp;&amp; FLAG.endsWith("}")) {</span></span><br><span class="line"><span class="comment">    const flagContent = FLAG.substring(6, FLAG.length - 1);</span></span><br><span class="line"><span class="comment">    if (flagContent === "0" + u_.join("")) {</span></span><br><span class="line"><span class="comment">        print("You're awesome!");</span></span><br><span class="line"><span class="comment">    } else {</span></span><br><span class="line"><span class="comment">        print("What's wrong?");</span></span><br><span class="line"><span class="comment">    }</span></span><br><span class="line"><span class="comment">}</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    </span><br><span class="line"># _GLOBAL.#*<span class="meta">#enter</span></span><br><span class="line">newlexenv <span class="number">2</span>     </span><br><span class="line">lda NewTarget     </span><br><span class="line">stlexvar <span class="number">0</span> <span class="number">0</span>     </span><br><span class="line">lda <span class="keyword">this</span>     </span><br><span class="line">stlexvar <span class="number">0</span> <span class="number">1</span>     </span><br><span class="line">tryldglobalbyname <span class="number">0</span> <span class="string">"t"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">ldobjbyname <span class="number">1</span> <span class="string">"isArrayExpression"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">lda arg0     </span><br><span class="line">ldobjbyname <span class="number">3</span> <span class="string">"node"</span>     </span><br><span class="line">sta v2     </span><br><span class="line">lda v1     </span><br><span class="line">callthis1 <span class="number">5</span> v0 v2     </span><br><span class="line">callruntime.isfalse <span class="number">7</span>     </span><br><span class="line">jnez <span class="number">33</span>     </span><br><span class="line">lda arg0     </span><br><span class="line">ldobjbyname <span class="number">8</span> <span class="string">"node"</span>     </span><br><span class="line">ldobjbyname <span class="number">10</span> <span class="string">"elements"</span>     </span><br><span class="line">sta v0     </span><br><span class="line">ldobjbyname <span class="number">12</span> <span class="string">"forEach"</span>     </span><br><span class="line">sta v1     </span><br><span class="line">definefunc <span class="number">14</span> <span class="keyword">this</span>.#*@<span class="number">0</span>*# <span class="number">2</span>     </span><br><span class="line">sta v2     </span><br><span class="line">lda v1     </span><br><span class="line">callthis1 <span class="number">15</span> v0 v2     </span><br><span class="line">ldundefined     </span><br><span class="line">returnundefined</span><br><span class="line">    </span><br><span class="line"># _GLOBAL.#*@<span class="number">0</span>*<span class="meta">#</span></span><br><span class="line"><span class="meta">tryldglobalbyname 0 <span class="string">"t"</span></span></span><br><span class="line">sta v0</span><br><span class="line">ldobjbyname <span class="number">1</span> <span class="string">"isStringLiteral"</span></span><br><span class="line">callthis1 <span class="number">3</span> v0 arg0</span><br><span class="line">callruntime.isfalse <span class="number">5</span></span><br><span class="line">jnez <span class="number">77</span></span><br><span class="line">ldai <span class="number">150</span></span><br><span class="line">greater <span class="number">6</span> arg1</span><br><span class="line">callruntime.isfalse <span class="number">7</span></span><br><span class="line">jnez <span class="number">64</span></span><br><span class="line">ldai <span class="number">182</span></span><br><span class="line">less <span class="number">8</span> arg1</span><br><span class="line">callruntime.isfalse <span class="number">9</span></span><br><span class="line">jnez <span class="number">51</span></span><br><span class="line">tryldglobalbyname <span class="number">10</span> <span class="string">"u_"</span></span><br><span class="line">sta v0</span><br><span class="line">ldobjbyname <span class="number">11</span> <span class="string">"push"</span></span><br><span class="line">sta v1</span><br><span class="line">lda arg0</span><br><span class="line">ldobjbyname <span class="number">13</span> <span class="string">"value"</span></span><br><span class="line">sta v2</span><br><span class="line">ldai <span class="number">2</span></span><br><span class="line">add2 <span class="number">15</span> arg1</span><br><span class="line">sta v3</span><br><span class="line">ldai <span class="number">6</span></span><br><span class="line">mod2 <span class="number">16</span> v3</span><br><span class="line">ldobjbyvalue <span class="number">17</span> v2</span><br><span class="line">sta v2</span><br><span class="line">lda v1</span><br><span class="line">callthis1 <span class="number">19</span> v0 v2</span><br><span class="line">ldundefined</span><br><span class="line">returnundefined</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">'@babel/core'</span>);</span><br><span class="line"><span class="keyword">const</span> parser = <span class="built_in">require</span>(<span class="string">'@babel/parser'</span>);</span><br><span class="line"><span class="keyword">const</span> traverse = <span class="built_in">require</span>(<span class="string">'@babel/traverse'</span>).<span class="property">default</span>;</span><br><span class="line"><span class="keyword">const</span> t = <span class="built_in">require</span>(<span class="string">'@babel/types'</span>);</span><br><span class="line"><span class="keyword">const</span> generator = <span class="built_in">require</span>(<span class="string">'@babel/generator'</span>).<span class="property">default</span>;</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> code = <span class="string">`</span></span><br><span class="line"><span class="string">const u = [</span></span><br><span class="line"><span class="string">        "viKok6",</span></span><br><span class="line"><span class="string">        "xznLka",</span></span><br><span class="line"><span class="string">        "DsA1Pd",</span></span><br><span class="line"><span class="string">        "55MYVz",</span></span><br><span class="line"><span class="string">        "DoUoja",</span></span><br><span class="line"><span class="string">        ...</span></span><br><span class="line"><span class="string">    ];</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> u_ = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ast = parser.<span class="title function_">parse</span>(code);</span><br><span class="line"></span><br><span class="line"><span class="title function_">traverse</span>(ast, {</span><br><span class="line">	<span class="attr">enter</span>: <span class="keyword">function</span> (<span class="params">path</span>) {</span><br><span class="line">		<span class="keyword">if</span> (t.<span class="title function_">isArrayExpression</span>(path.<span class="property">node</span>)) {</span><br><span class="line">			path.<span class="property">node</span>.<span class="property">elements</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">arg0, arg1</span>) =&gt;</span> {</span><br><span class="line">				<span class="keyword">if</span> (t.<span class="title function_">isStringLiteral</span>(arg0)) {</span><br><span class="line">					<span class="keyword">if</span> (arg1 &gt; <span class="number">150</span> &amp;&amp; arg1 &lt; <span class="number">182</span>) {</span><br><span class="line">						<span class="comment">// console.log(arg0, arg1);</span></span><br><span class="line">						<span class="keyword">const</span> value = arg0.<span class="property">value</span>;</span><br><span class="line">						<span class="keyword">const</span> index = (arg1 + <span class="number">2</span>) % <span class="number">6</span>;</span><br><span class="line">						<span class="keyword">const</span> result = value[index];</span><br><span class="line"></span><br><span class="line">						<span class="variable language_">console</span>.<span class="title function_">log</span>(value, index)</span><br><span class="line"></span><br><span class="line">						u_.<span class="title function_">push</span>(result);</span><br><span class="line">					}</span><br><span class="line">				}</span><br><span class="line">			});</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable constant_">FLAG</span>.<span class="title function_">startsWith</span>(<span class="string">"N1CTF{"</span>) &amp;&amp; <span class="variable constant_">FLAG</span>.<span class="title function_">endsWith</span>(<span class="string">"}"</span>)) {</span><br><span class="line">	<span class="keyword">const</span> flagContent = <span class="variable constant_">FLAG</span>.<span class="title function_">substring</span>(<span class="number">6</span>, <span class="variable constant_">FLAG</span>.<span class="property">length</span> - <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span> (flagContent === <span class="string">"0"</span> + u_.<span class="title function_">join</span>(<span class="string">""</span>)) {</span><br><span class="line">		<span class="title function_">print</span>(<span class="string">"You're awesome!"</span>);</span><br><span class="line">	} <span class="keyword">else</span> {</span><br><span class="line">		<span class="title function_">print</span>(<span class="string">"What's wrong?"</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// N1CTF{0KACtgWmvh3cMAHdUKeRbxfASt7CkBT}</span></span><br></pre></td></tr></table></figure>
+
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                2024 N1CTF - Reverse
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/11/11/2024n1ctf/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">carbofish</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-11-11 19:00</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Reverse/">Reverse</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/07/2024qiangwang/"
+                                   title="2024 强网杯 - Reverse"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2024 强网杯 - Reverse</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse"><span class="nav-number">1.</span> <span class="nav-text">Reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ezapk"><span class="nav-number">1.1.</span> <span class="nav-text">ezapk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ReFantazio"><span class="nav-number">1.2.</span> <span class="nav-text">ReFantazio</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BrokenApp"><span class="nav-number">1.3.</span> <span class="nav-text">BrokenApp</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">carbofish</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse"><span class="nav-number">1.</span> <span class="nav-text">Reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ezapk"><span class="nav-number">1.1.</span> <span class="nav-text">ezapk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ReFantazio"><span class="nav-number">1.2.</span> <span class="nav-text">ReFantazio</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BrokenApp"><span class="nav-number">1.3.</span> <span class="nav-text">BrokenApp</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

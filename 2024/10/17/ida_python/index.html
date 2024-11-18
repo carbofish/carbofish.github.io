@@ -379,7 +379,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Nov 18 2024 16:49:40 GMT+0800">2024-11-18 16:49:40</span>
+                <span class="datetime" data-updated="Mon Nov 18 2024 18:06:04 GMT+0800">2024-11-18 18:06:04</span>
             </span>
         
 
@@ -424,7 +424,7 @@ mjx-container[display="true"] + br {
                          <p>记录一下 idapython 里面一些常用的数据类型</p>
 <span id="more"></span>
 
-<h3 id="op-type-类型和值对应表"><a href="#op-type-类型和值对应表" class="headerlink" title="op.type 类型和值对应表"></a><code>op.type</code> 类型和值对应表</h3><table>
+<h3 id="op-type-类型和值对应表"><a href="#op-type-类型和值对应表" class="headerlink" title="op.type 类型和值对应表"></a>op.type 类型和值对应表</h3><table>
 <thead>
 <tr>
 <th>类型名称</th>
@@ -433,82 +433,82 @@ mjx-container[display="true"] + br {
 </tr>
 </thead>
 <tbody><tr>
-<td><code>o_void</code></td>
+<td>o_void</td>
 <td>0</td>
 <td>没有操作数。</td>
 </tr>
 <tr>
-<td><code>o_reg</code></td>
+<td>o_reg</td>
 <td>1</td>
 <td>寄存器直接操作数。</td>
 </tr>
 <tr>
-<td><code>o_mem</code></td>
+<td>o_mem</td>
 <td>2</td>
 <td>内存地址直接操作数（内存变量/全局变量地址）。</td>
 </tr>
 <tr>
-<td><code>o_phrase</code></td>
+<td>o_phrase</td>
 <td>3</td>
 <td>寄存器间接寻址。</td>
 </tr>
 <tr>
-<td><code>o_displ</code></td>
+<td>o_displ</td>
 <td>4</td>
 <td>寄存器加偏移量（带偏移的间接寻址）。</td>
 </tr>
 <tr>
-<td><code>o_imm</code></td>
+<td>o_imm</td>
 <td>5</td>
 <td>立即数操作数。</td>
 </tr>
 <tr>
-<td><code>o_far</code></td>
+<td>o_far</td>
 <td>6</td>
 <td>远跳转地址。</td>
 </tr>
 <tr>
-<td><code>o_near</code></td>
+<td>o_near</td>
 <td>7</td>
 <td>近跳转地址。</td>
 </tr>
 <tr>
-<td><code>o_idpspec0</code></td>
+<td>o_idpspec0</td>
 <td>8</td>
 <td>处理器特定的操作数类型 0（取决于 CPU 架构）。</td>
 </tr>
 <tr>
-<td><code>o_idpspec1</code></td>
+<td>o_idpspec1</td>
 <td>9</td>
 <td>处理器特定的操作数类型 1。</td>
 </tr>
 <tr>
-<td><code>o_idpspec2</code></td>
+<td>o_idpspec2</td>
 <td>10</td>
 <td>处理器特定的操作数类型 2。</td>
 </tr>
 <tr>
-<td><code>o_idpspec3</code></td>
+<td>o_idpspec3</td>
 <td>11</td>
 <td>处理器特定的操作数类型 3。</td>
 </tr>
 <tr>
-<td><code>o_idpspec4</code></td>
+<td>o_idpspec4</td>
 <td>12</td>
 <td>处理器特定的操作数类型 4。</td>
 </tr>
 <tr>
-<td><code>o_idpspec5</code></td>
+<td>o_idpspec5</td>
 <td>13</td>
 <td>处理器特定的操作数类型 5。</td>
 </tr>
 <tr>
-<td><code>o_last</code></td>
+<td>o_last</td>
 <td>14</td>
 <td>保留类型，不用于实际指令。</td>
 </tr>
 </tbody></table>
-<h3 id="op-的常用字段"><a href="#op-的常用字段" class="headerlink" title="op 的常用字段"></a><code>op</code> 的常用字段</h3><table>
+<h3 id="op-的常用字段"><a href="#op-的常用字段" class="headerlink" title="op 的常用字段"></a>op 的常用字段</h3><table>
 <thead>
 <tr>
 <th>字段名</th>
@@ -516,93 +516,93 @@ mjx-container[display="true"] + br {
 </tr>
 </thead>
 <tbody><tr>
-<td><code>op.type</code></td>
-<td>操作数的类型（整数值，对应 <code>o_reg</code>, <code>o_imm</code> 等类型）。</td>
+<td>op.type</td>
+<td>操作数的类型（整数值，对应 o_reg, o_imm 等类型）。</td>
 </tr>
 <tr>
-<td><code>op.addr</code></td>
-<td>内存地址（适用于 <code>o_mem</code>, <code>o_displ</code>, <code>o_far</code>, <code>o_near</code> 类型）。</td>
+<td>op.addr</td>
+<td>内存地址（适用于 o_mem, o_displ, o_far, o_near 类型）。</td>
 </tr>
 <tr>
-<td><code>op.value</code></td>
-<td>立即数值（适用于 <code>o_imm</code> 类型）。</td>
+<td>op.value</td>
+<td>立即数值（适用于 o_imm 类型）。</td>
 </tr>
 <tr>
-<td><code>op.reg</code></td>
-<td>寄存器编号（适用于 <code>o_reg</code>, <code>o_phrase</code>, <code>o_displ</code> 类型）。</td>
+<td>op.reg</td>
+<td>寄存器编号（适用于 o_reg, o_phrase, o_displ 类型）。</td>
 </tr>
 <tr>
-<td><code>op.specval</code></td>
+<td>op.specval</td>
 <td>特殊值，通常与处理器架构相关，用于表示附加信息。</td>
 </tr>
 <tr>
-<td><code>op.offb</code></td>
-<td>偏移量的字节偏移（适用于 <code>o_displ</code> 和 <code>o_phrase</code> 类型）。</td>
+<td>op.offb</td>
+<td>偏移量的字节偏移（适用于 o_displ 和 o_phrase 类型）。</td>
 </tr>
 <tr>
-<td><code>op.dtype</code></td>
-<td>数据类型（例如 <code>dt_byte</code>, <code>dt_word</code>, <code>dt_dword</code> 等，用于区分数据的大小）。</td>
+<td>op.dtype</td>
+<td>数据类型（例如 dt_byte, dt_word, dt_dword 等，用于区分数据的大小）。</td>
 </tr>
 <tr>
-<td><code>op.n</code></td>
+<td>op.n</td>
 <td>操作数编号（0 表示第一个操作数，1 表示第二个操作数，以此类推）。</td>
 </tr>
 </tbody></table>
-<h3 id="每种-op-type-对应的字段说明"><a href="#每种-op-type-对应的字段说明" class="headerlink" title="每种 op.type 对应的字段说明"></a>每种 <code>op.type</code> 对应的字段说明</h3><table>
+<h3 id="每种-op-type-对应的字段说明"><a href="#每种-op-type-对应的字段说明" class="headerlink" title="每种 op.type 对应的字段说明"></a>每种 op.type 对应的字段说明</h3><table>
 <thead>
 <tr>
-<th><code>op.type</code></th>
+<th>op.type</th>
 <th>类型名称</th>
 <th>关键字段使用</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>o_void</code></td>
+<td>o_void</td>
 <td>无操作数</td>
 <td>无字段使用。</td>
 </tr>
 <tr>
-<td><code>o_reg</code></td>
+<td>o_reg</td>
 <td>寄存器</td>
-<td><strong><code>op.reg</code></strong>: 寄存器编号。例如 <code>eax</code>。</td>
+<td>op.reg: 寄存器编号。例如 eax。</td>
 </tr>
 <tr>
-<td><code>o_mem</code></td>
+<td>o_mem</td>
 <td>内存地址</td>
-<td><strong><code>op.addr</code></strong>: 内存地址（全局变量/内存变量）。</td>
+<td>op.addr: 内存地址（全局变量/内存变量）。</td>
 </tr>
 <tr>
-<td><code>o_phrase</code></td>
+<td>o_phrase</td>
 <td>寄存器间接寻址</td>
-<td><strong><code>op.reg</code></strong>: 基础寄存器编号。 <strong><code>op.offb</code></strong>: 偏移量字节的偏移。</td>
+<td>op.reg: 基础寄存器编号。 op.offb: 偏移量字节的偏移。</td>
 </tr>
 <tr>
-<td><code>o_displ</code></td>
+<td>o_displ</td>
 <td>带偏移间接寻址</td>
-<td><strong><code>op.reg</code></strong>: 基础寄存器编号。 <strong><code>op.addr</code></strong>: 偏移地址。 <strong><code>op.offb</code></strong>: 偏移量字节的偏移。</td>
+<td>op.reg: 基础寄存器编号。 op.addr: 偏移地址。 op.offb: 偏移量字节的偏移。</td>
 </tr>
 <tr>
-<td><code>o_imm</code></td>
+<td>o_imm</td>
 <td>立即数</td>
-<td><strong><code>op.value</code></strong>: 立即数值。</td>
+<td>op.value: 立即数值。</td>
 </tr>
 <tr>
-<td><code>o_far</code></td>
+<td>o_far</td>
 <td>远跳转</td>
-<td><strong><code>op.addr</code></strong>: 跳转地址。 <strong><code>op.specval</code></strong>: 可能包含额外段选择器信息（视处理器架构而定）。</td>
+<td>op.addr: 跳转地址。 op.specval: 可能包含额外段选择器信息（视处理器架构而定）。</td>
 </tr>
 <tr>
-<td><code>o_near</code></td>
+<td>o_near</td>
 <td>近跳转</td>
-<td><strong><code>op.addr</code></strong>: 跳转地址。</td>
+<td>op.addr: 跳转地址。</td>
 </tr>
 <tr>
-<td><code>o_idpspec0-5</code></td>
+<td>o_idpspec0-5</td>
 <td>处理器特定类型</td>
-<td><strong><code>op.specval</code></strong>: 通常与具体的处理器架构相关，存储附加信息。</td>
+<td>op.specval: 通常与具体的处理器架构相关，存储附加信息。</td>
 </tr>
 </tbody></table>
-<h3 id="insn-t-的主要字段"><a href="#insn-t-的主要字段" class="headerlink" title="insn_t 的主要字段"></a><code>insn_t</code> 的主要字段</h3><table>
+<h3 id="insn-t-的主要字段"><a href="#insn-t-的主要字段" class="headerlink" title="insn_t 的主要字段"></a>insn_t 的主要字段</h3><table>
 <thead>
 <tr>
 <th>字段名</th>
@@ -611,89 +611,89 @@ mjx-container[display="true"] + br {
 </tr>
 </thead>
 <tbody><tr>
-<td><code>ea</code></td>
-<td><code>ea_t</code></td>
+<td>ea</td>
+<td>ea_t</td>
 <td>指令的有效地址（Effective Address），即指令在程序中的位置。</td>
 </tr>
 <tr>
-<td><code>size</code></td>
-<td><code>uint32</code></td>
+<td>size</td>
+<td>uint32</td>
 <td>指令的字节长度，以字节为单位。</td>
 </tr>
 <tr>
-<td><code>itype</code></td>
-<td><code>uint16</code></td>
-<td>指令类型/编号，表示该指令的操作（例如 <code>mov</code>, <code>add</code> 等）。</td>
+<td>itype</td>
+<td>uint16</td>
+<td>指令类型/编号，表示该指令的操作（例如 mov, add 等）。</td>
 </tr>
 <tr>
-<td><code>auxpref</code></td>
-<td><code>uint32</code></td>
+<td>auxpref</td>
+<td>uint32</td>
 <td>指令的辅助属性，用于存储与处理器架构相关的额外信息。</td>
 </tr>
 <tr>
-<td><code>segpref</code></td>
-<td><code>uint16</code></td>
+<td>segpref</td>
+<td>uint16</td>
 <td>段相关属性，通常与分段架构的指令有关（例如 x86 分段寄存器）。</td>
 </tr>
 <tr>
-<td><code>insnpref</code></td>
-<td><code>uint8</code></td>
-<td>指令前缀，表示指令的修饰信息（例如 <code>rep</code>, <code>lock</code> 等 x86 前缀）。</td>
+<td>insnpref</td>
+<td>uint8</td>
+<td>指令前缀，表示指令的修饰信息（例如 rep, lock 等 x86 前缀）。</td>
 </tr>
 <tr>
-<td><code>flags</code></td>
-<td><code>uint16</code></td>
+<td>flags</td>
+<td>uint16</td>
 <td>指令标志，表示该指令的一些状态（例如是否已被反汇编）。</td>
 </tr>
 <tr>
-<td><code>ops</code></td>
-<td><code>op_t[UA_MAXOP]</code></td>
-<td>操作数数组，最多包含 <code>UA_MAXOP</code>（通常是 6 个）操作数。</td>
+<td>ops</td>
+<td>op_t[UA_MAXOP]</td>
+<td>操作数数组，最多包含 UA_MAXOP（通常是 6 个）操作数。</td>
 </tr>
 </tbody></table>
 <hr>
-<h3 id="insn-t-的关键字段详解"><a href="#insn-t-的关键字段详解" class="headerlink" title="insn_t 的关键字段详解"></a><code>insn_t</code> 的关键字段详解</h3><ol>
-<li>**<code>ea</code> (Effective Address)**：<ul>
+<h3 id="insn-t-的关键字段详解"><a href="#insn-t-的关键字段详解" class="headerlink" title="insn_t 的关键字段详解"></a>insn_t 的关键字段详解</h3><ol>
+<li>ea (Effective Address)：<ul>
 <li>指令在内存中的地址。</li>
-<li>对于每条指令，<code>ea</code> 是其所在代码段中的偏移地址。</li>
-<li>例如，<code>0x401000</code> 表示该指令位于地址 <code>0x401000</code>。</li>
+<li>对于每条指令，ea 是其所在代码段中的偏移地址。</li>
+<li>例如，0x401000 表示该指令位于地址 0x401000。</li>
 </ul>
 </li>
-<li>**<code>size</code>**：<ul>
+<li>size：<ul>
 <li>当前指令的字节长度。</li>
-<li>例如，<code>mov eax, ebx</code> 在 x86 上可能占用 2 个字节（<code>89 D8</code>）。</li>
+<li>例如，mov eax, ebx 在 x86 上可能占用 2 个字节（89 D8）。</li>
 </ul>
 </li>
-<li>**<code>itype</code>**：<ul>
+<li>itype：<ul>
 <li>指令类型，表示当前指令的操作。</li>
-<li>对应处理器架构定义的指令集枚举值，例如 x86 的 <code>NN_mov</code>（值为某个整数）。</li>
-<li>通过 <code>idaapi.get_canon_mnem(insn.itype)</code> 获取指令的助记符字符串。</li>
+<li>对应处理器架构定义的指令集枚举值，例如 x86 的 NN_mov（值为某个整数）。</li>
+<li>通过 idaapi.get_canon_mnem(insn.itype) 获取指令的助记符字符串。</li>
 </ul>
 </li>
-<li>**<code>auxpref</code>**：<ul>
+<li>auxpref：<ul>
 <li>辅助属性，用于存储指令的额外信息。</li>
-<li>例如，在 ARM 架构中，这可能包含条件码（如 <code>EQ</code>, <code>NE</code>）。</li>
+<li>例如，在 ARM 架构中，这可能包含条件码（如 EQ, NE）。</li>
 </ul>
 </li>
-<li>**<code>segpref</code>**：<ul>
+<li>segpref：<ul>
 <li>与分段架构相关的属性。</li>
-<li>在 x86 架构中，这可能表示段寄存器（如 <code>CS</code>, <code>DS</code>）。</li>
+<li>在 x86 架构中，这可能表示段寄存器（如 CS, DS）。</li>
 </ul>
 </li>
-<li>**<code>insnpref</code>**：<ul>
+<li>insnpref：<ul>
 <li>指令前缀信息。</li>
-<li>例如，x86 架构中使用的 <code>rep</code> 或 <code>lock</code> 前缀。</li>
+<li>例如，x86 架构中使用的 rep 或 lock 前缀。</li>
 </ul>
 </li>
-<li>**<code>flags</code>**：<ul>
+<li>flags：<ul>
 <li>指令的标志信息。</li>
 <li>表示一些状态位，例如指令是否是合法的机器码。</li>
 </ul>
 </li>
-<li>**<code>ops</code>**：<ul>
-<li>操作数数组，每个操作数是一个 <code>op_t</code> 类型。</li>
+<li>ops：<ul>
+<li>操作数数组，每个操作数是一个 op_t 类型。</li>
 <li>包含所有操作数的信息，如类型、值、地址等。</li>
-<li>最多支持 <code>UA_MAXOP</code> 个操作数（通常是 6 个）。</li>
+<li>最多支持 UA_MAXOP 个操作数（通常是 6 个）。</li>
 </ul>
 </li>
 </ol>

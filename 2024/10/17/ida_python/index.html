@@ -9,7 +9,7 @@
     
     <title>
         
-            OLLVM 解混淆学习 |
+            IDAPython 小记 |
         
         Carbo
     </title>
@@ -348,7 +348,7 @@ mjx-container[display="true"] + br {
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        OLLVM 解混淆学习
+                        IDAPython 小记
                     </div>
                 
 
@@ -374,12 +374,12 @@ mjx-container[display="true"] + br {
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-10-12 15:12:45</span>
+                <span class="datetime">2024-10-17 15:12:45</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Nov 12 2024 22:11:43 GMT+0800">2024-11-12 22:11:43</span>
+                <span class="datetime" data-updated="Mon Nov 18 2024 16:49:40 GMT+0800">2024-11-18 16:49:40</span>
             </span>
         
 
@@ -392,10 +392,7 @@ mjx-container[display="true"] + br {
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reverse/">Reverse</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Android/">Android</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/DEOLLVM/">DEOLLVM</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/IDAPython/">IDAPython</a></li>
                         
                     
                 </ul>
@@ -424,11 +421,658 @@ mjx-container[display="true"] + br {
                     
 
                     
-                         <p>学习 OLLVM 解混淆</p>
+                         <p>记录一下 idapython 里面一些常用的数据类型</p>
 <span id="more"></span>
 
-<p>开坑中。。。。</p>
-<p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="32.68ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 14444.8 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="2200" d="M0 673Q0 684 7 689T20 694Q32 694 38 680T82 567L126 451H430L473 566Q483 593 494 622T512 668T519 685Q524 694 538 694Q556 692 556 674Q556 670 426 329T293 -15Q288 -22 278 -22T263 -15Q260 -11 131 328T0 673ZM414 410Q414 411 278 411T142 410L278 55L414 410Z"></path></g><g data-mml-node="mi" transform="translate(556,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mi" transform="translate(1128,0)"><path data-c="1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path></g><g data-mml-node="mo" transform="translate(1878,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(2267,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(2839,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(3505.8,0)"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g><g data-mml-node="mo" transform="translate(4783.6,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(5172.6,0)"><path data-c="2203" d="M56 661T56 674T70 694H487Q497 686 500 679V15Q497 10 487 1L279 0H70Q56 7 56 20T70 40H460V327H84Q70 334 70 347T84 367H460V654H70Q56 661 56 674Z"></path></g><g data-mml-node="mi" transform="translate(5728.6,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mi" transform="translate(6300.6,0)"><path data-c="1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path></g><g data-mml-node="mo" transform="translate(7059.6,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(7448.6,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(8020.6,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(8687.3,0)"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(9965.1,0)"><path data-c="2203" d="M56 661T56 674T70 694H487Q497 686 500 679V15Q497 10 487 1L279 0H70Q56 7 56 20T70 40H460V327H84Q70 334 70 347T84 367H460V654H70Q56 661 56 674Z"></path></g><g data-mml-node="mi" transform="translate(10521.1,0)"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(11011.1,0)"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></g><g data-mml-node="mo" transform="translate(11771.1,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(12160.1,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(12732.1,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(13176.8,0)"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(13666.8,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(14055.8,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></p>
+<h3 id="op-type-类型和值对应表"><a href="#op-type-类型和值对应表" class="headerlink" title="op.type 类型和值对应表"></a><code>op.type</code> 类型和值对应表</h3><table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>整数值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>o_void</code></td>
+<td>0</td>
+<td>没有操作数。</td>
+</tr>
+<tr>
+<td><code>o_reg</code></td>
+<td>1</td>
+<td>寄存器直接操作数。</td>
+</tr>
+<tr>
+<td><code>o_mem</code></td>
+<td>2</td>
+<td>内存地址直接操作数（内存变量/全局变量地址）。</td>
+</tr>
+<tr>
+<td><code>o_phrase</code></td>
+<td>3</td>
+<td>寄存器间接寻址。</td>
+</tr>
+<tr>
+<td><code>o_displ</code></td>
+<td>4</td>
+<td>寄存器加偏移量（带偏移的间接寻址）。</td>
+</tr>
+<tr>
+<td><code>o_imm</code></td>
+<td>5</td>
+<td>立即数操作数。</td>
+</tr>
+<tr>
+<td><code>o_far</code></td>
+<td>6</td>
+<td>远跳转地址。</td>
+</tr>
+<tr>
+<td><code>o_near</code></td>
+<td>7</td>
+<td>近跳转地址。</td>
+</tr>
+<tr>
+<td><code>o_idpspec0</code></td>
+<td>8</td>
+<td>处理器特定的操作数类型 0（取决于 CPU 架构）。</td>
+</tr>
+<tr>
+<td><code>o_idpspec1</code></td>
+<td>9</td>
+<td>处理器特定的操作数类型 1。</td>
+</tr>
+<tr>
+<td><code>o_idpspec2</code></td>
+<td>10</td>
+<td>处理器特定的操作数类型 2。</td>
+</tr>
+<tr>
+<td><code>o_idpspec3</code></td>
+<td>11</td>
+<td>处理器特定的操作数类型 3。</td>
+</tr>
+<tr>
+<td><code>o_idpspec4</code></td>
+<td>12</td>
+<td>处理器特定的操作数类型 4。</td>
+</tr>
+<tr>
+<td><code>o_idpspec5</code></td>
+<td>13</td>
+<td>处理器特定的操作数类型 5。</td>
+</tr>
+<tr>
+<td><code>o_last</code></td>
+<td>14</td>
+<td>保留类型，不用于实际指令。</td>
+</tr>
+</tbody></table>
+<h3 id="op-的常用字段"><a href="#op-的常用字段" class="headerlink" title="op 的常用字段"></a><code>op</code> 的常用字段</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>op.type</code></td>
+<td>操作数的类型（整数值，对应 <code>o_reg</code>, <code>o_imm</code> 等类型）。</td>
+</tr>
+<tr>
+<td><code>op.addr</code></td>
+<td>内存地址（适用于 <code>o_mem</code>, <code>o_displ</code>, <code>o_far</code>, <code>o_near</code> 类型）。</td>
+</tr>
+<tr>
+<td><code>op.value</code></td>
+<td>立即数值（适用于 <code>o_imm</code> 类型）。</td>
+</tr>
+<tr>
+<td><code>op.reg</code></td>
+<td>寄存器编号（适用于 <code>o_reg</code>, <code>o_phrase</code>, <code>o_displ</code> 类型）。</td>
+</tr>
+<tr>
+<td><code>op.specval</code></td>
+<td>特殊值，通常与处理器架构相关，用于表示附加信息。</td>
+</tr>
+<tr>
+<td><code>op.offb</code></td>
+<td>偏移量的字节偏移（适用于 <code>o_displ</code> 和 <code>o_phrase</code> 类型）。</td>
+</tr>
+<tr>
+<td><code>op.dtype</code></td>
+<td>数据类型（例如 <code>dt_byte</code>, <code>dt_word</code>, <code>dt_dword</code> 等，用于区分数据的大小）。</td>
+</tr>
+<tr>
+<td><code>op.n</code></td>
+<td>操作数编号（0 表示第一个操作数，1 表示第二个操作数，以此类推）。</td>
+</tr>
+</tbody></table>
+<h3 id="每种-op-type-对应的字段说明"><a href="#每种-op-type-对应的字段说明" class="headerlink" title="每种 op.type 对应的字段说明"></a>每种 <code>op.type</code> 对应的字段说明</h3><table>
+<thead>
+<tr>
+<th><code>op.type</code></th>
+<th>类型名称</th>
+<th>关键字段使用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>o_void</code></td>
+<td>无操作数</td>
+<td>无字段使用。</td>
+</tr>
+<tr>
+<td><code>o_reg</code></td>
+<td>寄存器</td>
+<td><strong><code>op.reg</code></strong>: 寄存器编号。例如 <code>eax</code>。</td>
+</tr>
+<tr>
+<td><code>o_mem</code></td>
+<td>内存地址</td>
+<td><strong><code>op.addr</code></strong>: 内存地址（全局变量/内存变量）。</td>
+</tr>
+<tr>
+<td><code>o_phrase</code></td>
+<td>寄存器间接寻址</td>
+<td><strong><code>op.reg</code></strong>: 基础寄存器编号。 <strong><code>op.offb</code></strong>: 偏移量字节的偏移。</td>
+</tr>
+<tr>
+<td><code>o_displ</code></td>
+<td>带偏移间接寻址</td>
+<td><strong><code>op.reg</code></strong>: 基础寄存器编号。 <strong><code>op.addr</code></strong>: 偏移地址。 <strong><code>op.offb</code></strong>: 偏移量字节的偏移。</td>
+</tr>
+<tr>
+<td><code>o_imm</code></td>
+<td>立即数</td>
+<td><strong><code>op.value</code></strong>: 立即数值。</td>
+</tr>
+<tr>
+<td><code>o_far</code></td>
+<td>远跳转</td>
+<td><strong><code>op.addr</code></strong>: 跳转地址。 <strong><code>op.specval</code></strong>: 可能包含额外段选择器信息（视处理器架构而定）。</td>
+</tr>
+<tr>
+<td><code>o_near</code></td>
+<td>近跳转</td>
+<td><strong><code>op.addr</code></strong>: 跳转地址。</td>
+</tr>
+<tr>
+<td><code>o_idpspec0-5</code></td>
+<td>处理器特定类型</td>
+<td><strong><code>op.specval</code></strong>: 通常与具体的处理器架构相关，存储附加信息。</td>
+</tr>
+</tbody></table>
+<h3 id="insn-t-的主要字段"><a href="#insn-t-的主要字段" class="headerlink" title="insn_t 的主要字段"></a><code>insn_t</code> 的主要字段</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ea</code></td>
+<td><code>ea_t</code></td>
+<td>指令的有效地址（Effective Address），即指令在程序中的位置。</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>uint32</code></td>
+<td>指令的字节长度，以字节为单位。</td>
+</tr>
+<tr>
+<td><code>itype</code></td>
+<td><code>uint16</code></td>
+<td>指令类型/编号，表示该指令的操作（例如 <code>mov</code>, <code>add</code> 等）。</td>
+</tr>
+<tr>
+<td><code>auxpref</code></td>
+<td><code>uint32</code></td>
+<td>指令的辅助属性，用于存储与处理器架构相关的额外信息。</td>
+</tr>
+<tr>
+<td><code>segpref</code></td>
+<td><code>uint16</code></td>
+<td>段相关属性，通常与分段架构的指令有关（例如 x86 分段寄存器）。</td>
+</tr>
+<tr>
+<td><code>insnpref</code></td>
+<td><code>uint8</code></td>
+<td>指令前缀，表示指令的修饰信息（例如 <code>rep</code>, <code>lock</code> 等 x86 前缀）。</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td><code>uint16</code></td>
+<td>指令标志，表示该指令的一些状态（例如是否已被反汇编）。</td>
+</tr>
+<tr>
+<td><code>ops</code></td>
+<td><code>op_t[UA_MAXOP]</code></td>
+<td>操作数数组，最多包含 <code>UA_MAXOP</code>（通常是 6 个）操作数。</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="insn-t-的关键字段详解"><a href="#insn-t-的关键字段详解" class="headerlink" title="insn_t 的关键字段详解"></a><code>insn_t</code> 的关键字段详解</h3><ol>
+<li>**<code>ea</code> (Effective Address)**：<ul>
+<li>指令在内存中的地址。</li>
+<li>对于每条指令，<code>ea</code> 是其所在代码段中的偏移地址。</li>
+<li>例如，<code>0x401000</code> 表示该指令位于地址 <code>0x401000</code>。</li>
+</ul>
+</li>
+<li>**<code>size</code>**：<ul>
+<li>当前指令的字节长度。</li>
+<li>例如，<code>mov eax, ebx</code> 在 x86 上可能占用 2 个字节（<code>89 D8</code>）。</li>
+</ul>
+</li>
+<li>**<code>itype</code>**：<ul>
+<li>指令类型，表示当前指令的操作。</li>
+<li>对应处理器架构定义的指令集枚举值，例如 x86 的 <code>NN_mov</code>（值为某个整数）。</li>
+<li>通过 <code>idaapi.get_canon_mnem(insn.itype)</code> 获取指令的助记符字符串。</li>
+</ul>
+</li>
+<li>**<code>auxpref</code>**：<ul>
+<li>辅助属性，用于存储指令的额外信息。</li>
+<li>例如，在 ARM 架构中，这可能包含条件码（如 <code>EQ</code>, <code>NE</code>）。</li>
+</ul>
+</li>
+<li>**<code>segpref</code>**：<ul>
+<li>与分段架构相关的属性。</li>
+<li>在 x86 架构中，这可能表示段寄存器（如 <code>CS</code>, <code>DS</code>）。</li>
+</ul>
+</li>
+<li>**<code>insnpref</code>**：<ul>
+<li>指令前缀信息。</li>
+<li>例如，x86 架构中使用的 <code>rep</code> 或 <code>lock</code> 前缀。</li>
+</ul>
+</li>
+<li>**<code>flags</code>**：<ul>
+<li>指令的标志信息。</li>
+<li>表示一些状态位，例如指令是否是合法的机器码。</li>
+</ul>
+</li>
+<li>**<code>ops</code>**：<ul>
+<li>操作数数组，每个操作数是一个 <code>op_t</code> 类型。</li>
+<li>包含所有操作数的信息，如类型、值、地址等。</li>
+<li>最多支持 <code>UA_MAXOP</code> 个操作数（通常是 6 个）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="寄存器编号与名称列表-x86"><a href="#寄存器编号与名称列表-x86" class="headerlink" title="寄存器编号与名称列表 (x86)"></a>寄存器编号与名称列表 (x86)</h3><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>寄存器名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>eax</td>
+</tr>
+<tr>
+<td>1</td>
+<td>ecx</td>
+</tr>
+<tr>
+<td>2</td>
+<td>edx</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ebx</td>
+</tr>
+<tr>
+<td>4</td>
+<td>esp</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ebp</td>
+</tr>
+<tr>
+<td>6</td>
+<td>esi</td>
+</tr>
+<tr>
+<td>7</td>
+<td>edi</td>
+</tr>
+<tr>
+<td>8</td>
+<td>eip</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ax</td>
+</tr>
+<tr>
+<td>10</td>
+<td>cx</td>
+</tr>
+<tr>
+<td>11</td>
+<td>dx</td>
+</tr>
+<tr>
+<td>12</td>
+<td>bx</td>
+</tr>
+<tr>
+<td>13</td>
+<td>sp</td>
+</tr>
+<tr>
+<td>14</td>
+<td>bp</td>
+</tr>
+<tr>
+<td>15</td>
+<td>si</td>
+</tr>
+<tr>
+<td>16</td>
+<td>di</td>
+</tr>
+<tr>
+<td>17</td>
+<td>al</td>
+</tr>
+<tr>
+<td>18</td>
+<td>cl</td>
+</tr>
+<tr>
+<td>19</td>
+<td>dl</td>
+</tr>
+<tr>
+<td>20</td>
+<td>bl</td>
+</tr>
+<tr>
+<td>21</td>
+<td>ah</td>
+</tr>
+<tr>
+<td>22</td>
+<td>ch</td>
+</tr>
+<tr>
+<td>23</td>
+<td>dh</td>
+</tr>
+<tr>
+<td>24</td>
+<td>bh</td>
+</tr>
+</tbody></table>
+<h3 id="寄存器编号与名称列表-x64"><a href="#寄存器编号与名称列表-x64" class="headerlink" title="寄存器编号与名称列表 (x64)"></a>寄存器编号与名称列表 (x64)</h3><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>寄存器名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>rax</td>
+</tr>
+<tr>
+<td>1</td>
+<td>rcx</td>
+</tr>
+<tr>
+<td>2</td>
+<td>rdx</td>
+</tr>
+<tr>
+<td>3</td>
+<td>rbx</td>
+</tr>
+<tr>
+<td>4</td>
+<td>rsp</td>
+</tr>
+<tr>
+<td>5</td>
+<td>rbp</td>
+</tr>
+<tr>
+<td>6</td>
+<td>rsi</td>
+</tr>
+<tr>
+<td>7</td>
+<td>rdi</td>
+</tr>
+<tr>
+<td>8</td>
+<td>r8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>r9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>r10</td>
+</tr>
+<tr>
+<td>11</td>
+<td>r11</td>
+</tr>
+<tr>
+<td>12</td>
+<td>r12</td>
+</tr>
+<tr>
+<td>13</td>
+<td>r13</td>
+</tr>
+<tr>
+<td>14</td>
+<td>r14</td>
+</tr>
+<tr>
+<td>15</td>
+<td>r15</td>
+</tr>
+<tr>
+<td>16</td>
+<td>rip</td>
+</tr>
+<tr>
+<td>17</td>
+<td>eax</td>
+</tr>
+<tr>
+<td>18</td>
+<td>ecx</td>
+</tr>
+<tr>
+<td>19</td>
+<td>edx</td>
+</tr>
+<tr>
+<td>20</td>
+<td>ebx</td>
+</tr>
+<tr>
+<td>21</td>
+<td>esp</td>
+</tr>
+<tr>
+<td>22</td>
+<td>ebp</td>
+</tr>
+<tr>
+<td>23</td>
+<td>esi</td>
+</tr>
+<tr>
+<td>24</td>
+<td>edi</td>
+</tr>
+<tr>
+<td>25</td>
+<td>r8d</td>
+</tr>
+<tr>
+<td>26</td>
+<td>r9d</td>
+</tr>
+<tr>
+<td>27</td>
+<td>r10d</td>
+</tr>
+<tr>
+<td>28</td>
+<td>r11d</td>
+</tr>
+<tr>
+<td>29</td>
+<td>r12d</td>
+</tr>
+<tr>
+<td>30</td>
+<td>r13d</td>
+</tr>
+<tr>
+<td>31</td>
+<td>r14d</td>
+</tr>
+<tr>
+<td>32</td>
+<td>r15d</td>
+</tr>
+<tr>
+<td>33</td>
+<td>ax</td>
+</tr>
+<tr>
+<td>34</td>
+<td>cx</td>
+</tr>
+<tr>
+<td>35</td>
+<td>dx</td>
+</tr>
+<tr>
+<td>36</td>
+<td>bx</td>
+</tr>
+<tr>
+<td>37</td>
+<td>sp</td>
+</tr>
+<tr>
+<td>38</td>
+<td>bp</td>
+</tr>
+<tr>
+<td>39</td>
+<td>si</td>
+</tr>
+<tr>
+<td>40</td>
+<td>di</td>
+</tr>
+<tr>
+<td>41</td>
+<td>r8w</td>
+</tr>
+<tr>
+<td>42</td>
+<td>r9w</td>
+</tr>
+<tr>
+<td>43</td>
+<td>r10w</td>
+</tr>
+<tr>
+<td>44</td>
+<td>r11w</td>
+</tr>
+<tr>
+<td>45</td>
+<td>r12w</td>
+</tr>
+<tr>
+<td>46</td>
+<td>r13w</td>
+</tr>
+<tr>
+<td>47</td>
+<td>r14w</td>
+</tr>
+<tr>
+<td>48</td>
+<td>r15w</td>
+</tr>
+<tr>
+<td>49</td>
+<td>al</td>
+</tr>
+<tr>
+<td>50</td>
+<td>cl</td>
+</tr>
+<tr>
+<td>51</td>
+<td>dl</td>
+</tr>
+<tr>
+<td>52</td>
+<td>bl</td>
+</tr>
+<tr>
+<td>53</td>
+<td>ah</td>
+</tr>
+<tr>
+<td>54</td>
+<td>ch</td>
+</tr>
+<tr>
+<td>55</td>
+<td>dh</td>
+</tr>
+<tr>
+<td>56</td>
+<td>bh</td>
+</tr>
+<tr>
+<td>57</td>
+<td>r8b</td>
+</tr>
+<tr>
+<td>58</td>
+<td>r9b</td>
+</tr>
+<tr>
+<td>59</td>
+<td>r10b</td>
+</tr>
+<tr>
+<td>60</td>
+<td>r11b</td>
+</tr>
+<tr>
+<td>61</td>
+<td>r12b</td>
+</tr>
+<tr>
+<td>62</td>
+<td>r13b</td>
+</tr>
+<tr>
+<td>63</td>
+<td>r14b</td>
+</tr>
+<tr>
+<td>64</td>
+<td>r15b</td>
+</tr>
+</tbody></table>
 
                     
                 </div>
@@ -439,11 +1083,11 @@ mjx-container[display="true"] + br {
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                OLLVM 解混淆学习
+                IDAPython 小记
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/10/12/deollvm/
+                2024/10/17/ida_python/
             </div>
         </div>
 
@@ -459,7 +1103,7 @@ mjx-container[display="true"] + br {
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-10-12 15:12</div>
+                <div class="content">2024-10-17 15:12</div>
             </div>
 
 
@@ -499,11 +1143,7 @@ mjx-container[display="true"] + br {
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Android/">Android</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/DEOLLVM/">DEOLLVM</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/IDAPython/">IDAPython</a>
                                     </li>
                                 
                             </ul>
@@ -522,14 +1162,14 @@ mjx-container[display="true"] + br {
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/10/16/taizhou/"
-                                   title="台州市赛 - Reverse 方向"
+                                   href="/2024/11/07/2024qiangwang/"
+                                   title="2024 强网杯 - Reverse"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">台州市赛 - Reverse 方向</span>
+                                        <span class="post-nav-title-item text-ellipsis">2024 强网杯 - Reverse</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -539,11 +1179,11 @@ mjx-container[display="true"] + br {
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/10/06/encode_decode/"
-                                   title="常见加密解密编码算法"
+                                   href="/2024/10/16/taizhou/"
+                                   title="台州市赛 - Reverse 方向"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">常见加密解密编码算法</span>
+                                        <span class="post-nav-title-item text-ellipsis">台州市赛 - Reverse 方向</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -649,7 +1289,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#op-type-%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%80%BC%E5%AF%B9%E5%BA%94%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">op.type 类型和值对应表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#op-%E7%9A%84%E5%B8%B8%E7%94%A8%E5%AD%97%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">op 的常用字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%8F%E7%A7%8D-op-type-%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">每种 op.type 对应的字段说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insn-t-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%AD%97%E6%AE%B5"><span class="nav-number">4.</span> <span class="nav-text">insn_t 的主要字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insn-t-%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E6%AE%B5%E8%AF%A6%E8%A7%A3"><span class="nav-number">5.</span> <span class="nav-text">insn_t 的关键字段详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%90%8D%E7%A7%B0%E5%88%97%E8%A1%A8-x86"><span class="nav-number">6.</span> <span class="nav-text">寄存器编号与名称列表 (x86)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%90%8D%E7%A7%B0%E5%88%97%E8%A1%A8-x64"><span class="nav-number">7.</span> <span class="nav-text">寄存器编号与名称列表 (x64)</span></a></li></ol>
     </div>
 </div>
 
@@ -843,7 +1483,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#op-type-%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%80%BC%E5%AF%B9%E5%BA%94%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">op.type 类型和值对应表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#op-%E7%9A%84%E5%B8%B8%E7%94%A8%E5%AD%97%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">op 的常用字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%8F%E7%A7%8D-op-type-%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">每种 op.type 对应的字段说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insn-t-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%AD%97%E6%AE%B5"><span class="nav-number">4.</span> <span class="nav-text">insn_t 的主要字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insn-t-%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E6%AE%B5%E8%AF%A6%E8%A7%A3"><span class="nav-number">5.</span> <span class="nav-text">insn_t 的关键字段详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%90%8D%E7%A7%B0%E5%88%97%E8%A1%A8-x86"><span class="nav-number">6.</span> <span class="nav-text">寄存器编号与名称列表 (x86)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E7%BC%96%E5%8F%B7%E4%B8%8E%E5%90%8D%E7%A7%B0%E5%88%97%E8%A1%A8-x64"><span class="nav-number">7.</span> <span class="nav-text">寄存器编号与名称列表 (x64)</span></a></li></ol>
     </div>
 </div>
 

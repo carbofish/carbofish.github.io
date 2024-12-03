@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="carbofish">
+    
+    <title>
+        
+            ARM64 汇编小记 |
+        
+        Carbo
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.png">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#1abc9c","title":"Carbo","author":"carbofish","avatar":"/images/avatar.jpg","logo":"/images/logo.png","favicon":"/images/logo.png"},"menu":{"home":"/","tags":"/tags","links":"/links","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"https://s3.carbo.ink/img/wallpaper/115959359_p0_r.jpg","background_img_dark":"https://s3.carbo.ink/img/wallpaper/115959359_p0_r.jpg","description":"白雪却嫌春色晚，欲穿庭树作飞花。","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://comment.carbo.ink/","reaction":true,"version":"3.3.2","option":{"dark":"auto"}},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"unpkg"},"pjax":{"enable":true},"footer":{"since":2024,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"name":"PangBai","link":"https://pangbai.work/","avatar":"http://pangbai.work/images/avatar.jpg","description":"Bangbai | d180"},{"name":"void2eye","link":"https://void2eye.fun/","avatar":"https://void2eye.fun/img/808.png","description":"政治家"},{"name":"C3ngH","link":"https://c3ngh.top","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","description":"包罗万象哥"},{"name":"A1ic3","link":"https://a1ic3.cn/","avatar":"https://a1ic3.cn/images/avatar1.jpg","description":"小密码王"},{"name":"enllus1on","link":"https://enllus1on.github.io/","description":"Pwn神","avatar":"https://enllus1on.github.io/images/kano.jpg"},{"name":"AsaL1n","link":"https://asal1n.github.io/","avatar":"https://asal1n.github.io/img/head.jpg","description":"血怒哥"},{"name":"Straw","link":"https://straw-233.github.io/","avatar":"https://straw-233.github.io/avatar/meinasi.png","description":"午门痴"},{"name":"CHHHCHHOH","link":"http://www.chhhchhoh.cn/","avatar":"https://s2.loli.net/2024/10/20/9EXmLyYuU6b5tVh.png","description":"吃了乙酸的乙醇不会梦到乙酸乙酯"},{"name":"Lunatic","link":"https://goodlunatic.github.io/","avatar":"https://www.nssctf.cn/files/2024/4/28/7f130a1387.png","description":"Mind and Hand :)"},{"name":"Fup1p1","link":"https://www.fup1p1.cn/","avatar":"https://www.nssctf.cn/files/2024/4/29/524400904c.jpeg","description":"逆向寻真理"},{"name":"X1ao","link":"https://www.x1aoblog.top/","avatar":"http://www.x1aoblog.top/upload/mmexport1681277516546.png","description":"大密码王"},{"name":"Xux","link":"https://www.xuxblog.top","avatar":"https://avatars.githubusercontent.com/u/82816273?s=64&v=4","description":"神仙 Web 👴"},{"name":"Woodwhale","avatar":"https://www.woodwhale.cn/woodwhale.png","link":"https://www.woodwhale.cn","description":"全栈神"},{"name":"Xunflash","avatar":"https://www.xunflash.top/icon.png","link":"https://www.xunflash.top/","description":"澳爷"},{"name":"bi0x","avatar":"https://blog.bi0x.com/img/avatar.png","link":"https://blog.bi0x.com/","description":"字节👴"},{"name":"huanghunr","link":"https://blog.huanghunr.top","avatar":"https://pic.imgdb.cn/item/670b4202d29ded1a8c807e7e.jpg","description":"喵喵喵?!还没想好"},{"name":"温婳霂","link":"https://somokel.github.io","avatar":"https://s2.loli.net/2024/10/21/GixfX61nsPMkN4r.jpg","description":"春祺夏安，秋绥冬宁。"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Carbo
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools">
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools">
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        ARM64 汇编小记
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">carbofish</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-12-03 15:12:45</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Dec 03 2024 19:05:06 GMT+0800">2024-12-03 19:05:06</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reverse/">Reverse</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ARM64/">ARM64</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Assambly/">Assambly</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="LDRB-指令"><a href="#LDRB-指令" class="headerlink" title="LDRB 指令"></a>LDRB 指令</h1><p>在ARM汇编指令中，**<code>LDRB</code>（Load Register Byte）<strong>是一种用于加载单个字节数据到寄存器的指令。与<code>LDR</code>指令相比，<code>LDRB</code>会从内存中加载一个字节（8位）而不是一个字（32位）数据，同时支持</strong>零扩展**（zero-extension）到32位寄存器中。</p>
+<hr>
+<h3 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB &lt;Rd&gt;, [&lt;Rn&gt;, #&lt;offset&gt;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
+<li><strong><code>Rd</code></strong>: 目标寄存器，用于存储加载的字节值。</li>
+<li><strong><code>Rn</code></strong>: 基址寄存器，提供内存地址。</li>
+<li><strong><code>offset</code></strong>: 可选的偏移量（立即数或寄存器），用于计算内存地址。</li>
+</ul>
+<hr>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li><strong>计算地址</strong>：根据基址寄存器<code>Rn</code>和偏移量<code>offset</code>计算出目标内存地址。</li>
+<li><strong>读取内存</strong>：从该地址读取一个字节数据。</li>
+<li><strong>零扩展</strong>：将读取到的8位数据扩展为32位（高位填充为0），并存入目标寄存器<code>Rd</code>。</li>
+</ol>
+<hr>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="1-读取一个字节"><a href="#1-读取一个字节" class="headerlink" title="1. 读取一个字节"></a>1. 读取一个字节</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R0, [R1]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从<code>R1</code>寄存器指向的内存地址读取一个字节，存入<code>R0</code>寄存器。</li>
+<li>加载的字节内容会被零扩展到32位。</li>
+</ul>
+<h4 id="2-带偏移的加载"><a href="#2-带偏移的加载" class="headerlink" title="2. 带偏移的加载"></a>2. 带偏移的加载</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R2, [R3, #4]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从<code>R3</code>寄存器的地址加上偏移量<code>4</code>的内存地址读取一个字节，存入<code>R2</code>。</li>
+</ul>
+<h4 id="3-使用寄存器偏移"><a href="#3-使用寄存器偏移" class="headerlink" title="3. 使用寄存器偏移"></a>3. 使用寄存器偏移</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R4, [R5, R6]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用<code>R5</code>作为基址，<code>R6</code>的值作为偏移量，读取目标地址的一个字节数据到<code>R4</code>。</li>
+</ul>
+<hr>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li>读取存储在内存中的单字节数据，例如：<ul>
+<li>处理字符串（ASCII字符）</li>
+<li>操作8位寄存器或标志位数据</li>
+<li>处理设备寄存器中的单字节数据</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>零扩展</strong>：<code>LDRB</code>会将读取的8位数据零扩展为32位。如果需要符号扩展，可以使用<code>LDRSB</code>指令。</li>
+<li><strong>对齐要求</strong>：尽管加载一个字节不需要严格的对齐，但应确保基址和偏移的计算结果是有效的内存地址。</li>
+<li><strong>内存访问异常</strong>：如果目标地址无效或不可访问，会引发数据访问异常。</li>
+</ol>
+<hr>
+<p>通过<code>LDRB</code>指令，开发者可以高效地操作单字节数据，这是ARM汇编中处理低位数据或存储优化的重要手段。</p>
+<h1 id="SXTB-指令"><a href="#SXTB-指令" class="headerlink" title="SXTB 指令"></a>SXTB 指令</h1><p>在 ARM 汇编指令集中，**<code>SXTB</code>（Sign Extend Byte）** 是一种用于<strong>符号扩展</strong>的指令，它将一个 8 位的有符号值扩展为 32 位的有符号值。</p>
+<hr>
+<h3 id="指令功能"><a href="#指令功能" class="headerlink" title="指令功能"></a>指令功能</h3><p><code>SXTB</code> 会从指定寄存器的低 8 位中提取数据，并根据最高有效位（符号位）进行符号扩展：</p>
+<ul>
+<li>如果最高有效位（第 7 位）是 <code>0</code>，扩展为正数。</li>
+<li>如果最高有效位是 <code>1</code>，扩展为负数。</li>
+</ul>
+<p>结果会写入目标寄存器。</p>
+<hr>
+<h3 id="指令格式-1"><a href="#指令格式-1" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB &lt;Rd&gt;, &lt;Rm&gt; {, &lt;rotation&gt;}</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
+<li><strong><code>Rd</code></strong>: 目标寄存器，用于存储符号扩展后的 32 位值。</li>
+<li><strong><code>Rm</code></strong>: 源寄存器，包含要扩展的 8 位数据。</li>
+<li>**<code>rotation</code>**（可选）：旋转操作，可以是 <code>ROR #8</code>, <code>ROR #16</code> 或 <code>ROR #24</code>，将源数据按指定位数旋转后再取低 8 位。</li>
+</ul>
+<hr>
+<h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li>提取源寄存器 <code>Rm</code> 的低 8 位数据。</li>
+<li>根据第 7 位（符号位）进行符号扩展：<ul>
+<li>若符号位为 <code>1</code>，高位用 <code>1</code> 填充。</li>
+<li>若符号位为 <code>0</code>，高位用 <code>0</code> 填充。</li>
+</ul>
+</li>
+<li>将扩展后的 32 位值存入目标寄存器 <code>Rd</code>。</li>
+</ol>
+<hr>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本符号扩展"><a href="#1-基本符号扩展" class="headerlink" title="1. 基本符号扩展"></a>1. 基本符号扩展</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB R1, R0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>R0</code> 的低 8 位提取值。</li>
+<li>根据符号位扩展为 32 位，并存入 <code>R1</code>。</li>
+</ul>
+<p>如果 <code>R0 = 0xFFFFFF85</code>（低 8 位是 <code>0x85</code>，符号位为 <code>1</code>），则：</p>
+<ul>
+<li>符号扩展后：<code>R1 = 0xFFFFFF85</code>（扩展为负数）。</li>
+</ul>
+<p>如果 <code>R0 = 0x0000007F</code>（低 8 位是 <code>0x7F</code>，符号位为 <code>0</code>），则：</p>
+<ul>
+<li>符号扩展后：<code>R1 = 0x0000007F</code>（扩展为正数）。</li>
+</ul>
+<h4 id="2-带旋转的符号扩展"><a href="#2-带旋转的符号扩展" class="headerlink" title="2. 带旋转的符号扩展"></a>2. 带旋转的符号扩展</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB R2, R3, ROR #8</span><br></pre></td></tr></table></figure>
+<ul>
+<li>先将 <code>R3</code> 的值按右旋 8 位。</li>
+<li>然后从结果的低 8 位提取值并进行符号扩展，结果存入 <code>R2</code>。</li>
+</ul>
+<hr>
+<h3 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><strong>处理有符号的 8 位数据</strong>：如读取字符（<code>char</code> 类型）或 8 位寄存器数据。</li>
+<li><strong>数据对齐和扩展</strong>：将单字节数据扩展为 32 位，方便与其他数据操作。</li>
+<li><strong>符号正确性</strong>：确保符号位在扩展后保持一致，用于数学运算或逻辑操作。</li>
+</ul>
+<hr>
+<h3 id="与其他指令的比较"><a href="#与其他指令的比较" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
+<li><strong><code>SXTB</code></strong>: 符号扩展 8 位。</li>
+<li><strong><code>UXTB</code></strong>: 无符号扩展 8 位（高位填充 0）。</li>
+<li><strong><code>LDRSB</code></strong>: 从内存加载一个字节并符号扩展。</li>
+<li><strong><code>MOV</code></strong>: 不进行扩展，直接移动数据。</li>
+</ul>
+<hr>
+<p><code>SXTB</code> 是 ARM 汇编中操作符号位的重要工具，适合处理 8 位有符号数据并将其扩展为 32 位值进行进一步的运算。</p>
+<p>在 ARM 汇编语言中，**<code>LDP</code>（Load Pair of Registers）** 是一种用于<strong>同时加载两个寄存器</strong>的指令。它是 ARM 架构（尤其是 ARMv8-A）中为优化性能而引入的一种指令，可以一次性从内存中加载两个连续存储的数据到寄存器对。</p>
+<hr>
+<h1 id="LDP-指令"><a href="#LDP-指令" class="headerlink" title="LDP 指令"></a>LDP 指令</h1><h3 id="指令功能-1"><a href="#指令功能-1" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
+<li><strong><code>LDP</code></strong> 指令从内存地址中<strong>加载两个连续的数据</strong>，分别存入两个目标寄存器。</li>
+<li>与单个加载指令（如 <code>LDR</code>）相比，<code>LDP</code> 提供了更高的内存访问效率，因为它在一次指令中完成了两次加载操作。</li>
+</ul>
+<hr>
+<h3 id="指令格式-2"><a href="#指令格式-2" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP &lt;Rt&gt;, &lt;Rt2&gt;, [&lt;Rn&gt;{, #&lt;imm&gt;}]</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数说明-2"><a href="#参数说明-2" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
+<li><strong><code>Rt</code></strong>: 第一个目标寄存器，用于存储第一个加载的数据。</li>
+<li><strong><code>Rt2</code></strong>: 第二个目标寄存器，用于存储第二个加载的数据。</li>
+<li><strong><code>Rn</code></strong>: 基址寄存器，提供内存的起始地址。</li>
+<li>**<code>imm</code>**（可选）：偏移量（字节数），用于从基址 <code>Rn</code> 计算内存地址，默认为 0。</li>
+</ul>
+<hr>
+<h3 id="工作原理-2"><a href="#工作原理-2" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li><strong>计算地址</strong>：从基址寄存器 <code>Rn</code> 计算出目标内存地址。如果指定了偏移量 <code>imm</code>，则将其加到 <code>Rn</code> 的值上。</li>
+<li><strong>加载数据</strong>：<ul>
+<li>从计算地址加载第一个值存入寄存器 <code>Rt</code>。</li>
+<li>从计算地址加上寄存器宽度（通常为 8 字节）的位置加载第二个值存入寄存器 <code>Rt2</code>。</li>
+</ul>
+</li>
+<li><strong>更新基址（可选）</strong>：在某些模式下（如 <code>LDP</code> 加更新地址），基址 <code>Rn</code> 的值会被更新。</li>
+</ol>
+<hr>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本使用（无偏移）"><a href="#1-基本使用（无偏移）" class="headerlink" title="1. 基本使用（无偏移）"></a>1. 基本使用（无偏移）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X0, X1, [X2]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>X2</code> 指向的内存地址加载两个 64 位数据：<ul>
+<li>第一个数据存入 <code>X0</code>。</li>
+<li>第二个数据存入 <code>X1</code>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-带偏移量"><a href="#2-带偏移量" class="headerlink" title="2. 带偏移量"></a>2. 带偏移量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X3, X4, [X5, #16]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>X5 + 16</code> 地址开始加载两个数据：<ul>
+<li>第一个数据存入 <code>X3</code>。</li>
+<li>第二个数据存入 <code>X4</code>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-加载后自动更新基址"><a href="#3-加载后自动更新基址" class="headerlink" title="3. 加载后自动更新基址"></a>3. 加载后自动更新基址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X6, X7, [X8], #16</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>X8</code> 指向的地址加载两个数据：<ul>
+<li>第一个数据存入 <code>X6</code>。</li>
+<li>第二个数据存入 <code>X7</code>。</li>
+</ul>
+</li>
+<li>然后将 <code>X8</code> 的值加上偏移量 <code>16</code>，更新 <code>X8</code>。</li>
+</ul>
+<hr>
+<h3 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><strong>高效加载连续数据</strong>：<code>LDP</code> 可以一次性加载两个连续的内存数据，减少内存访问的次数。</li>
+<li><strong>栈操作</strong>：<ul>
+<li>从栈中加载两个寄存器数据：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X29, X30, [SP], #16</span><br></pre></td></tr></table></figure>
+（用于从栈恢复链寄存器和返回地址）</li>
+</ul>
+</li>
+<li><strong>数据处理</strong>：<ul>
+<li>用于矩阵计算、加密解密等需要快速加载连续数据的场景。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="与其他指令的比较-1"><a href="#与其他指令的比较-1" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
+<li><strong><code>LDR</code></strong>: 一次加载一个寄存器的数据。</li>
+<li><strong><code>LDP</code></strong>: 一次加载两个寄存器的数据，效率更高。</li>
+<li><strong><code>STP</code></strong>: 存储寄存器对到内存的指令，与 <code>LDP</code> 相对。</li>
+</ul>
+<hr>
+<p>通过使用 <code>LDP</code>，可以减少指令数量和内存访问延迟，从而提升代码性能，是 ARM 汇编中非常常用的一种优化指令。</p>
+<h1 id="CSEL-指令"><a href="#CSEL-指令" class="headerlink" title="CSEL 指令"></a>CSEL 指令</h1><p><strong><code>CSEL</code><strong>（Conditional Select）是 ARM 架构中用于实现</strong>条件选择</strong>的一条指令。它根据条件标志（由上一次指令的结果设置）来选择两个操作数之一，并将选择的结果存入目标寄存器。</p>
+<hr>
+<h3 id="指令功能-2"><a href="#指令功能-2" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
+<li><code>CSEL</code> 是一种<strong>无分支条件执行指令</strong>，可以避免传统分支指令（如 <code>B</code>）可能引入的分支预测失误问题。</li>
+<li>根据指定的条件（Condition Code, CC），选择一个值存入目标寄存器。</li>
+</ul>
+<hr>
+<h3 id="指令格式-3"><a href="#指令格式-3" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSEL &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;, &lt;cond&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数说明-3"><a href="#参数说明-3" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
+<li>**<code>Rd</code>**：目标寄存器，用于存储最终选择的值。</li>
+<li>**<code>Rn</code>**：第一个源寄存器（条件满足时选择该值）。</li>
+<li>**<code>Rm</code>**：第二个源寄存器（条件不满足时选择该值）。</li>
+<li>**<code>cond</code>**：条件码，指定选择 <code>Rn</code> 或 <code>Rm</code> 的条件。</li>
+</ul>
+<hr>
+<h3 id="工作原理-3"><a href="#工作原理-3" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li>根据指定的条件码 <code>cond</code>，检查条件标志（由之前指令更新）。</li>
+<li>如果条件满足（<code>cond</code> 为真），将 <code>Rn</code> 的值存入 <code>Rd</code>。</li>
+<li>如果条件不满足（<code>cond</code> 为假），将 <code>Rm</code> 的值存入 <code>Rd</code>。</li>
+</ol>
+<hr>
+<h3 id="条件码（cond）"><a href="#条件码（cond）" class="headerlink" title="条件码（cond）"></a>条件码（<code>cond</code>）</h3><p>条件码是 4 位标志，常见的条件如下：</p>
+<table>
+<thead>
+<tr>
+<th>条件码</th>
+<th>含义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>EQ</code></td>
+<td>Equal</td>
+<td>等于，零标志位（Z）为 1</td>
+</tr>
+<tr>
+<td><code>NE</code></td>
+<td>Not Equal</td>
+<td>不等于，零标志位（Z）为 0</td>
+</tr>
+<tr>
+<td><code>CS/HS</code></td>
+<td>Carry Set/Unsigned Higher or Same</td>
+<td>进位标志位（C）为 1</td>
+</tr>
+<tr>
+<td><code>CC/LO</code></td>
+<td>Carry Clear/Unsigned Lower</td>
+<td>进位标志位（C）为 0</td>
+</tr>
+<tr>
+<td><code>MI</code></td>
+<td>Minus</td>
+<td>负数，负标志位（N）为 1</td>
+</tr>
+<tr>
+<td><code>PL</code></td>
+<td>Plus</td>
+<td>正数或零，负标志位（N）为 0</td>
+</tr>
+<tr>
+<td><code>VS</code></td>
+<td>Overflow Set</td>
+<td>溢出标志位（V）为 1</td>
+</tr>
+<tr>
+<td><code>VC</code></td>
+<td>Overflow Clear</td>
+<td>溢出标志位（V）为 0</td>
+</tr>
+<tr>
+<td><code>HI</code></td>
+<td>Unsigned Higher</td>
+<td>C=1 且 Z=0</td>
+</tr>
+<tr>
+<td><code>LS</code></td>
+<td>Unsigned Lower or Same</td>
+<td>C=0 或 Z=1</td>
+</tr>
+<tr>
+<td><code>GE</code></td>
+<td>Greater or Equal</td>
+<td>N=V</td>
+</tr>
+<tr>
+<td><code>LT</code></td>
+<td>Less Than</td>
+<td>N≠V</td>
+</tr>
+<tr>
+<td><code>GT</code></td>
+<td>Greater Than</td>
+<td>Z=0 且 N=V</td>
+</tr>
+<tr>
+<td><code>LE</code></td>
+<td>Less or Equal</td>
+<td>Z=1 或 N≠V</td>
+</tr>
+<tr>
+<td><code>AL</code></td>
+<td>Always</td>
+<td>总是执行</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><h4 id="1-条件选择"><a href="#1-条件选择" class="headerlink" title="1. 条件选择"></a>1. 条件选择</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSEL X0, X1, X2, EQ</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果条件标志 Z=1（<code>EQ</code> 条件成立），则将 <code>X1</code> 的值存入 <code>X0</code>。</li>
+<li>如果条件标志 Z=0（<code>EQ</code> 条件不成立），则将 <code>X2</code> 的值存入 <code>X0</code>。</li>
+</ul>
+<h4 id="2-用于最大值计算"><a href="#2-用于最大值计算" class="headerlink" title="2. 用于最大值计算"></a>2. 用于最大值计算</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMP X3, X4          // 比较 X3 和 X4</span><br><span class="line">CSEL X5, X3, X4, GT // 如果 X3 &gt; X4，则选择 X3，否则选择 X4</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过比较指令 <code>CMP</code> 更新条件标志。</li>
+<li><code>CSEL</code> 根据比较结果选择较大的值存入 <code>X5</code>。</li>
+</ul>
+<h4 id="3-条件选择替代分支"><a href="#3-条件选择替代分支" class="headerlink" title="3. 条件选择替代分支"></a>3. 条件选择替代分支</h4><p>传统的分支代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CMP X6, X7</span><br><span class="line">B.GT greater</span><br><span class="line">MOV X8, X7</span><br><span class="line">B done</span><br><span class="line">greater:</span><br><span class="line">MOV X8, X6</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
+<p>可以被简化为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMP X6, X7</span><br><span class="line">CSEL X8, X6, X7, GT</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
+<li><strong>无分支延迟</strong>：<code>CSEL</code> 避免了传统分支指令可能引起的分支预测失败问题，从而提升性能。</li>
+<li><strong>代码简洁</strong>：减少多条分支和跳转指令，优化指令数量。</li>
+<li><strong>高效性</strong>：非常适合需要快速选择结果而不需要复杂逻辑的场景。</li>
+</ol>
+<hr>
+<h3 id="相关指令"><a href="#相关指令" class="headerlink" title="相关指令"></a>相关指令</h3><ul>
+<li><strong><code>CSINC</code></strong>: 条件选择 + 增量操作。</li>
+<li><strong><code>CSINV</code></strong>: 条件选择 + 取反操作。</li>
+<li><strong><code>CSNEG</code></strong>: 条件选择 + 取负操作。</li>
+</ul>
+<hr>
+<p><code>CSEL</code> 是 ARM 汇编中一个强大的条件操作指令，在高效实现条件逻辑和优化分支跳转时非常有用。</p>
+<h1 id="UDIV-指令"><a href="#UDIV-指令" class="headerlink" title="UDIV 指令"></a>UDIV 指令</h1><p>在 <strong>ARM 汇编</strong>中，**<code>UDIV</code>** 是用于<strong>无符号整数除法</strong>的指令。</p>
+<hr>
+<h3 id="指令功能-3"><a href="#指令功能-3" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>UDIV</code></strong> 指令计算两个寄存器中值的无符号整数商，并将结果存储到目标寄存器中。</p>
+<hr>
+<h3 id="指令格式-4"><a href="#指令格式-4" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UDIV &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数说明-4"><a href="#参数说明-4" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
+<li><strong><code>Rd</code></strong>: 目标寄存器，用于存储结果（商）。</li>
+<li><strong><code>Rn</code></strong>: 被除数（Dividend）。</li>
+<li><strong><code>Rm</code></strong>: 除数（Divisor）。</li>
+</ul>
+<hr>
+<h3 id="工作原理-4"><a href="#工作原理-4" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li><strong>读取操作数</strong>：<ul>
+<li>从寄存器 <code>Rn</code> 中读取被除数（无符号整数）。</li>
+<li>从寄存器 <code>Rm</code> 中读取除数（无符号整数）。</li>
+</ul>
+</li>
+<li><strong>执行无符号除法</strong>：<ul>
+<li>计算 <code>Rn ÷ Rm</code> 的无符号商。</li>
+</ul>
+</li>
+<li><strong>存储结果</strong>：<ul>
+<li>将计算的商存储到目标寄存器 <code>Rd</code> 中。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UDIV X0, X1, X2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将寄存器 <code>X1</code>（被除数）的值除以 <code>X2</code>（除数）的值。</li>
+<li>将结果（无符号商）存储到寄存器 <code>X0</code>。</li>
+</ul>
+<hr>
+<h4 id="示例操作"><a href="#示例操作" class="headerlink" title="示例操作"></a>示例操作</h4><p>假设：</p>
+<ul>
+<li><code>X1 = 20</code></li>
+<li><code>X2 = 3</code></li>
+</ul>
+<p>执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UDIV X0, X1, X2</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<ul>
+<li><code>X0 = 6</code> （整数商，忽略余数）。</li>
+</ul>
+<hr>
+<h3 id="使用场景-3"><a href="#使用场景-3" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><strong>无符号整数运算</strong>：<ul>
+<li>对非负整数进行除法操作。</li>
+</ul>
+</li>
+<li><strong>数组索引计算</strong>：<ul>
+<li>在循环中计算步长或分区操作。</li>
+</ul>
+</li>
+<li><strong>处理无符号数据类型</strong>：<ul>
+<li>常见于嵌入式系统和加密解密算法。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><p><strong>除数为 0</strong>：</p>
+<ul>
+<li>如果 <code>Rm = 0</code>（除数为 0），行为未定义（UNPREDICTABLE）。</li>
+<li>在编写代码时应确保除数不为 0。</li>
+</ul>
+</li>
+<li><p><strong>无符号数据</strong>：</p>
+<ul>
+<li><code>UDIV</code> 仅适用于无符号数据。如果需要对有符号数据进行除法，请使用 <code>SDIV</code> 指令。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="与其他指令的比较-2"><a href="#与其他指令的比较-2" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
+<li><strong><code>UDIV</code></strong>: 无符号除法。</li>
+<li><strong><code>SDIV</code></strong>: 有符号除法。</li>
+<li><strong><code>MUL</code></strong>: 乘法（无符号/有符号）。</li>
+<li><strong><code>SMULL</code></strong> 和 <strong><code>UMULL</code></strong>: 64 位乘法扩展</li>
+</ul>
+<h1 id="MSUB-指令"><a href="#MSUB-指令" class="headerlink" title="MSUB 指令"></a>MSUB 指令</h1><p>在 <strong>ARM 汇编</strong>中，**<code>MSUB</code>** 是一种<strong>乘法并减法</strong>的指令，它的功能是先进行乘法运算，然后将结果从另一个值中减去。</p>
+<hr>
+<h3 id="指令功能-4"><a href="#指令功能-4" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>MSUB</code></strong> 计算以下数学公式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rd = Ra - (Rn * Rm)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>它会将两个操作数（<code>Rn</code> 和 <code>Rm</code>）相乘，然后从一个累加值（<code>Ra</code>）中减去乘积，并将结果存储在目标寄存器 <code>Rd</code> 中。</li>
+</ul>
+<hr>
+<h3 id="指令格式-5"><a href="#指令格式-5" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSUB &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;, &lt;Ra&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数说明-5"><a href="#参数说明-5" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
+<li><strong><code>Rd</code></strong>: 目标寄存器，用于存储最终的结果。</li>
+<li><strong><code>Rn</code></strong>: 第一个乘数。</li>
+<li><strong><code>Rm</code></strong>: 第二个乘数。</li>
+<li><strong><code>Ra</code></strong>: 被减数（累加值）。</li>
+</ul>
+<hr>
+<h3 id="工作原理-5"><a href="#工作原理-5" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li><strong>计算乘积</strong>：<ul>
+<li>将 <code>Rn</code> 和 <code>Rm</code> 相乘，得到乘积 <code>P = Rn * Rm</code>。</li>
+</ul>
+</li>
+<li><strong>减法操作</strong>：<ul>
+<li>用累加值 <code>Ra</code> 减去乘积 <code>P</code>，即 <code>Rd = Ra - P</code>。</li>
+</ul>
+</li>
+<li><strong>存储结果</strong>：<ul>
+<li>将最终结果存入目标寄存器 <code>Rd</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h3><h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSUB X0, X1, X2, X3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>计算 <code>X0 = X3 - (X1 * X2)</code>。</li>
+</ul>
+<hr>
+<h4 id="示例操作-1"><a href="#示例操作-1" class="headerlink" title="示例操作"></a>示例操作</h4><p>假设：</p>
+<ul>
+<li><code>X1 = 4</code>（第一个乘数）</li>
+<li><code>X2 = 3</code>（第二个乘数）</li>
+<li><code>X3 = 20</code>（累加值）</li>
+</ul>
+<p>执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSUB X0, X1, X2, X3</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<ul>
+<li><code>X0 = 20 - (4 * 3) = 20 - 12 = 8</code></li>
+</ul>
+<hr>
+<h3 id="使用场景-4"><a href="#使用场景-4" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><p><strong>优化计算公式</strong>：</p>
+<ul>
+<li>避免单独执行乘法和减法指令，提高运算效率。</li>
+<li>可用于公式简化，如 <code>c - (a * b)</code>。</li>
+</ul>
+</li>
+<li><p><strong>数字信号处理（DSP）</strong>：</p>
+<ul>
+<li>常用于滤波、矩阵运算等需要大量乘法和减法操作的领域。</li>
+</ul>
+</li>
+<li><p><strong>图形计算</strong>：</p>
+<ul>
+<li>在图形处理的几何计算或物理仿真中，常需要计算某种形式的乘法和减法组合。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="与其他指令的比较-3"><a href="#与其他指令的比较-3" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
+<li>**<code>MADD</code>**：执行乘法并加法（<code>Rd = Ra + (Rn * Rm)</code>）。</li>
+<li>**<code>MSUB</code>**：执行乘法并减法（<code>Rd = Ra - (Rn * Rm)</code>）。</li>
+<li>**<code>MUL</code>**：仅执行乘法。</li>
+<li>**<code>SMULL</code>/<code>UMULL</code>**：进行乘法并扩展结果为 64 位。</li>
+<li>**<code>SDIV</code>/<code>UDIV</code>**：执行有符号/无符号除法。</li>
+</ul>
+<hr>
+<h3 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><p><strong>数据类型</strong>：</p>
+<ul>
+<li><code>MSUB</code> 适用于无符号和有符号整数运算。操作数的符号取决于数据的上下文。</li>
+</ul>
+</li>
+<li><p><strong>性能优化</strong>：</p>
+<ul>
+<li><code>MSUB</code> 指令在 ARMv8-A 架构中是硬件加速的，避免了单独使用乘法和减法指令的额外指令开销。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><code>MSUB</code> 是 ARM 指令集中重要的数学运算指令之一，适合处理多步骤运算，帮助开发者简化代码逻辑并提高执行效率。</p>
+<h1 id="LDRSB-指令"><a href="#LDRSB-指令" class="headerlink" title="LDRSB 指令"></a>LDRSB 指令</h1><p><strong><code>LDRSB</code></strong> 是 ARM 汇编中的一条指令，用于从内存加载一个字节，并将其<strong>符号扩展</strong>为 32 位或 64 位，然后存储到目标寄存器中。</p>
+<hr>
+<h3 id="指令功能-5"><a href="#指令功能-5" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
+<li><strong><code>LDRSB</code><strong>（</strong>Load Register Signed Byte</strong>）会从指定的内存地址加载一个字节（8 位）数据。</li>
+<li>将加载的 8 位数据按照其符号位（第 7 位）扩展为：<ul>
+<li>32 位（用于目标寄存器为 <code>Wn</code>）。</li>
+<li>64 位（用于目标寄存器为 <code>Xn</code>）。</li>
+</ul>
+</li>
+<li>符号扩展表示：<ul>
+<li>如果第 7 位为 <code>0</code>，高位填充为 <code>0</code>。</li>
+<li>如果第 7 位为 <code>1</code>，高位填充为 <code>1</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="指令格式-6"><a href="#指令格式-6" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB &lt;Rt&gt;, [&lt;Rn&gt;{, #&lt;offset&gt;}]</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数说明-6"><a href="#参数说明-6" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
+<li><strong><code>Rt</code></strong>: 目标寄存器，可以是 32 位（<code>Wn</code>）或 64 位（<code>Xn</code>）。</li>
+<li><strong><code>Rn</code></strong>: 基址寄存器，提供内存地址。</li>
+<li>**<code>offset</code>**（可选）：偏移量，可以是立即数或寄存器值，用于计算内存地址。</li>
+</ul>
+<hr>
+<h3 id="工作原理-6"><a href="#工作原理-6" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li>计算目标地址：<ul>
+<li>从基址寄存器 <code>Rn</code> 读取地址。</li>
+<li>加上偏移量 <code>offset</code>（如果有）得到最终地址。</li>
+</ul>
+</li>
+<li>从计算出的内存地址加载 8 位数据。</li>
+<li>符号扩展：<ul>
+<li>根据字节的最高有效位（符号位，第 7 位）扩展到 32 位或 64 位。</li>
+</ul>
+</li>
+<li>将结果存入目标寄存器 <code>Rt</code>。</li>
+</ol>
+<hr>
+<h3 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB W0, [X1]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>X1</code> 指向的内存地址加载一个字节。</li>
+<li>符号扩展为 32 位。</li>
+<li>存入 <code>W0</code>。</li>
+</ul>
+<h4 id="2-带偏移量-1"><a href="#2-带偏移量-1" class="headerlink" title="2. 带偏移量"></a>2. 带偏移量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB X2, [X3, #4]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>X3 + 4</code> 的地址加载一个字节。</li>
+<li>符号扩展为 64 位。</li>
+<li>存入 <code>X2</code>。</li>
+</ul>
+<hr>
+<h3 id="示例操作-2"><a href="#示例操作-2" class="headerlink" title="示例操作"></a>示例操作</h3><p>假设内存地址 <code>0x1000</code> 存储值 <code>0xFF</code>（8 位，表示 <code>-1</code> 的补码形式），并执行以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB W0, [X1]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>假设 <code>X1 = 0x1000</code>。</li>
+<li>从内存 <code>0x1000</code> 加载字节值 <code>0xFF</code>。</li>
+<li>符号扩展：<ul>
+<li><code>0xFF</code>（8 位） → <code>0xFFFFFFFF</code>（32 位，有符号 -1）。</li>
+</ul>
+</li>
+<li>存入 <code>W0</code>，结果是 <code>0xFFFFFFFF</code>。</li>
+</ul>
+<p>如果目标寄存器为 <code>Xn</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB X0, [X1]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>符号扩展：<ul>
+<li><code>0xFF</code>（8 位） → <code>0xFFFFFFFFFFFFFFFF</code>（64 位，有符号 -1）。</li>
+</ul>
+</li>
+<li>存入 <code>X0</code>。</li>
+</ul>
+<hr>
+<h3 id="使用场景-5"><a href="#使用场景-5" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><strong>处理有符号 8 位数据</strong>：<ul>
+<li>如读取字符（<code>char</code> 类型）或设备寄存器的有符号数据。</li>
+</ul>
+</li>
+<li><strong>加载小范围整数</strong>：<ul>
+<li>符号扩展后，可以直接参与算术运算而无需额外处理。</li>
+</ul>
+</li>
+<li><strong>低位处理</strong>：<ul>
+<li>从内存中加载压缩格式的数据（如图像像素或音频样本）。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="注意事项-3"><a href="#注意事项-3" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>符号扩展</strong>：<ul>
+<li>目标寄存器的大小（<code>Wn</code> 或 <code>Xn</code>）决定符号扩展的结果位宽（32 位或 64 位）。</li>
+</ul>
+</li>
+<li><strong>对齐问题</strong>：<ul>
+<li>由于加载的是一个字节，通常不需要严格的内存对齐，但基址和偏移量必须指向有效地址。</li>
+</ul>
+</li>
+<li><strong>内存访问异常</strong>：<ul>
+<li>如果访问的地址无效或不可用，可能会触发异常。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="与其他加载指令的比较"><a href="#与其他加载指令的比较" class="headerlink" title="与其他加载指令的比较"></a>与其他加载指令的比较</h3><ul>
+<li>**<code>LDRB</code>**：无符号扩展加载字节（高位填充 <code>0</code>）。</li>
+<li>**<code>LDRSB</code>**：符号扩展加载字节（高位填充符号位）。</li>
+<li>**<code>LDR</code>**：加载 32 位或 64 位数据（不扩展）。</li>
+<li>**<code>LDRSH</code>**：符号扩展加载半字（16 位）。</li>
+<li>**<code>LDRSW</code>**：符号扩展加载字（32 位）。</li>
+</ul>
+<h1 id="STRB-指令"><a href="#STRB-指令" class="headerlink" title="STRB 指令"></a>STRB 指令</h1><p><strong><code>STRB</code></strong> 是 ARM 汇编语言中用于将一个<strong>字节（8位）数据</strong>从寄存器存储到内存的指令。</p>
+<hr>
+<h3 id="指令功能-6"><a href="#指令功能-6" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>STRB</code></strong> 的全称是 <strong>Store Register Byte</strong>，它会将寄存器的低 8 位数据存储到内存中。</p>
+<hr>
+<h3 id="指令格式-7"><a href="#指令格式-7" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB &lt;Rt&gt;, [&lt;Rn&gt;{, #&lt;offset&gt;}]</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数说明-7"><a href="#参数说明-7" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
+<li><strong><code>Rt</code></strong>: 源寄存器，包含需要存储的数据（仅低 8 位会被存储）。</li>
+<li><strong><code>Rn</code></strong>: 基址寄存器，指向内存地址的起始位置。</li>
+<li>**<code>offset</code>**（可选）：偏移量，指定从基址寄存器开始的内存偏移，单位为字节。</li>
+</ul>
+<hr>
+<h3 id="工作原理-7"><a href="#工作原理-7" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
+<li>从源寄存器 <code>Rt</code> 的低 8 位提取字节数据。</li>
+<li>计算目标内存地址：<ul>
+<li>如果没有偏移量，直接使用基址寄存器 <code>Rn</code>。</li>
+<li>如果有偏移量，将 <code>Rn</code> 加上 <code>offset</code> 计算目标地址。</li>
+</ul>
+</li>
+<li>将提取的 8 位数据存储到目标内存地址中。</li>
+</ol>
+<hr>
+<h3 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本存储"><a href="#1-基本存储" class="headerlink" title="1. 基本存储"></a>1. 基本存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>W0</code> 中提取低 8 位数据（例如 <code>0x34</code>）。</li>
+<li>将其存储到 <code>X1</code> 指向的内存地址。</li>
+</ul>
+<hr>
+<h4 id="2-带偏移的存储"><a href="#2-带偏移的存储" class="headerlink" title="2. 带偏移的存储"></a>2. 带偏移的存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, #4]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>W0</code> 中提取低 8 位数据。</li>
+<li>将其存储到 <code>X1 + 4</code> 的内存地址。</li>
+</ul>
+<hr>
+<h4 id="3-使用寄存器作为偏移"><a href="#3-使用寄存器作为偏移" class="headerlink" title="3. 使用寄存器作为偏移"></a>3. 使用寄存器作为偏移</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, X2]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从 <code>W0</code> 中提取低 8 位数据。</li>
+<li>将其存储到 <code>X1 + X2</code> 的内存地址。</li>
+</ul>
+<hr>
+<h3 id="示例操作-3"><a href="#示例操作-3" class="headerlink" title="示例操作"></a>示例操作</h3><p>假设：</p>
+<ul>
+<li><code>W0 = 0x12345678</code></li>
+<li><code>X1 = 0x1000</code></li>
+<li>偏移量为 <code>#4</code></li>
+</ul>
+<p>执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, #4]</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<ul>
+<li>提取 <code>W0</code> 的低 8 位：<code>0x78</code>。</li>
+<li>存储到地址 <code>0x1000 + 4 = 0x1004</code>。</li>
+<li>内存中：<code>Mem[0x1004] = 0x78</code></li>
+</ul>
+<hr>
+<h3 id="使用场景-6"><a href="#使用场景-6" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><strong>存储单字节数据</strong>：<ul>
+<li>将 <code>char</code> 或其他 8 位数据类型存储到内存。</li>
+</ul>
+</li>
+<li><strong>低位数据处理</strong>：<ul>
+<li>操作某个寄存器的低 8 位，将其写入设备寄存器或内存。</li>
+</ul>
+</li>
+<li><strong>性能优化</strong>：<ul>
+<li>比完整的 32 位或 64 位存储更节省内存和带宽。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="注意事项-4"><a href="#注意事项-4" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>存储的数据仅为低 8 位</strong>：<ul>
+<li>只存储寄存器的低 8 位，忽略高 24 位（如果是 32 位寄存器）或高 56 位（如果是 64 位寄存器）。</li>
+</ul>
+</li>
+<li><strong>对齐和有效地址</strong>：<ul>
+<li>ARM 允许字节存储的非对齐访问，但目标地址必须是有效的内存地址。</li>
+</ul>
+</li>
+<li><strong>数据覆盖</strong>：<ul>
+<li>确保存储的字节不会意外覆盖关键内存。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="相关指令-1"><a href="#相关指令-1" class="headerlink" title="相关指令"></a>相关指令</h3><ul>
+<li><strong><code>LDRB</code></strong>: 从内存加载一个字节数据到寄存器。</li>
+<li><strong><code>STR</code></strong>: 存储一个完整的 32 位或 64 位值到内存。</li>
+<li><strong><code>LDR</code></strong>: 从内存加载一个完整的 32 位或 64 位值。</li>
+</ul>
+<hr>
+<p><strong>总结</strong>：<br><code>STRB</code> 是 ARM 汇编中用于存储单字节数据的重要指令，通过精确控制存储的字节大小和目标地址，它在处理小范围数据和优化内存使用时非常实用。</p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                ARM64 汇编小记
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2024/12/03/arm_study/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">carbofish</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-12-03 15:12</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Reverse/">Reverse</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ARM64/">ARM64</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Assambly/">Assambly</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/12/03/2024gujianshan/"
+                                   title="2024 古剑山网络安全大赛 Reverse 方向"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2024 古剑山网络安全大赛 Reverse 方向</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/20/2024jinrongmima/"
+                                   title="金融密码杯 - Reverse 方向"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">金融密码杯 - Reverse 方向</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.3.2/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.3.2/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://comment.carbo.ink/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+        </script>
+
+        
+
+        
+            <script data-pjax
+                    async
+                    type="module"
+            >
+              import { init } from '//cdn.jsdelivr.net/npm/@waline/client@v3.3.2/dist/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('true' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">LDRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">1. 读取一个字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">2. 带偏移的加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E5%81%8F%E7%A7%BB"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">3. 使用寄存器偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.0.6.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SXTB-%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">SXTB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD"><span class="nav-number">2.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">1. 基本符号扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E6%97%8B%E8%BD%AC%E7%9A%84%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.2.</span> <span class="nav-text">2. 带旋转的符号扩展</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">2.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDP-%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">LDP 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-2"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">3.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%88%E6%97%A0%E5%81%8F%E7%A7%BB%EF%BC%89"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">1. 基本使用（无偏移）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">2. 带偏移量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8A%A0%E8%BD%BD%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%9F%BA%E5%9D%80"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">3. 加载后自动更新基址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="nav-number">3.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-1"><span class="nav-number">3.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSEL-%E6%8C%87%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">CSEL 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-2"><span class="nav-number">4.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-3"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%A0%81%EF%BC%88cond%EF%BC%89"><span class="nav-number">4.0.4.</span> <span class="nav-text">条件码（cond）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">4.0.5.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="nav-number">4.0.5.1.</span> <span class="nav-text">1. 条件选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%A8%E4%BA%8E%E6%9C%80%E5%A4%A7%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-number">4.0.5.2.</span> <span class="nav-text">2. 用于最大值计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9%E6%9B%BF%E4%BB%A3%E5%88%86%E6%94%AF"><span class="nav-number">4.0.5.3.</span> <span class="nav-text">3. 条件选择替代分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.0.6.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="nav-number">4.0.7.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDIV-%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">UDIV 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-3"><span class="nav-number">5.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-4"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">5.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">5.0.4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">5.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="nav-number">5.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="nav-number">5.0.6.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-2"><span class="nav-number">5.0.7.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSUB-%E6%8C%87%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">MSUB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-4"><span class="nav-number">6.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-5"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-5"><span class="nav-number">6.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">6.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">6.0.4.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-1"><span class="nav-number">6.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="nav-number">6.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-3"><span class="nav-number">6.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="nav-number">6.0.7.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRSB-%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">LDRSB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-5"><span class="nav-number">7.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-6"><span class="nav-number">7.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-6"><span class="nav-number">7.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">7.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">7.0.4.1.</span> <span class="nav-text">1. 基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F-1"><span class="nav-number">7.0.4.2.</span> <span class="nav-text">2. 带偏移量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-2"><span class="nav-number">7.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="nav-number">7.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="nav-number">7.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">7.0.8.</span> <span class="nav-text">与其他加载指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">STRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-6"><span class="nav-number">8.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-7"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-7"><span class="nav-number">8.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-7"><span class="nav-number">8.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.1.</span> <span class="nav-text">1. 基本存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.2.</span> <span class="nav-text">2. 带偏移的存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%9C%E4%B8%BA%E5%81%8F%E7%A7%BB"><span class="nav-number">8.0.4.3.</span> <span class="nav-text">3. 使用寄存器作为偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-3"><span class="nav-number">8.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="nav-number">8.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-4"><span class="nav-number">8.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4-1"><span class="nav-number">8.0.8.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2024</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">carbofish</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">LDRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">1. 读取一个字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">2. 带偏移的加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E5%81%8F%E7%A7%BB"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">3. 使用寄存器偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.0.6.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SXTB-%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">SXTB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD"><span class="nav-number">2.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">1. 基本符号扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E6%97%8B%E8%BD%AC%E7%9A%84%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.2.</span> <span class="nav-text">2. 带旋转的符号扩展</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">2.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDP-%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">LDP 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-2"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">3.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%88%E6%97%A0%E5%81%8F%E7%A7%BB%EF%BC%89"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">1. 基本使用（无偏移）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">2. 带偏移量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8A%A0%E8%BD%BD%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%9F%BA%E5%9D%80"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">3. 加载后自动更新基址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="nav-number">3.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-1"><span class="nav-number">3.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSEL-%E6%8C%87%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">CSEL 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-2"><span class="nav-number">4.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-3"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%A0%81%EF%BC%88cond%EF%BC%89"><span class="nav-number">4.0.4.</span> <span class="nav-text">条件码（cond）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">4.0.5.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="nav-number">4.0.5.1.</span> <span class="nav-text">1. 条件选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%A8%E4%BA%8E%E6%9C%80%E5%A4%A7%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-number">4.0.5.2.</span> <span class="nav-text">2. 用于最大值计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9%E6%9B%BF%E4%BB%A3%E5%88%86%E6%94%AF"><span class="nav-number">4.0.5.3.</span> <span class="nav-text">3. 条件选择替代分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.0.6.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="nav-number">4.0.7.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDIV-%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">UDIV 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-3"><span class="nav-number">5.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-4"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">5.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">5.0.4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">5.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="nav-number">5.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="nav-number">5.0.6.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-2"><span class="nav-number">5.0.7.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSUB-%E6%8C%87%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">MSUB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-4"><span class="nav-number">6.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-5"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-5"><span class="nav-number">6.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">6.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">6.0.4.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-1"><span class="nav-number">6.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="nav-number">6.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-3"><span class="nav-number">6.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="nav-number">6.0.7.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRSB-%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">LDRSB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-5"><span class="nav-number">7.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-6"><span class="nav-number">7.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-6"><span class="nav-number">7.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">7.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">7.0.4.1.</span> <span class="nav-text">1. 基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F-1"><span class="nav-number">7.0.4.2.</span> <span class="nav-text">2. 带偏移量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-2"><span class="nav-number">7.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="nav-number">7.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="nav-number">7.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">7.0.8.</span> <span class="nav-text">与其他加载指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">STRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-6"><span class="nav-number">8.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-7"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-7"><span class="nav-number">8.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-7"><span class="nav-number">8.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.1.</span> <span class="nav-text">1. 基本存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.2.</span> <span class="nav-text">2. 带偏移的存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%9C%E4%B8%BA%E5%81%8F%E7%A7%BB"><span class="nav-number">8.0.4.3.</span> <span class="nav-text">3. 使用寄存器作为偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-3"><span class="nav-number">8.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="nav-number">8.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-4"><span class="nav-number">8.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4-1"><span class="nav-number">8.0.8.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="/js/mermaid.min.js"></script>
+
+    <script data-pjax>
+      if (window.mermaid) {
+        mermaid.init()
+      }
+    </script>
+
+
+
+
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

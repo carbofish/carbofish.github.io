@@ -379,7 +379,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Dec 03 2024 19:15:23 GMT+0800">2024-12-03 19:15:23</span>
+                <span class="datetime" data-updated="Tue Dec 03 2024 19:18:43 GMT+0800">2024-12-03 19:18:43</span>
             </span>
         
 
@@ -427,29 +427,25 @@ mjx-container[display="true"] + br {
                          <p>记录一下几个指令用法</p>
 <span id="more"></span>
 
-<h1 id="LDRB-指令"><a href="#LDRB-指令" class="headerlink" title="LDRB 指令"></a>LDRB 指令</h1><p>在ARM汇编指令中，**<code>LDRB</code>（Load Register Byte）<strong>是一种用于加载单个字节数据到寄存器的指令。与<code>LDR</code>指令相比，<code>LDRB</code>会从内存中加载一个字节（8位）而不是一个字（32位）数据，同时支持</strong>零扩展**（zero-extension）到32位寄存器中。</p>
+<h1 id="LDRB-指令"><a href="#LDRB-指令" class="headerlink" title="LDRB 指令"></a>LDRB 指令</h1><p>在ARM汇编指令中，<code>LDRB</code>（Load Register Byte）是一种用于加载单个字节数据到寄存器的指令。与<code>LDR</code>指令相比，<code>LDRB</code>会从内存中加载一个字节（8位）而不是一个字（32位）数据，同时支持零扩展（zero-extension）到32位寄存器中。</p>
 <h3 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB &lt;Rd&gt;, [&lt;Rn&gt;, #&lt;offset&gt;]</span><br></pre></td></tr></table></figure>
 
 <h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
-<li><strong><code>Rd</code></strong>: 目标寄存器，用于存储加载的字节值。</li>
-<li><strong><code>Rn</code></strong>: 基址寄存器，提供内存地址。</li>
-<li><strong><code>offset</code></strong>: 可选的偏移量（立即数或寄存器），用于计算内存地址。</li>
+<li><code>Rd</code>: 目标寄存器，用于存储加载的字节值。</li>
+<li><code>Rn</code>: 基址寄存器，提供内存地址。</li>
+<li><code>offset</code>: 可选的偏移量（立即数或寄存器），用于计算内存地址。</li>
 </ul>
-<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
-<li><strong>计算地址</strong>：根据基址寄存器<code>Rn</code>和偏移量<code>offset</code>计算出目标内存地址。</li>
-<li><strong>读取内存</strong>：从该地址读取一个字节数据。</li>
-<li><strong>零扩展</strong>：将读取到的8位数据扩展为32位（高位填充为0），并存入目标寄存器<code>Rd</code>。</li>
-</ol>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="1-读取一个字节"><a href="#1-读取一个字节" class="headerlink" title="1. 读取一个字节"></a>1. 读取一个字节</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R0, [R1]</span><br></pre></td></tr></table></figure>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>计算地址：根据基址寄存器<code>Rn</code>和偏移量<code>offset</code>计算出目标内存地址。<br>读取内存：从该地址读取一个字节数据。<br>零扩展：将读取到的8位数据扩展为32位（高位填充为0），并存入目标寄存器<code>Rd</code>。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="读取一个字节"><a href="#读取一个字节" class="headerlink" title="读取一个字节"></a>读取一个字节</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R0, [R1]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从<code>R1</code>寄存器指向的内存地址读取一个字节，存入<code>R0</code>寄存器。</li>
 <li>加载的字节内容会被零扩展到32位。</li>
 </ul>
-<h4 id="2-带偏移的加载"><a href="#2-带偏移的加载" class="headerlink" title="2. 带偏移的加载"></a>2. 带偏移的加载</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R2, [R3, #4]</span><br></pre></td></tr></table></figure>
+<h4 id="带偏移的加载"><a href="#带偏移的加载" class="headerlink" title="带偏移的加载"></a>带偏移的加载</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R2, [R3, #4]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从<code>R3</code>寄存器的地址加上偏移量<code>4</code>的内存地址读取一个字节，存入<code>R2</code>。</li>
 </ul>
-<h4 id="3-使用寄存器偏移"><a href="#3-使用寄存器偏移" class="headerlink" title="3. 使用寄存器偏移"></a>3. 使用寄存器偏移</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R4, [R5, R6]</span><br></pre></td></tr></table></figure>
+<h4 id="使用寄存器偏移"><a href="#使用寄存器偏移" class="headerlink" title="使用寄存器偏移"></a>使用寄存器偏移</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R4, [R5, R6]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>使用<code>R5</code>作为基址，<code>R6</code>的值作为偏移量，读取目标地址的一个字节数据到<code>R4</code>。</li>
 </ul>
@@ -461,15 +457,8 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><p><strong>零扩展</strong>：<code>LDRB</code>会将读取的8位数据零扩展为32位。如果需要符号扩展，可以使用<code>LDRSB</code>指令。</p>
-</li>
-<li><p><strong>对齐要求</strong>：尽管加载一个字节不需要严格的对齐，但应确保基址和偏移的计算结果是有效的内存地址。</p>
-</li>
-<li><p><strong>内存访问异常</strong>：如果目标地址无效或不可访问，会引发数据访问异常。</p>
-</li>
-</ol>
-<h1 id="SXTB-指令"><a href="#SXTB-指令" class="headerlink" title="SXTB 指令"></a>SXTB 指令</h1><p>在 ARM 汇编指令集中，**<code>SXTB</code>（Sign Extend Byte）** 是一种用于<strong>符号扩展</strong>的指令，它将一个 8 位的有符号值扩展为 32 位的有符号值。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>零扩展：<code>LDRB</code>会将读取的8位数据零扩展为32位。如果需要符号扩展，可以使用<code>LDRSB</code>指令。<br>对齐要求：尽管加载一个字节不需要严格的对齐，但应确保基址和偏移的计算结果是有效的内存地址。<br>内存访问异常：如果目标地址无效或不可访问，会引发数据访问异常。</p>
+<h1 id="SXTB-指令"><a href="#SXTB-指令" class="headerlink" title="SXTB 指令"></a>SXTB 指令</h1><p>在 ARM 汇编指令集中，<code>SXTB</code>（Sign Extend Byte） 是一种用于符号扩展的指令，它将一个 8 位的有符号值扩展为 32 位的有符号值。</p>
 <h3 id="指令功能"><a href="#指令功能" class="headerlink" title="指令功能"></a>指令功能</h3><p><code>SXTB</code> 会从指定寄存器的低 8 位中提取数据，并根据最高有效位（符号位）进行符号扩展：</p>
 <ul>
 <li>如果最高有效位（第 7 位）是 <code>0</code>，扩展为正数。</li>
@@ -479,20 +468,16 @@ mjx-container[display="true"] + br {
 <h3 id="指令格式-1"><a href="#指令格式-1" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB &lt;Rd&gt;, &lt;Rm&gt; {, &lt;rotation&gt;}</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
-<li><strong><code>Rd</code></strong>: 目标寄存器，用于存储符号扩展后的 32 位值。</li>
-<li><strong><code>Rm</code></strong>: 源寄存器，包含要扩展的 8 位数据。</li>
-<li>**<code>rotation</code>**（可选）：旋转操作，可以是 <code>ROR #8</code>, <code>ROR #16</code> 或 <code>ROR #24</code>，将源数据按指定位数旋转后再取低 8 位。</li>
+<li><code>Rd</code>: 目标寄存器，用于存储符号扩展后的 32 位值。</li>
+<li><code>Rm</code>: 源寄存器，包含要扩展的 8 位数据。</li>
+<li><code>rotation</code>（可选）：旋转操作，可以是 <code>ROR #8</code>, <code>ROR #16</code> 或 <code>ROR #24</code>，将源数据按指定位数旋转后再取低 8 位。</li>
 </ul>
-<h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
-<li>提取源寄存器 <code>Rm</code> 的低 8 位数据。</li>
-<li>根据第 7 位（符号位）进行符号扩展：<ul>
+<h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><p>提取源寄存器 <code>Rm</code> 的低 8 位数据。<br>根据第 7 位（符号位）进行符号扩展：</p>
+<ul>
 <li>若符号位为 <code>1</code>，高位用 <code>1</code> 填充。</li>
-<li>若符号位为 <code>0</code>，高位用 <code>0</code> 填充。</li>
+<li>若符号位为 <code>0</code>，高位用 <code>0</code> 填充。<br>将扩展后的 32 位值存入目标寄存器 <code>Rd</code>。</li>
 </ul>
-</li>
-<li>将扩展后的 32 位值存入目标寄存器 <code>Rd</code>。</li>
-</ol>
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本符号扩展"><a href="#1-基本符号扩展" class="headerlink" title="1. 基本符号扩展"></a>1. 基本符号扩展</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB R1, R0</span><br></pre></td></tr></table></figure>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><h4 id="基本符号扩展"><a href="#基本符号扩展" class="headerlink" title="基本符号扩展"></a>基本符号扩展</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB R1, R0</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>R0</code> 的低 8 位提取值。</li>
 <li>根据符号位扩展为 32 位，并存入 <code>R1</code>。</li>
@@ -505,46 +490,42 @@ mjx-container[display="true"] + br {
 <ul>
 <li>符号扩展后：<code>R1 = 0x0000007F</code>（扩展为正数）。</li>
 </ul>
-<h4 id="2-带旋转的符号扩展"><a href="#2-带旋转的符号扩展" class="headerlink" title="2. 带旋转的符号扩展"></a>2. 带旋转的符号扩展</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB R2, R3, ROR #8</span><br></pre></td></tr></table></figure>
+<h4 id="带旋转的符号扩展"><a href="#带旋转的符号扩展" class="headerlink" title="带旋转的符号扩展"></a>带旋转的符号扩展</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB R2, R3, ROR #8</span><br></pre></td></tr></table></figure>
 <ul>
 <li>先将 <code>R3</code> 的值按右旋 8 位。</li>
 <li>然后从结果的低 8 位提取值并进行符号扩展，结果存入 <code>R2</code>。</li>
 </ul>
 <h3 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
-<li><strong>处理有符号的 8 位数据</strong>：如读取字符（<code>char</code> 类型）或 8 位寄存器数据。</li>
-<li><strong>数据对齐和扩展</strong>：将单字节数据扩展为 32 位，方便与其他数据操作。</li>
-<li><strong>符号正确性</strong>：确保符号位在扩展后保持一致，用于数学运算或逻辑操作。</li>
+<li>处理有符号的 8 位数据：如读取字符（<code>char</code> 类型）或 8 位寄存器数据。</li>
+<li>数据对齐和扩展：将单字节数据扩展为 32 位，方便与其他数据操作。</li>
+<li>符号正确性：确保符号位在扩展后保持一致，用于数学运算或逻辑操作。</li>
 </ul>
 <h3 id="与其他指令的比较"><a href="#与其他指令的比较" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
-<li><strong><code>SXTB</code></strong>: 符号扩展 8 位。</li>
-<li><strong><code>UXTB</code></strong>: 无符号扩展 8 位（高位填充 0）。</li>
-<li><strong><code>LDRSB</code></strong>: 从内存加载一个字节并符号扩展。</li>
-<li><strong><code>MOV</code></strong>: 不进行扩展，直接移动数据。</li>
+<li><code>SXTB</code>: 符号扩展 8 位。</li>
+<li><code>UXTB</code>: 无符号扩展 8 位（高位填充 0）。</li>
+<li><code>LDRSB</code>: 从内存加载一个字节并符号扩展。</li>
+<li><code>MOV</code>: 不进行扩展，直接移动数据。</li>
 </ul>
 <p><code>SXTB</code> 是 ARM 汇编中操作符号位的重要工具，适合处理 8 位有符号数据并将其扩展为 32 位值进行进一步的运算。</p>
-<p>在 ARM 汇编语言中，**<code>LDP</code>（Load Pair of Registers）** 是一种用于<strong>同时加载两个寄存器</strong>的指令。它是 ARM 架构（尤其是 ARMv8-A）中为优化性能而引入的一种指令，可以一次性从内存中加载两个连续存储的数据到寄存器对。</p>
+<p>在 ARM 汇编语言中，<code>LDP</code>（Load Pair of Registers） 是一种用于同时加载两个寄存器的指令。它是 ARM 架构（尤其是 ARMv8-A）中为优化性能而引入的一种指令，可以一次性从内存中加载两个连续存储的数据到寄存器对。</p>
 <h1 id="LDP-指令"><a href="#LDP-指令" class="headerlink" title="LDP 指令"></a>LDP 指令</h1><h3 id="指令功能-1"><a href="#指令功能-1" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
-<li><strong><code>LDP</code></strong> 指令从内存地址中<strong>加载两个连续的数据</strong>，分别存入两个目标寄存器。</li>
+<li><code>LDP</code> 指令从内存地址中加载两个连续的数据，分别存入两个目标寄存器。</li>
 <li>与单个加载指令（如 <code>LDR</code>）相比，<code>LDP</code> 提供了更高的内存访问效率，因为它在一次指令中完成了两次加载操作。</li>
 </ul>
 <h3 id="指令格式-2"><a href="#指令格式-2" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP &lt;Rt&gt;, &lt;Rt2&gt;, [&lt;Rn&gt;{, #&lt;imm&gt;}]</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-2"><a href="#参数说明-2" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
-<li><strong><code>Rt</code></strong>: 第一个目标寄存器，用于存储第一个加载的数据。</li>
-<li><strong><code>Rt2</code></strong>: 第二个目标寄存器，用于存储第二个加载的数据。</li>
-<li><strong><code>Rn</code></strong>: 基址寄存器，提供内存的起始地址。</li>
-<li>**<code>imm</code>**（可选）：偏移量（字节数），用于从基址 <code>Rn</code> 计算内存地址，默认为 0。</li>
+<li><code>Rt</code>: 第一个目标寄存器，用于存储第一个加载的数据。</li>
+<li><code>Rt2</code>: 第二个目标寄存器，用于存储第二个加载的数据。</li>
+<li><code>Rn</code>: 基址寄存器，提供内存的起始地址。</li>
+<li><code>imm</code>（可选）：偏移量（字节数），用于从基址 <code>Rn</code> 计算内存地址，默认为 0。</li>
 </ul>
-<h3 id="工作原理-2"><a href="#工作原理-2" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
-<li><strong>计算地址</strong>：从基址寄存器 <code>Rn</code> 计算出目标内存地址。如果指定了偏移量 <code>imm</code>，则将其加到 <code>Rn</code> 的值上。</li>
-<li><strong>加载数据</strong>：<ul>
+<h3 id="工作原理-2"><a href="#工作原理-2" class="headerlink" title="工作原理"></a>工作原理</h3><p>计算地址：从基址寄存器 <code>Rn</code> 计算出目标内存地址。如果指定了偏移量 <code>imm</code>，则将其加到 <code>Rn</code> 的值上。<br>加载数据：</p>
+<ul>
 <li>从计算地址加载第一个值存入寄存器 <code>Rt</code>。</li>
-<li>从计算地址加上寄存器宽度（通常为 8 字节）的位置加载第二个值存入寄存器 <code>Rt2</code>。</li>
+<li>从计算地址加上寄存器宽度（通常为 8 字节）的位置加载第二个值存入寄存器 <code>Rt2</code>。<br>更新基址（可选）：在某些模式下（如 <code>LDP</code> 加更新地址），基址 <code>Rn</code> 的值会被更新。</li>
 </ul>
-</li>
-<li><strong>更新基址（可选）</strong>：在某些模式下（如 <code>LDP</code> 加更新地址），基址 <code>Rn</code> 的值会被更新。</li>
-</ol>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本使用（无偏移）"><a href="#1-基本使用（无偏移）" class="headerlink" title="1. 基本使用（无偏移）"></a>1. 基本使用（无偏移）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X0, X1, [X2]</span><br></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><h4 id="基本使用（无偏移）"><a href="#基本使用（无偏移）" class="headerlink" title="基本使用（无偏移）"></a>基本使用（无偏移）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X0, X1, [X2]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>X2</code> 指向的内存地址加载两个 64 位数据：<ul>
 <li>第一个数据存入 <code>X0</code>。</li>
@@ -552,7 +533,7 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ul>
-<h4 id="2-带偏移量"><a href="#2-带偏移量" class="headerlink" title="2. 带偏移量"></a>2. 带偏移量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X3, X4, [X5, #16]</span><br></pre></td></tr></table></figure>
+<h4 id="带偏移量"><a href="#带偏移量" class="headerlink" title="带偏移量"></a>带偏移量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X3, X4, [X5, #16]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>X5 + 16</code> 地址开始加载两个数据：<ul>
 <li>第一个数据存入 <code>X3</code>。</li>
@@ -560,7 +541,7 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ul>
-<h4 id="3-加载后自动更新基址"><a href="#3-加载后自动更新基址" class="headerlink" title="3. 加载后自动更新基址"></a>3. 加载后自动更新基址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X6, X7, [X8], #16</span><br></pre></td></tr></table></figure>
+<h4 id="加载后自动更新基址"><a href="#加载后自动更新基址" class="headerlink" title="加载后自动更新基址"></a>加载后自动更新基址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X6, X7, [X8], #16</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>X8</code> 指向的地址加载两个数据：<ul>
 <li>第一个数据存入 <code>X6</code>。</li>
@@ -569,42 +550,32 @@ mjx-container[display="true"] + br {
 </li>
 <li>然后将 <code>X8</code> 的值加上偏移量 <code>16</code>，更新 <code>X8</code>。</li>
 </ul>
-<h3 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
-<li><strong>高效加载连续数据</strong>：<code>LDP</code> 可以一次性加载两个连续的内存数据，减少内存访问的次数。</li>
-<li><strong>栈操作</strong>：<ul>
+<h3 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h3><p>高效加载连续数据：<code>LDP</code> 可以一次性加载两个连续的内存数据，减少内存访问的次数。<br>栈操作：</p>
+<ul>
 <li>从栈中加载两个寄存器数据：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X29, X30, [SP], #16</span><br></pre></td></tr></table></figure>
-（用于从栈恢复链寄存器和返回地址）</li>
-</ul>
-</li>
-<li><strong>数据处理</strong>：<ul>
+（用于从栈恢复链寄存器和返回地址）<br>数据处理：</li>
 <li>用于矩阵计算、加密解密等需要快速加载连续数据的场景。</li>
 </ul>
-</li>
-</ol>
 <h3 id="与其他指令的比较-1"><a href="#与其他指令的比较-1" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
-<li><strong><code>LDR</code></strong>: 一次加载一个寄存器的数据。</li>
-<li><strong><code>LDP</code></strong>: 一次加载两个寄存器的数据，效率更高。</li>
-<li><strong><code>STP</code></strong>: 存储寄存器对到内存的指令，与 <code>LDP</code> 相对。</li>
+<li><code>LDR</code>: 一次加载一个寄存器的数据。</li>
+<li><code>LDP</code>: 一次加载两个寄存器的数据，效率更高。</li>
+<li><code>STP</code>: 存储寄存器对到内存的指令，与 <code>LDP</code> 相对。</li>
 </ul>
 <p>通过使用 <code>LDP</code>，可以减少指令数量和内存访问延迟，从而提升代码性能，是 ARM 汇编中非常常用的一种优化指令。</p>
-<h1 id="CSEL-指令"><a href="#CSEL-指令" class="headerlink" title="CSEL 指令"></a>CSEL 指令</h1><p><strong><code>CSEL</code><strong>（Conditional Select）是 ARM 架构中用于实现</strong>条件选择</strong>的一条指令。它根据条件标志（由上一次指令的结果设置）来选择两个操作数之一，并将选择的结果存入目标寄存器。</p>
+<h1 id="CSEL-指令"><a href="#CSEL-指令" class="headerlink" title="CSEL 指令"></a>CSEL 指令</h1><p><code>CSEL</code>（Conditional Select）是 ARM 架构中用于实现条件选择的一条指令。它根据条件标志（由上一次指令的结果设置）来选择两个操作数之一，并将选择的结果存入目标寄存器。</p>
 <h3 id="指令功能-2"><a href="#指令功能-2" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
-<li><code>CSEL</code> 是一种<strong>无分支条件执行指令</strong>，可以避免传统分支指令（如 <code>B</code>）可能引入的分支预测失误问题。</li>
+<li><code>CSEL</code> 是一种无分支条件执行指令，可以避免传统分支指令（如 <code>B</code>）可能引入的分支预测失误问题。</li>
 <li>根据指定的条件（Condition Code, CC），选择一个值存入目标寄存器。</li>
 </ul>
 <h3 id="指令格式-3"><a href="#指令格式-3" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSEL &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;, &lt;cond&gt;</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-3"><a href="#参数说明-3" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
-<li>**<code>Rd</code>**：目标寄存器，用于存储最终选择的值。</li>
-<li>**<code>Rn</code>**：第一个源寄存器（条件满足时选择该值）。</li>
-<li>**<code>Rm</code>**：第二个源寄存器（条件不满足时选择该值）。</li>
-<li>**<code>cond</code>**：条件码，指定选择 <code>Rn</code> 或 <code>Rm</code> 的条件。</li>
+<li><code>Rd</code>：目标寄存器，用于存储最终选择的值。</li>
+<li><code>Rn</code>：第一个源寄存器（条件满足时选择该值）。</li>
+<li><code>Rm</code>：第二个源寄存器（条件不满足时选择该值）。</li>
+<li><code>cond</code>：条件码，指定选择 <code>Rn</code> 或 <code>Rm</code> 的条件。</li>
 </ul>
-<h3 id="工作原理-3"><a href="#工作原理-3" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
-<li>根据指定的条件码 <code>cond</code>，检查条件标志（由之前指令更新）。</li>
-<li>如果条件满足（<code>cond</code> 为真），将 <code>Rn</code> 的值存入 <code>Rd</code>。</li>
-<li>如果条件不满足（<code>cond</code> 为假），将 <code>Rm</code> 的值存入 <code>Rd</code>。</li>
-</ol>
+<h3 id="工作原理-3"><a href="#工作原理-3" class="headerlink" title="工作原理"></a>工作原理</h3><p>根据指定的条件码 <code>cond</code>，检查条件标志（由之前指令更新）。<br>如果条件满足（<code>cond</code> 为真），将 <code>Rn</code> 的值存入 <code>Rd</code>。<br>如果条件不满足（<code>cond</code> 为假），将 <code>Rm</code> 的值存入 <code>Rd</code>。</p>
 <h3 id="条件码（cond）"><a href="#条件码（cond）" class="headerlink" title="条件码（cond）"></a>条件码（<code>cond</code>）</h3><p>条件码是 4 位标志，常见的条件如下：</p>
 <table>
 <thead>
@@ -690,56 +661,44 @@ mjx-container[display="true"] + br {
 <td>总是执行</td>
 </tr>
 </tbody></table>
-<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><h4 id="1-条件选择"><a href="#1-条件选择" class="headerlink" title="1. 条件选择"></a>1. 条件选择</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSEL X0, X1, X2, EQ</span><br></pre></td></tr></table></figure>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><h4 id="条件选择"><a href="#条件选择" class="headerlink" title="条件选择"></a>条件选择</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSEL X0, X1, X2, EQ</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果条件标志 Z=1（<code>EQ</code> 条件成立），则将 <code>X1</code> 的值存入 <code>X0</code>。</li>
 <li>如果条件标志 Z=0（<code>EQ</code> 条件不成立），则将 <code>X2</code> 的值存入 <code>X0</code>。</li>
 </ul>
-<h4 id="2-用于最大值计算"><a href="#2-用于最大值计算" class="headerlink" title="2. 用于最大值计算"></a>2. 用于最大值计算</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMP X3, X4          // 比较 X3 和 X4</span><br><span class="line">CSEL X5, X3, X4, GT // 如果 X3 &gt; X4，则选择 X3，否则选择 X4</span><br></pre></td></tr></table></figure>
+<h4 id="用于最大值计算"><a href="#用于最大值计算" class="headerlink" title="用于最大值计算"></a>用于最大值计算</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMP X3, X4          // 比较 X3 和 X4</span><br><span class="line">CSEL X5, X3, X4, GT // 如果 X3 &gt; X4，则选择 X3，否则选择 X4</span><br></pre></td></tr></table></figure>
 <ul>
 <li>通过比较指令 <code>CMP</code> 更新条件标志。</li>
 <li><code>CSEL</code> 根据比较结果选择较大的值存入 <code>X5</code>。</li>
 </ul>
-<h4 id="3-条件选择替代分支"><a href="#3-条件选择替代分支" class="headerlink" title="3. 条件选择替代分支"></a>3. 条件选择替代分支</h4><p>传统的分支代码：</p>
+<h4 id="条件选择替代分支"><a href="#条件选择替代分支" class="headerlink" title="条件选择替代分支"></a>条件选择替代分支</h4><p>传统的分支代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CMP X6, X7</span><br><span class="line">B.GT greater</span><br><span class="line">MOV X8, X7</span><br><span class="line">B done</span><br><span class="line">greater:</span><br><span class="line">MOV X8, X6</span><br><span class="line">done:</span><br></pre></td></tr></table></figure>
 <p>可以被简化为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMP X6, X7</span><br><span class="line">CSEL X8, X6, X7, GT</span><br></pre></td></tr></table></figure>
 
-<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
-<li><strong>无分支延迟</strong>：<code>CSEL</code> 避免了传统分支指令可能引起的分支预测失败问题，从而提升性能。</li>
-<li><strong>代码简洁</strong>：减少多条分支和跳转指令，优化指令数量。</li>
-<li><strong>高效性</strong>：非常适合需要快速选择结果而不需要复杂逻辑的场景。</li>
-</ol>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>无分支延迟：<code>CSEL</code> 避免了传统分支指令可能引起的分支预测失败问题，从而提升性能。<br>代码简洁：减少多条分支和跳转指令，优化指令数量。<br>高效性：非常适合需要快速选择结果而不需要复杂逻辑的场景。</p>
 <h3 id="相关指令"><a href="#相关指令" class="headerlink" title="相关指令"></a>相关指令</h3><ul>
-<li><strong><code>CSINC</code></strong>: 条件选择 + 增量操作。</li>
-<li><strong><code>CSINV</code></strong>: 条件选择 + 取反操作。</li>
-<li><strong><code>CSNEG</code></strong>: 条件选择 + 取负操作。</li>
+<li><code>CSINC</code>: 条件选择 + 增量操作。</li>
+<li><code>CSINV</code>: 条件选择 + 取反操作。</li>
+<li><code>CSNEG</code>: 条件选择 + 取负操作。</li>
 </ul>
 <p><code>CSEL</code> 是 ARM 汇编中一个强大的条件操作指令，在高效实现条件逻辑和优化分支跳转时非常有用。</p>
-<h1 id="UDIV-指令"><a href="#UDIV-指令" class="headerlink" title="UDIV 指令"></a>UDIV 指令</h1><p>在 <strong>ARM 汇编</strong>中，**<code>UDIV</code>** 是用于<strong>无符号整数除法</strong>的指令。</p>
-<h3 id="指令功能-3"><a href="#指令功能-3" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>UDIV</code></strong> 指令计算两个寄存器中值的无符号整数商，并将结果存储到目标寄存器中。</p>
+<h1 id="UDIV-指令"><a href="#UDIV-指令" class="headerlink" title="UDIV 指令"></a>UDIV 指令</h1><p>在 ARM 汇编中，<code>UDIV</code> 是用于无符号整数除法的指令。</p>
+<h3 id="指令功能-3"><a href="#指令功能-3" class="headerlink" title="指令功能"></a>指令功能</h3><p><code>UDIV</code> 指令计算两个寄存器中值的无符号整数商，并将结果存储到目标寄存器中。</p>
 <h3 id="指令格式-4"><a href="#指令格式-4" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UDIV &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-4"><a href="#参数说明-4" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
-<li><strong><code>Rd</code></strong>: 目标寄存器，用于存储结果（商）。</li>
-<li><strong><code>Rn</code></strong>: 被除数（Dividend）。</li>
-<li><strong><code>Rm</code></strong>: 除数（Divisor）。</li>
+<li><code>Rd</code>: 目标寄存器，用于存储结果（商）。</li>
+<li><code>Rn</code>: 被除数（Dividend）。</li>
+<li><code>Rm</code>: 除数（Divisor）。</li>
 </ul>
-<h3 id="工作原理-4"><a href="#工作原理-4" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
-<li><strong>读取操作数</strong>：<ul>
+<h3 id="工作原理-4"><a href="#工作原理-4" class="headerlink" title="工作原理"></a>工作原理</h3><p>读取操作数：</p>
+<ul>
 <li>从寄存器 <code>Rn</code> 中读取被除数（无符号整数）。</li>
-<li>从寄存器 <code>Rm</code> 中读取除数（无符号整数）。</li>
-</ul>
-</li>
-<li><strong>执行无符号除法</strong>：<ul>
-<li>计算 <code>Rn ÷ Rm</code> 的无符号商。</li>
-</ul>
-</li>
-<li><strong>存储结果</strong>：<ul>
+<li>从寄存器 <code>Rm</code> 中读取除数（无符号整数）。<br>执行无符号除法：</li>
+<li>计算 <code>Rn ÷ Rm</code> 的无符号商。<br>存储结果：</li>
 <li>将计算的商存储到目标寄存器 <code>Rd</code> 中。</li>
 </ul>
-</li>
-</ol>
 <h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UDIV X0, X1, X2</span><br></pre></td></tr></table></figure>
 <ul>
 <li>将寄存器 <code>X1</code>（被除数）的值除以 <code>X2</code>（除数）的值。</li>
@@ -757,41 +716,29 @@ mjx-container[display="true"] + br {
 <ul>
 <li><code>X0 = 6</code> （整数商，忽略余数）。</li>
 </ul>
-<h3 id="使用场景-3"><a href="#使用场景-3" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
-<li><strong>无符号整数运算</strong>：<ul>
-<li>对非负整数进行除法操作。</li>
-</ul>
-</li>
-<li><strong>数组索引计算</strong>：<ul>
-<li>在循环中计算步长或分区操作。</li>
-</ul>
-</li>
-<li><strong>处理无符号数据类型</strong>：<ul>
+<h3 id="使用场景-3"><a href="#使用场景-3" class="headerlink" title="使用场景"></a>使用场景</h3><p>无符号整数运算：</p>
+<ul>
+<li>对非负整数进行除法操作。<br>数组索引计算：</li>
+<li>在循环中计算步长或分区操作。<br>处理无符号数据类型：</li>
 <li>常见于嵌入式系统和加密解密算法。</li>
 </ul>
-</li>
-</ol>
-<h3 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><p><strong>除数为 0</strong>：</p>
+<h3 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h3><p>除数为 0：</p>
 <ul>
 <li>如果 <code>Rm = 0</code>（除数为 0），行为未定义（UNPREDICTABLE）。</li>
 <li>在编写代码时应确保除数不为 0。</li>
 </ul>
-</li>
-<li><p><strong>无符号数据</strong>：</p>
+<p>无符号数据：</p>
 <ul>
 <li><code>UDIV</code> 仅适用于无符号数据。如果需要对有符号数据进行除法，请使用 <code>SDIV</code> 指令。</li>
 </ul>
-</li>
-</ol>
 <h3 id="与其他指令的比较-2"><a href="#与其他指令的比较-2" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
-<li><strong><code>UDIV</code></strong>: 无符号除法。</li>
-<li><strong><code>SDIV</code></strong>: 有符号除法。</li>
-<li><strong><code>MUL</code></strong>: 乘法（无符号/有符号）。</li>
-<li><strong><code>SMULL</code></strong> 和 <strong><code>UMULL</code></strong>: 64 位乘法扩展</li>
+<li><code>UDIV</code>: 无符号除法。</li>
+<li><code>SDIV</code>: 有符号除法。</li>
+<li><code>MUL</code>: 乘法（无符号/有符号）。</li>
+<li><code>SMULL</code> 和 <code>UMULL</code>: 64 位乘法扩展</li>
 </ul>
-<h1 id="MSUB-指令"><a href="#MSUB-指令" class="headerlink" title="MSUB 指令"></a>MSUB 指令</h1><p>在 <strong>ARM 汇编</strong>中，**<code>MSUB</code>** 是一种<strong>乘法并减法</strong>的指令，它的功能是先进行乘法运算，然后将结果从另一个值中减去。</p>
-<h3 id="指令功能-4"><a href="#指令功能-4" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>MSUB</code></strong> 计算以下数学公式：</p>
+<h1 id="MSUB-指令"><a href="#MSUB-指令" class="headerlink" title="MSUB 指令"></a>MSUB 指令</h1><p>在 ARM 汇编中，<code>MSUB</code> 是一种乘法并减法的指令，它的功能是先进行乘法运算，然后将结果从另一个值中减去。</p>
+<h3 id="指令功能-4"><a href="#指令功能-4" class="headerlink" title="指令功能"></a>指令功能</h3><p><code>MSUB</code> 计算以下数学公式：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rd = Ra - (Rn * Rm)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>它会将两个操作数（<code>Rn</code> 和 <code>Rm</code>）相乘，然后从一个累加值（<code>Ra</code>）中减去乘积，并将结果存储在目标寄存器 <code>Rd</code> 中。</li>
@@ -799,25 +746,17 @@ mjx-container[display="true"] + br {
 <h3 id="指令格式-5"><a href="#指令格式-5" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSUB &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;, &lt;Ra&gt;</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-5"><a href="#参数说明-5" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
-<li><strong><code>Rd</code></strong>: 目标寄存器，用于存储最终的结果。</li>
-<li><strong><code>Rn</code></strong>: 第一个乘数。</li>
-<li><strong><code>Rm</code></strong>: 第二个乘数。</li>
-<li><strong><code>Ra</code></strong>: 被减数（累加值）。</li>
+<li><code>Rd</code>: 目标寄存器，用于存储最终的结果。</li>
+<li><code>Rn</code>: 第一个乘数。</li>
+<li><code>Rm</code>: 第二个乘数。</li>
+<li><code>Ra</code>: 被减数（累加值）。</li>
 </ul>
-<h3 id="工作原理-5"><a href="#工作原理-5" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
-<li><strong>计算乘积</strong>：<ul>
-<li>将 <code>Rn</code> 和 <code>Rm</code> 相乘，得到乘积 <code>P = Rn * Rm</code>。</li>
-</ul>
-</li>
-<li><strong>减法操作</strong>：<ul>
-<li>用累加值 <code>Ra</code> 减去乘积 <code>P</code>，即 <code>Rd = Ra - P</code>。</li>
-</ul>
-</li>
-<li><strong>存储结果</strong>：<ul>
+<h3 id="工作原理-5"><a href="#工作原理-5" class="headerlink" title="工作原理"></a>工作原理</h3><p>计算乘积：</p>
+<ul>
+<li>将 <code>Rn</code> 和 <code>Rm</code> 相乘，得到乘积 <code>P = Rn * Rm</code>。<br>减法操作：</li>
+<li>用累加值 <code>Ra</code> 减去乘积 <code>P</code>，即 <code>Rd = Ra - P</code>。<br>存储结果：</li>
 <li>将最终结果存入目标寄存器 <code>Rd</code>。</li>
 </ul>
-</li>
-</ol>
 <h3 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h3><h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSUB X0, X1, X2, X3</span><br></pre></td></tr></table></figure>
 <ul>
 <li>计算 <code>X0 = X3 - (X1 * X2)</code>。</li>
@@ -835,47 +774,38 @@ mjx-container[display="true"] + br {
 <ul>
 <li><code>X0 = 20 - (4 * 3) = 20 - 12 = 8</code></li>
 </ul>
-<h3 id="使用场景-4"><a href="#使用场景-4" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
-<li><p><strong>优化计算公式</strong>：</p>
+<h3 id="使用场景-4"><a href="#使用场景-4" class="headerlink" title="使用场景"></a>使用场景</h3><p>优化计算公式：</p>
 <ul>
 <li>避免单独执行乘法和减法指令，提高运算效率。</li>
 <li>可用于公式简化，如 <code>c - (a * b)</code>。</li>
 </ul>
-</li>
-<li><p><strong>数字信号处理（DSP）</strong>：</p>
+<p>数字信号处理（DSP）：</p>
 <ul>
 <li>常用于滤波、矩阵运算等需要大量乘法和减法操作的领域。</li>
 </ul>
-</li>
-<li><p><strong>图形计算</strong>：</p>
+<p>图形计算：</p>
 <ul>
 <li>在图形处理的几何计算或物理仿真中，常需要计算某种形式的乘法和减法组合。</li>
 </ul>
-</li>
-</ol>
 <h3 id="与其他指令的比较-3"><a href="#与其他指令的比较-3" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
-<li>**<code>MADD</code>**：执行乘法并加法（<code>Rd = Ra + (Rn * Rm)</code>）。</li>
-<li>**<code>MSUB</code>**：执行乘法并减法（<code>Rd = Ra - (Rn * Rm)</code>）。</li>
-<li>**<code>MUL</code>**：仅执行乘法。</li>
-<li>**<code>SMULL</code>/<code>UMULL</code>**：进行乘法并扩展结果为 64 位。</li>
-<li>**<code>SDIV</code>/<code>UDIV</code>**：执行有符号/无符号除法。</li>
+<li><code>MADD</code>：执行乘法并加法（<code>Rd = Ra + (Rn * Rm)</code>）。</li>
+<li><code>MSUB</code>：执行乘法并减法（<code>Rd = Ra - (Rn * Rm)</code>）。</li>
+<li><code>MUL</code>：仅执行乘法。</li>
+<li><code>SMULL</code>/<code>UMULL</code>：进行乘法并扩展结果为 64 位。</li>
+<li><code>SDIV</code>/<code>UDIV</code>：执行有符号/无符号除法。</li>
 </ul>
-<h3 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><p><strong>数据类型</strong>：</p>
+<h3 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h3><p>数据类型：</p>
 <ul>
 <li><code>MSUB</code> 适用于无符号和有符号整数运算。操作数的符号取决于数据的上下文。</li>
 </ul>
-</li>
-<li><p><strong>性能优化</strong>：</p>
+<p>性能优化：</p>
 <ul>
 <li><code>MSUB</code> 指令在 ARMv8-A 架构中是硬件加速的，避免了单独使用乘法和减法指令的额外指令开销。</li>
 </ul>
-</li>
-</ol>
 <p><code>MSUB</code> 是 ARM 指令集中重要的数学运算指令之一，适合处理多步骤运算，帮助开发者简化代码逻辑并提高执行效率。</p>
-<h1 id="LDRSB-指令"><a href="#LDRSB-指令" class="headerlink" title="LDRSB 指令"></a>LDRSB 指令</h1><p><strong><code>LDRSB</code></strong> 是 ARM 汇编中的一条指令，用于从内存加载一个字节，并将其<strong>符号扩展</strong>为 32 位或 64 位，然后存储到目标寄存器中。</p>
+<h1 id="LDRSB-指令"><a href="#LDRSB-指令" class="headerlink" title="LDRSB 指令"></a>LDRSB 指令</h1><p><code>LDRSB</code> 是 ARM 汇编中的一条指令，用于从内存加载一个字节，并将其符号扩展为 32 位或 64 位，然后存储到目标寄存器中。</p>
 <h3 id="指令功能-5"><a href="#指令功能-5" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
-<li><strong><code>LDRSB</code><strong>（</strong>Load Register Signed Byte</strong>）会从指定的内存地址加载一个字节（8 位）数据。</li>
+<li><code>LDRSB</code>（Load Register Signed Byte）会从指定的内存地址加载一个字节（8 位）数据。</li>
 <li>将加载的 8 位数据按照其符号位（第 7 位）扩展为：<ul>
 <li>32 位（用于目标寄存器为 <code>Wn</code>）。</li>
 <li>64 位（用于目标寄存器为 <code>Xn</code>）。</li>
@@ -890,30 +820,26 @@ mjx-container[display="true"] + br {
 <h3 id="指令格式-6"><a href="#指令格式-6" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB &lt;Rt&gt;, [&lt;Rn&gt;{, #&lt;offset&gt;}]</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-6"><a href="#参数说明-6" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
-<li><strong><code>Rt</code></strong>: 目标寄存器，可以是 32 位（<code>Wn</code>）或 64 位（<code>Xn</code>）。</li>
-<li><strong><code>Rn</code></strong>: 基址寄存器，提供内存地址。</li>
-<li>**<code>offset</code>**（可选）：偏移量，可以是立即数或寄存器值，用于计算内存地址。</li>
+<li><code>Rt</code>: 目标寄存器，可以是 32 位（<code>Wn</code>）或 64 位（<code>Xn</code>）。</li>
+<li><code>Rn</code>: 基址寄存器，提供内存地址。</li>
+<li><code>offset</code>（可选）：偏移量，可以是立即数或寄存器值，用于计算内存地址。</li>
 </ul>
-<h3 id="工作原理-6"><a href="#工作原理-6" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
-<li>计算目标地址：<ul>
+<h3 id="工作原理-6"><a href="#工作原理-6" class="headerlink" title="工作原理"></a>工作原理</h3><p>计算目标地址：</p>
+<ul>
 <li>从基址寄存器 <code>Rn</code> 读取地址。</li>
-<li>加上偏移量 <code>offset</code>（如果有）得到最终地址。</li>
-</ul>
-</li>
-<li>从计算出的内存地址加载 8 位数据。</li>
-<li>符号扩展：<ul>
+<li>加上偏移量 <code>offset</code>（如果有）得到最终地址。<br>从计算出的内存地址加载 8 位数据。<br>符号扩展：</li>
 <li>根据字节的最高有效位（符号位，第 7 位）扩展到 32 位或 64 位。</li>
 </ul>
-</li>
+<ol start="4">
 <li>将结果存入目标寄存器 <code>Rt</code>。</li>
 </ol>
-<h3 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB W0, [X1]</span><br></pre></td></tr></table></figure>
+<h3 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h3><h4 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB W0, [X1]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>X1</code> 指向的内存地址加载一个字节。</li>
 <li>符号扩展为 32 位。</li>
 <li>存入 <code>W0</code>。</li>
 </ul>
-<h4 id="2-带偏移量-1"><a href="#2-带偏移量-1" class="headerlink" title="2. 带偏移量"></a>2. 带偏移量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB X2, [X3, #4]</span><br></pre></td></tr></table></figure>
+<h4 id="带偏移量-1"><a href="#带偏移量-1" class="headerlink" title="带偏移量"></a>带偏移量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB X2, [X3, #4]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>X3 + 4</code> 的地址加载一个字节。</li>
 <li>符号扩展为 64 位。</li>
@@ -941,75 +867,55 @@ mjx-container[display="true"] + br {
 </li>
 <li>存入 <code>X0</code>。</li>
 </ul>
-<h3 id="使用场景-5"><a href="#使用场景-5" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
-<li><strong>处理有符号 8 位数据</strong>：<ul>
-<li>如读取字符（<code>char</code> 类型）或设备寄存器的有符号数据。</li>
-</ul>
-</li>
-<li><strong>加载小范围整数</strong>：<ul>
-<li>符号扩展后，可以直接参与算术运算而无需额外处理。</li>
-</ul>
-</li>
-<li><strong>低位处理</strong>：<ul>
+<h3 id="使用场景-5"><a href="#使用场景-5" class="headerlink" title="使用场景"></a>使用场景</h3><p>处理有符号 8 位数据：</p>
+<ul>
+<li>如读取字符（<code>char</code> 类型）或设备寄存器的有符号数据。<br>加载小范围整数：</li>
+<li>符号扩展后，可以直接参与算术运算而无需额外处理。<br>低位处理：</li>
 <li>从内存中加载压缩格式的数据（如图像像素或音频样本）。</li>
 </ul>
-</li>
-</ol>
-<h3 id="注意事项-3"><a href="#注意事项-3" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><strong>符号扩展</strong>：<ul>
-<li>目标寄存器的大小（<code>Wn</code> 或 <code>Xn</code>）决定符号扩展的结果位宽（32 位或 64 位）。</li>
-</ul>
-</li>
-<li><strong>对齐问题</strong>：<ul>
-<li>由于加载的是一个字节，通常不需要严格的内存对齐，但基址和偏移量必须指向有效地址。</li>
-</ul>
-</li>
-<li><strong>内存访问异常</strong>：<ul>
+<h3 id="注意事项-3"><a href="#注意事项-3" class="headerlink" title="注意事项"></a>注意事项</h3><p>符号扩展：</p>
+<ul>
+<li>目标寄存器的大小（<code>Wn</code> 或 <code>Xn</code>）决定符号扩展的结果位宽（32 位或 64 位）。<br>对齐问题：</li>
+<li>由于加载的是一个字节，通常不需要严格的内存对齐，但基址和偏移量必须指向有效地址。<br>内存访问异常：</li>
 <li>如果访问的地址无效或不可用，可能会触发异常。</li>
 </ul>
-</li>
-</ol>
 <h3 id="与其他加载指令的比较"><a href="#与其他加载指令的比较" class="headerlink" title="与其他加载指令的比较"></a>与其他加载指令的比较</h3><ul>
-<li><p>**<code>LDRB</code>**：无符号扩展加载字节（高位填充 <code>0</code>）。</p>
+<li><p><code>LDRB</code>：无符号扩展加载字节（高位填充 <code>0</code>）。</p>
 </li>
-<li><p>**<code>LDRSB</code>**：符号扩展加载字节（高位填充符号位）。</p>
+<li><p><code>LDRSB</code>：符号扩展加载字节（高位填充符号位）。</p>
 </li>
-<li><p>**<code>LDR</code>**：加载 32 位或 64 位数据（不扩展）。</p>
+<li><p><code>LDR</code>：加载 32 位或 64 位数据（不扩展）。</p>
 </li>
-<li><p>**<code>LDRSH</code>**：符号扩展加载半字（16 位）。</p>
+<li><p><code>LDRSH</code>：符号扩展加载半字（16 位）。</p>
 </li>
-<li><p>**<code>LDRSW</code>**：符号扩展加载字（32 位）。</p>
+<li><p><code>LDRSW</code>：符号扩展加载字（32 位）。</p>
 </li>
 </ul>
-<h1 id="STRB-指令"><a href="#STRB-指令" class="headerlink" title="STRB 指令"></a>STRB 指令</h1><p><strong><code>STRB</code></strong> 是 ARM 汇编语言中用于将一个<strong>字节（8位）数据</strong>从寄存器存储到内存的指令。</p>
-<h3 id="指令功能-6"><a href="#指令功能-6" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>STRB</code></strong> 的全称是 <strong>Store Register Byte</strong>，它会将寄存器的低 8 位数据存储到内存中。</p>
+<h1 id="STRB-指令"><a href="#STRB-指令" class="headerlink" title="STRB 指令"></a>STRB 指令</h1><p><code>STRB</code> 是 ARM 汇编语言中用于将一个字节（8位）数据从寄存器存储到内存的指令。</p>
+<h3 id="指令功能-6"><a href="#指令功能-6" class="headerlink" title="指令功能"></a>指令功能</h3><p><code>STRB</code> 的全称是 Store Register Byte，它会将寄存器的低 8 位数据存储到内存中。</p>
 <h3 id="指令格式-7"><a href="#指令格式-7" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB &lt;Rt&gt;, [&lt;Rn&gt;{, #&lt;offset&gt;}]</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-7"><a href="#参数说明-7" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
-<li><strong><code>Rt</code></strong>: 源寄存器，包含需要存储的数据（仅低 8 位会被存储）。</li>
-<li><strong><code>Rn</code></strong>: 基址寄存器，指向内存地址的起始位置。</li>
-<li>**<code>offset</code>**（可选）：偏移量，指定从基址寄存器开始的内存偏移，单位为字节。</li>
+<li><code>Rt</code>: 源寄存器，包含需要存储的数据（仅低 8 位会被存储）。</li>
+<li><code>Rn</code>: 基址寄存器，指向内存地址的起始位置。</li>
+<li><code>offset</code>（可选）：偏移量，指定从基址寄存器开始的内存偏移，单位为字节。</li>
 </ul>
-<h3 id="工作原理-7"><a href="#工作原理-7" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
-<li>从源寄存器 <code>Rt</code> 的低 8 位提取字节数据。</li>
-<li>计算目标内存地址：<ul>
+<h3 id="工作原理-7"><a href="#工作原理-7" class="headerlink" title="工作原理"></a>工作原理</h3><p>从源寄存器 <code>Rt</code> 的低 8 位提取字节数据。<br>计算目标内存地址：</p>
+<ul>
 <li>如果没有偏移量，直接使用基址寄存器 <code>Rn</code>。</li>
-<li>如果有偏移量，将 <code>Rn</code> 加上 <code>offset</code> 计算目标地址。</li>
+<li>如果有偏移量，将 <code>Rn</code> 加上 <code>offset</code> 计算目标地址。<br>将提取的 8 位数据存储到目标内存地址中。</li>
 </ul>
-</li>
-<li>将提取的 8 位数据存储到目标内存地址中。</li>
-</ol>
-<h3 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本存储"><a href="#1-基本存储" class="headerlink" title="1. 基本存储"></a>1. 基本存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1]</span><br></pre></td></tr></table></figure>
+<h3 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h3><h4 id="基本存储"><a href="#基本存储" class="headerlink" title="基本存储"></a>基本存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>W0</code> 中提取低 8 位数据（例如 <code>0x34</code>）。</li>
 <li>将其存储到 <code>X1</code> 指向的内存地址。</li>
 </ul>
-<h4 id="2-带偏移的存储"><a href="#2-带偏移的存储" class="headerlink" title="2. 带偏移的存储"></a>2. 带偏移的存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, #4]</span><br></pre></td></tr></table></figure>
+<h4 id="带偏移的存储"><a href="#带偏移的存储" class="headerlink" title="带偏移的存储"></a>带偏移的存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, #4]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>W0</code> 中提取低 8 位数据。</li>
 <li>将其存储到 <code>X1 + 4</code> 的内存地址。</li>
 </ul>
-<h4 id="3-使用寄存器作为偏移"><a href="#3-使用寄存器作为偏移" class="headerlink" title="3. 使用寄存器作为偏移"></a>3. 使用寄存器作为偏移</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, X2]</span><br></pre></td></tr></table></figure>
+<h4 id="使用寄存器作为偏移"><a href="#使用寄存器作为偏移" class="headerlink" title="使用寄存器作为偏移"></a>使用寄存器作为偏移</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, X2]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>W0</code> 中提取低 8 位数据。</li>
 <li>将其存储到 <code>X1 + X2</code> 的内存地址。</li>
@@ -1029,38 +935,22 @@ mjx-container[display="true"] + br {
 <li>存储到地址 <code>0x1000 + 4 = 0x1004</code>。</li>
 <li>内存中：<code>Mem[0x1004] = 0x78</code></li>
 </ul>
-<h3 id="使用场景-6"><a href="#使用场景-6" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
-<li><strong>存储单字节数据</strong>：<ul>
-<li>将 <code>char</code> 或其他 8 位数据类型存储到内存。</li>
-</ul>
-</li>
-<li><strong>低位数据处理</strong>：<ul>
-<li>操作某个寄存器的低 8 位，将其写入设备寄存器或内存。</li>
-</ul>
-</li>
-<li><strong>性能优化</strong>：<ul>
+<h3 id="使用场景-6"><a href="#使用场景-6" class="headerlink" title="使用场景"></a>使用场景</h3><p>存储单字节数据：</p>
+<ul>
+<li>将 <code>char</code> 或其他 8 位数据类型存储到内存。<br>低位数据处理：</li>
+<li>操作某个寄存器的低 8 位，将其写入设备寄存器或内存。<br>性能优化：</li>
 <li>比完整的 32 位或 64 位存储更节省内存和带宽。</li>
 </ul>
-</li>
-</ol>
-<h3 id="注意事项-4"><a href="#注意事项-4" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><strong>存储的数据仅为低 8 位</strong>：<ul>
-<li>只存储寄存器的低 8 位，忽略高 24 位（如果是 32 位寄存器）或高 56 位（如果是 64 位寄存器）。</li>
-</ul>
-</li>
-<li><strong>对齐和有效地址</strong>：<ul>
-<li>ARM 允许字节存储的非对齐访问，但目标地址必须是有效的内存地址。</li>
-</ul>
-</li>
-<li><strong>数据覆盖</strong>：<ul>
+<h3 id="注意事项-4"><a href="#注意事项-4" class="headerlink" title="注意事项"></a>注意事项</h3><p>存储的数据仅为低 8 位：</p>
+<ul>
+<li>只存储寄存器的低 8 位，忽略高 24 位（如果是 32 位寄存器）或高 56 位（如果是 64 位寄存器）。<br>对齐和有效地址：</li>
+<li>ARM 允许字节存储的非对齐访问，但目标地址必须是有效的内存地址。<br>数据覆盖：</li>
 <li>确保存储的字节不会意外覆盖关键内存。</li>
 </ul>
-</li>
-</ol>
 <h3 id="相关指令-1"><a href="#相关指令-1" class="headerlink" title="相关指令"></a>相关指令</h3><ul>
-<li><strong><code>LDRB</code></strong>: 从内存加载一个字节数据到寄存器。</li>
-<li><strong><code>STR</code></strong>: 存储一个完整的 32 位或 64 位值到内存。</li>
-<li><strong><code>LDR</code></strong>: 从内存加载一个完整的 32 位或 64 位值。</li>
+<li><code>LDRB</code>: 从内存加载一个字节数据到寄存器。</li>
+<li><code>STR</code>: 存储一个完整的 32 位或 64 位值到内存。</li>
+<li><code>LDR</code>: 从内存加载一个完整的 32 位或 64 位值。</li>
 </ul>
 
                     
@@ -1282,7 +1172,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">LDRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">1. 读取一个字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">2. 带偏移的加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E5%81%8F%E7%A7%BB"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">3. 使用寄存器偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.0.6.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SXTB-%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">SXTB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD"><span class="nav-number">2.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">1. 基本符号扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E6%97%8B%E8%BD%AC%E7%9A%84%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.2.</span> <span class="nav-text">2. 带旋转的符号扩展</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">2.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDP-%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">LDP 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-2"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">3.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%88%E6%97%A0%E5%81%8F%E7%A7%BB%EF%BC%89"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">1. 基本使用（无偏移）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">2. 带偏移量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8A%A0%E8%BD%BD%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%9F%BA%E5%9D%80"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">3. 加载后自动更新基址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="nav-number">3.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-1"><span class="nav-number">3.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSEL-%E6%8C%87%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">CSEL 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-2"><span class="nav-number">4.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-3"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%A0%81%EF%BC%88cond%EF%BC%89"><span class="nav-number">4.0.4.</span> <span class="nav-text">条件码（cond）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">4.0.5.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="nav-number">4.0.5.1.</span> <span class="nav-text">1. 条件选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%A8%E4%BA%8E%E6%9C%80%E5%A4%A7%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-number">4.0.5.2.</span> <span class="nav-text">2. 用于最大值计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9%E6%9B%BF%E4%BB%A3%E5%88%86%E6%94%AF"><span class="nav-number">4.0.5.3.</span> <span class="nav-text">3. 条件选择替代分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.0.6.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="nav-number">4.0.7.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDIV-%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">UDIV 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-3"><span class="nav-number">5.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-4"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">5.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">5.0.4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">5.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="nav-number">5.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="nav-number">5.0.6.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-2"><span class="nav-number">5.0.7.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSUB-%E6%8C%87%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">MSUB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-4"><span class="nav-number">6.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-5"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-5"><span class="nav-number">6.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">6.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">6.0.4.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-1"><span class="nav-number">6.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="nav-number">6.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-3"><span class="nav-number">6.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="nav-number">6.0.7.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRSB-%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">LDRSB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-5"><span class="nav-number">7.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-6"><span class="nav-number">7.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-6"><span class="nav-number">7.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">7.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">7.0.4.1.</span> <span class="nav-text">1. 基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F-1"><span class="nav-number">7.0.4.2.</span> <span class="nav-text">2. 带偏移量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-2"><span class="nav-number">7.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="nav-number">7.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="nav-number">7.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">7.0.8.</span> <span class="nav-text">与其他加载指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">STRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-6"><span class="nav-number">8.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-7"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-7"><span class="nav-number">8.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-7"><span class="nav-number">8.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.1.</span> <span class="nav-text">1. 基本存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.2.</span> <span class="nav-text">2. 带偏移的存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%9C%E4%B8%BA%E5%81%8F%E7%A7%BB"><span class="nav-number">8.0.4.3.</span> <span class="nav-text">3. 使用寄存器作为偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-3"><span class="nav-number">8.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="nav-number">8.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-4"><span class="nav-number">8.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4-1"><span class="nav-number">8.0.8.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">LDRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">读取一个字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">带偏移的加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E5%81%8F%E7%A7%BB"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">使用寄存器偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.0.6.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SXTB-%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">SXTB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD"><span class="nav-number">2.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">基本符号扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E6%97%8B%E8%BD%AC%E7%9A%84%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.2.</span> <span class="nav-text">带旋转的符号扩展</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">2.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDP-%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">LDP 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-2"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">3.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%88%E6%97%A0%E5%81%8F%E7%A7%BB%EF%BC%89"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">基本使用（无偏移）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">带偏移量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%9F%BA%E5%9D%80"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">加载后自动更新基址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="nav-number">3.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-1"><span class="nav-number">3.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSEL-%E6%8C%87%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">CSEL 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-2"><span class="nav-number">4.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-3"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%A0%81%EF%BC%88cond%EF%BC%89"><span class="nav-number">4.0.4.</span> <span class="nav-text">条件码（cond）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">4.0.5.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="nav-number">4.0.5.1.</span> <span class="nav-text">条件选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E6%9C%80%E5%A4%A7%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-number">4.0.5.2.</span> <span class="nav-text">用于最大值计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9%E6%9B%BF%E4%BB%A3%E5%88%86%E6%94%AF"><span class="nav-number">4.0.5.3.</span> <span class="nav-text">条件选择替代分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.0.6.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="nav-number">4.0.7.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDIV-%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">UDIV 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-3"><span class="nav-number">5.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-4"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">5.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">5.0.4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">5.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="nav-number">5.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="nav-number">5.0.6.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-2"><span class="nav-number">5.0.7.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSUB-%E6%8C%87%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">MSUB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-4"><span class="nav-number">6.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-5"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-5"><span class="nav-number">6.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">6.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">6.0.4.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-1"><span class="nav-number">6.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="nav-number">6.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-3"><span class="nav-number">6.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="nav-number">6.0.7.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRSB-%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">LDRSB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-5"><span class="nav-number">7.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-6"><span class="nav-number">7.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-6"><span class="nav-number">7.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">7.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-1"><span class="nav-number">7.0.4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F-1"><span class="nav-number">7.0.4.2.</span> <span class="nav-text">带偏移量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-2"><span class="nav-number">7.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="nav-number">7.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="nav-number">7.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">7.0.8.</span> <span class="nav-text">与其他加载指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">STRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-6"><span class="nav-number">8.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-7"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-7"><span class="nav-number">8.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-7"><span class="nav-number">8.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.1.</span> <span class="nav-text">基本存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.2.</span> <span class="nav-text">带偏移的存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%9C%E4%B8%BA%E5%81%8F%E7%A7%BB"><span class="nav-number">8.0.4.3.</span> <span class="nav-text">使用寄存器作为偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-3"><span class="nav-number">8.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="nav-number">8.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-4"><span class="nav-number">8.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4-1"><span class="nav-number">8.0.8.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -1469,7 +1359,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">LDRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">1. 读取一个字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">2. 带偏移的加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E5%81%8F%E7%A7%BB"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">3. 使用寄存器偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.0.6.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SXTB-%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">SXTB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD"><span class="nav-number">2.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">1. 基本符号扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E6%97%8B%E8%BD%AC%E7%9A%84%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.2.</span> <span class="nav-text">2. 带旋转的符号扩展</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">2.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDP-%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">LDP 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-2"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">3.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%88%E6%97%A0%E5%81%8F%E7%A7%BB%EF%BC%89"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">1. 基本使用（无偏移）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">2. 带偏移量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8A%A0%E8%BD%BD%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%9F%BA%E5%9D%80"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">3. 加载后自动更新基址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="nav-number">3.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-1"><span class="nav-number">3.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSEL-%E6%8C%87%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">CSEL 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-2"><span class="nav-number">4.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-3"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%A0%81%EF%BC%88cond%EF%BC%89"><span class="nav-number">4.0.4.</span> <span class="nav-text">条件码（cond）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">4.0.5.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="nav-number">4.0.5.1.</span> <span class="nav-text">1. 条件选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%94%A8%E4%BA%8E%E6%9C%80%E5%A4%A7%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-number">4.0.5.2.</span> <span class="nav-text">2. 用于最大值计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9%E6%9B%BF%E4%BB%A3%E5%88%86%E6%94%AF"><span class="nav-number">4.0.5.3.</span> <span class="nav-text">3. 条件选择替代分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.0.6.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="nav-number">4.0.7.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDIV-%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">UDIV 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-3"><span class="nav-number">5.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-4"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">5.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">5.0.4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">5.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="nav-number">5.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="nav-number">5.0.6.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-2"><span class="nav-number">5.0.7.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSUB-%E6%8C%87%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">MSUB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-4"><span class="nav-number">6.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-5"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-5"><span class="nav-number">6.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">6.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">6.0.4.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-1"><span class="nav-number">6.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="nav-number">6.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-3"><span class="nav-number">6.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="nav-number">6.0.7.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRSB-%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">LDRSB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-5"><span class="nav-number">7.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-6"><span class="nav-number">7.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-6"><span class="nav-number">7.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">7.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">7.0.4.1.</span> <span class="nav-text">1. 基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F-1"><span class="nav-number">7.0.4.2.</span> <span class="nav-text">2. 带偏移量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-2"><span class="nav-number">7.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="nav-number">7.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="nav-number">7.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">7.0.8.</span> <span class="nav-text">与其他加载指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">STRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-6"><span class="nav-number">8.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-7"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-7"><span class="nav-number">8.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-7"><span class="nav-number">8.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.1.</span> <span class="nav-text">1. 基本存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.2.</span> <span class="nav-text">2. 带偏移的存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%9C%E4%B8%BA%E5%81%8F%E7%A7%BB"><span class="nav-number">8.0.4.3.</span> <span class="nav-text">3. 使用寄存器作为偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-3"><span class="nav-number">8.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="nav-number">8.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-4"><span class="nav-number">8.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4-1"><span class="nav-number">8.0.8.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">LDRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.2.</span> <span class="nav-text">参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">读取一个字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">带偏移的加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E5%81%8F%E7%A7%BB"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">使用寄存器偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.0.6.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SXTB-%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">SXTB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD"><span class="nav-number">2.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">基本符号扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E6%97%8B%E8%BD%AC%E7%9A%84%E7%AC%A6%E5%8F%B7%E6%89%A9%E5%B1%95"><span class="nav-number">2.0.4.2.</span> <span class="nav-text">带旋转的符号扩展</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">2.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDP-%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">LDP 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-2"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">3.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%88%E6%97%A0%E5%81%8F%E7%A7%BB%EF%BC%89"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">基本使用（无偏移）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">带偏移量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%9F%BA%E5%9D%80"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">加载后自动更新基址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="nav-number">3.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-1"><span class="nav-number">3.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSEL-%E6%8C%87%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">CSEL 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-2"><span class="nav-number">4.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-3"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-3"><span class="nav-number">4.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%A0%81%EF%BC%88cond%EF%BC%89"><span class="nav-number">4.0.4.</span> <span class="nav-text">条件码（cond）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">4.0.5.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="nav-number">4.0.5.1.</span> <span class="nav-text">条件选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E4%BA%8E%E6%9C%80%E5%A4%A7%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-number">4.0.5.2.</span> <span class="nav-text">用于最大值计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E9%80%89%E6%8B%A9%E6%9B%BF%E4%BB%A3%E5%88%86%E6%94%AF"><span class="nav-number">4.0.5.3.</span> <span class="nav-text">条件选择替代分支</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">4.0.6.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="nav-number">4.0.7.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UDIV-%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">UDIV 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-3"><span class="nav-number">5.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">5.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-4"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-4"><span class="nav-number">5.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">5.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">5.0.4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">5.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="nav-number">5.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="nav-number">5.0.6.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-2"><span class="nav-number">5.0.7.</span> <span class="nav-text">与其他指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSUB-%E6%8C%87%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">MSUB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-4"><span class="nav-number">6.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">6.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-5"><span class="nav-number">6.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-5"><span class="nav-number">6.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">6.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">6.0.4.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-1"><span class="nav-number">6.0.4.2.</span> <span class="nav-text">示例操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="nav-number">6.0.5.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83-3"><span class="nav-number">6.0.6.</span> <span class="nav-text">与其他指令的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="nav-number">6.0.7.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LDRSB-%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">LDRSB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-5"><span class="nav-number">7.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">7.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-6"><span class="nav-number">7.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-6"><span class="nav-number">7.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">7.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-1"><span class="nav-number">7.0.4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%81%8F%E7%A7%BB%E9%87%8F-1"><span class="nav-number">7.0.4.2.</span> <span class="nav-text">带偏移量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-2"><span class="nav-number">7.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-5"><span class="nav-number">7.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="nav-number">7.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%8A%A0%E8%BD%BD%E6%8C%87%E4%BB%A4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">7.0.8.</span> <span class="nav-text">与其他加载指令的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STRB-%E6%8C%87%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">STRB 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%8A%9F%E8%83%BD-6"><span class="nav-number">8.0.1.</span> <span class="nav-text">指令功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">8.0.2.</span> <span class="nav-text">指令格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E-7"><span class="nav-number">8.0.2.1.</span> <span class="nav-text">参数说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-7"><span class="nav-number">8.0.3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-7"><span class="nav-number">8.0.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.1.</span> <span class="nav-text">基本存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%81%8F%E7%A7%BB%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">8.0.4.2.</span> <span class="nav-text">带偏移的存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E4%BD%9C%E4%B8%BA%E5%81%8F%E7%A7%BB"><span class="nav-number">8.0.4.3.</span> <span class="nav-text">使用寄存器作为偏移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%93%8D%E4%BD%9C-3"><span class="nav-number">8.0.5.</span> <span class="nav-text">示例操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-6"><span class="nav-number">8.0.6.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-4"><span class="nav-number">8.0.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4-1"><span class="nav-number">8.0.8.</span> <span class="nav-text">相关指令</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 

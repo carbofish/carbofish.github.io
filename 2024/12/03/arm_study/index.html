@@ -379,7 +379,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Dec 03 2024 19:05:06 GMT+0800">2024-12-03 19:05:06</span>
+                <span class="datetime" data-updated="Tue Dec 03 2024 19:10:23 GMT+0800">2024-12-03 19:10:23</span>
             </span>
         
 
@@ -424,7 +424,10 @@ mjx-container[display="true"] + br {
                     
 
                     
-                         <h1 id="LDRB-指令"><a href="#LDRB-指令" class="headerlink" title="LDRB 指令"></a>LDRB 指令</h1><p>在ARM汇编指令中，**<code>LDRB</code>（Load Register Byte）<strong>是一种用于加载单个字节数据到寄存器的指令。与<code>LDR</code>指令相比，<code>LDRB</code>会从内存中加载一个字节（8位）而不是一个字（32位）数据，同时支持</strong>零扩展**（zero-extension）到32位寄存器中。</p>
+                         <p>记录一下几个指令用法</p>
+<span id="more"></span>
+
+<h1 id="LDRB-指令"><a href="#LDRB-指令" class="headerlink" title="LDRB 指令"></a>LDRB 指令</h1><p>在ARM汇编指令中，**<code>LDRB</code>（Load Register Byte）<strong>是一种用于加载单个字节数据到寄存器的指令。与<code>LDR</code>指令相比，<code>LDRB</code>会从内存中加载一个字节（8位）而不是一个字（32位）数据，同时支持</strong>零扩展**（zero-extension）到32位寄存器中。</p>
 <hr>
 <h3 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB &lt;Rd&gt;, [&lt;Rn&gt;, #&lt;offset&gt;]</span><br></pre></td></tr></table></figure>
 

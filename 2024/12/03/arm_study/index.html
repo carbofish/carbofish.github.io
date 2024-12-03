@@ -379,7 +379,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Dec 03 2024 19:10:23 GMT+0800">2024-12-03 19:10:23</span>
+                <span class="datetime" data-updated="Tue Dec 03 2024 19:15:23 GMT+0800">2024-12-03 19:15:23</span>
             </span>
         
 
@@ -428,7 +428,6 @@ mjx-container[display="true"] + br {
 <span id="more"></span>
 
 <h1 id="LDRB-指令"><a href="#LDRB-指令" class="headerlink" title="LDRB 指令"></a>LDRB 指令</h1><p>在ARM汇编指令中，**<code>LDRB</code>（Load Register Byte）<strong>是一种用于加载单个字节数据到寄存器的指令。与<code>LDR</code>指令相比，<code>LDRB</code>会从内存中加载一个字节（8位）而不是一个字（32位）数据，同时支持</strong>零扩展**（zero-extension）到32位寄存器中。</p>
-<hr>
 <h3 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB &lt;Rd&gt;, [&lt;Rn&gt;, #&lt;offset&gt;]</span><br></pre></td></tr></table></figure>
 
 <h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
@@ -436,13 +435,11 @@ mjx-container[display="true"] + br {
 <li><strong><code>Rn</code></strong>: 基址寄存器，提供内存地址。</li>
 <li><strong><code>offset</code></strong>: 可选的偏移量（立即数或寄存器），用于计算内存地址。</li>
 </ul>
-<hr>
 <h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
 <li><strong>计算地址</strong>：根据基址寄存器<code>Rn</code>和偏移量<code>offset</code>计算出目标内存地址。</li>
 <li><strong>读取内存</strong>：从该地址读取一个字节数据。</li>
 <li><strong>零扩展</strong>：将读取到的8位数据扩展为32位（高位填充为0），并存入目标寄存器<code>Rd</code>。</li>
 </ol>
-<hr>
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="1-读取一个字节"><a href="#1-读取一个字节" class="headerlink" title="1. 读取一个字节"></a>1. 读取一个字节</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRB R0, [R1]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从<code>R1</code>寄存器指向的内存地址读取一个字节，存入<code>R0</code>寄存器。</li>
@@ -456,7 +453,6 @@ mjx-container[display="true"] + br {
 <ul>
 <li>使用<code>R5</code>作为基址，<code>R6</code>的值作为偏移量，读取目标地址的一个字节数据到<code>R4</code>。</li>
 </ul>
-<hr>
 <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
 <li>读取存储在内存中的单字节数据，例如：<ul>
 <li>处理字符串（ASCII字符）</li>
@@ -465,23 +461,21 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ul>
-<hr>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><strong>零扩展</strong>：<code>LDRB</code>会将读取的8位数据零扩展为32位。如果需要符号扩展，可以使用<code>LDRSB</code>指令。</li>
-<li><strong>对齐要求</strong>：尽管加载一个字节不需要严格的对齐，但应确保基址和偏移的计算结果是有效的内存地址。</li>
-<li><strong>内存访问异常</strong>：如果目标地址无效或不可访问，会引发数据访问异常。</li>
+<li><p><strong>零扩展</strong>：<code>LDRB</code>会将读取的8位数据零扩展为32位。如果需要符号扩展，可以使用<code>LDRSB</code>指令。</p>
+</li>
+<li><p><strong>对齐要求</strong>：尽管加载一个字节不需要严格的对齐，但应确保基址和偏移的计算结果是有效的内存地址。</p>
+</li>
+<li><p><strong>内存访问异常</strong>：如果目标地址无效或不可访问，会引发数据访问异常。</p>
+</li>
 </ol>
-<hr>
-<p>通过<code>LDRB</code>指令，开发者可以高效地操作单字节数据，这是ARM汇编中处理低位数据或存储优化的重要手段。</p>
 <h1 id="SXTB-指令"><a href="#SXTB-指令" class="headerlink" title="SXTB 指令"></a>SXTB 指令</h1><p>在 ARM 汇编指令集中，**<code>SXTB</code>（Sign Extend Byte）** 是一种用于<strong>符号扩展</strong>的指令，它将一个 8 位的有符号值扩展为 32 位的有符号值。</p>
-<hr>
 <h3 id="指令功能"><a href="#指令功能" class="headerlink" title="指令功能"></a>指令功能</h3><p><code>SXTB</code> 会从指定寄存器的低 8 位中提取数据，并根据最高有效位（符号位）进行符号扩展：</p>
 <ul>
 <li>如果最高有效位（第 7 位）是 <code>0</code>，扩展为正数。</li>
 <li>如果最高有效位是 <code>1</code>，扩展为负数。</li>
 </ul>
 <p>结果会写入目标寄存器。</p>
-<hr>
 <h3 id="指令格式-1"><a href="#指令格式-1" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB &lt;Rd&gt;, &lt;Rm&gt; {, &lt;rotation&gt;}</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
@@ -489,7 +483,6 @@ mjx-container[display="true"] + br {
 <li><strong><code>Rm</code></strong>: 源寄存器，包含要扩展的 8 位数据。</li>
 <li>**<code>rotation</code>**（可选）：旋转操作，可以是 <code>ROR #8</code>, <code>ROR #16</code> 或 <code>ROR #24</code>，将源数据按指定位数旋转后再取低 8 位。</li>
 </ul>
-<hr>
 <h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
 <li>提取源寄存器 <code>Rm</code> 的低 8 位数据。</li>
 <li>根据第 7 位（符号位）进行符号扩展：<ul>
@@ -499,7 +492,6 @@ mjx-container[display="true"] + br {
 </li>
 <li>将扩展后的 32 位值存入目标寄存器 <code>Rd</code>。</li>
 </ol>
-<hr>
 <h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本符号扩展"><a href="#1-基本符号扩展" class="headerlink" title="1. 基本符号扩展"></a>1. 基本符号扩展</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTB R1, R0</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>R0</code> 的低 8 位提取值。</li>
@@ -518,28 +510,23 @@ mjx-container[display="true"] + br {
 <li>先将 <code>R3</code> 的值按右旋 8 位。</li>
 <li>然后从结果的低 8 位提取值并进行符号扩展，结果存入 <code>R2</code>。</li>
 </ul>
-<hr>
 <h3 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
 <li><strong>处理有符号的 8 位数据</strong>：如读取字符（<code>char</code> 类型）或 8 位寄存器数据。</li>
 <li><strong>数据对齐和扩展</strong>：将单字节数据扩展为 32 位，方便与其他数据操作。</li>
 <li><strong>符号正确性</strong>：确保符号位在扩展后保持一致，用于数学运算或逻辑操作。</li>
 </ul>
-<hr>
 <h3 id="与其他指令的比较"><a href="#与其他指令的比较" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
 <li><strong><code>SXTB</code></strong>: 符号扩展 8 位。</li>
 <li><strong><code>UXTB</code></strong>: 无符号扩展 8 位（高位填充 0）。</li>
 <li><strong><code>LDRSB</code></strong>: 从内存加载一个字节并符号扩展。</li>
 <li><strong><code>MOV</code></strong>: 不进行扩展，直接移动数据。</li>
 </ul>
-<hr>
 <p><code>SXTB</code> 是 ARM 汇编中操作符号位的重要工具，适合处理 8 位有符号数据并将其扩展为 32 位值进行进一步的运算。</p>
 <p>在 ARM 汇编语言中，**<code>LDP</code>（Load Pair of Registers）** 是一种用于<strong>同时加载两个寄存器</strong>的指令。它是 ARM 架构（尤其是 ARMv8-A）中为优化性能而引入的一种指令，可以一次性从内存中加载两个连续存储的数据到寄存器对。</p>
-<hr>
 <h1 id="LDP-指令"><a href="#LDP-指令" class="headerlink" title="LDP 指令"></a>LDP 指令</h1><h3 id="指令功能-1"><a href="#指令功能-1" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
 <li><strong><code>LDP</code></strong> 指令从内存地址中<strong>加载两个连续的数据</strong>，分别存入两个目标寄存器。</li>
 <li>与单个加载指令（如 <code>LDR</code>）相比，<code>LDP</code> 提供了更高的内存访问效率，因为它在一次指令中完成了两次加载操作。</li>
 </ul>
-<hr>
 <h3 id="指令格式-2"><a href="#指令格式-2" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP &lt;Rt&gt;, &lt;Rt2&gt;, [&lt;Rn&gt;{, #&lt;imm&gt;}]</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-2"><a href="#参数说明-2" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
@@ -548,7 +535,6 @@ mjx-container[display="true"] + br {
 <li><strong><code>Rn</code></strong>: 基址寄存器，提供内存的起始地址。</li>
 <li>**<code>imm</code>**（可选）：偏移量（字节数），用于从基址 <code>Rn</code> 计算内存地址，默认为 0。</li>
 </ul>
-<hr>
 <h3 id="工作原理-2"><a href="#工作原理-2" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
 <li><strong>计算地址</strong>：从基址寄存器 <code>Rn</code> 计算出目标内存地址。如果指定了偏移量 <code>imm</code>，则将其加到 <code>Rn</code> 的值上。</li>
 <li><strong>加载数据</strong>：<ul>
@@ -558,7 +544,6 @@ mjx-container[display="true"] + br {
 </li>
 <li><strong>更新基址（可选）</strong>：在某些模式下（如 <code>LDP</code> 加更新地址），基址 <code>Rn</code> 的值会被更新。</li>
 </ol>
-<hr>
 <h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本使用（无偏移）"><a href="#1-基本使用（无偏移）" class="headerlink" title="1. 基本使用（无偏移）"></a>1. 基本使用（无偏移）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDP X0, X1, [X2]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>X2</code> 指向的内存地址加载两个 64 位数据：<ul>
@@ -584,7 +569,6 @@ mjx-container[display="true"] + br {
 </li>
 <li>然后将 <code>X8</code> 的值加上偏移量 <code>16</code>，更新 <code>X8</code>。</li>
 </ul>
-<hr>
 <h3 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
 <li><strong>高效加载连续数据</strong>：<code>LDP</code> 可以一次性加载两个连续的内存数据，减少内存访问的次数。</li>
 <li><strong>栈操作</strong>：<ul>
@@ -597,21 +581,17 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="与其他指令的比较-1"><a href="#与其他指令的比较-1" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
 <li><strong><code>LDR</code></strong>: 一次加载一个寄存器的数据。</li>
 <li><strong><code>LDP</code></strong>: 一次加载两个寄存器的数据，效率更高。</li>
 <li><strong><code>STP</code></strong>: 存储寄存器对到内存的指令，与 <code>LDP</code> 相对。</li>
 </ul>
-<hr>
 <p>通过使用 <code>LDP</code>，可以减少指令数量和内存访问延迟，从而提升代码性能，是 ARM 汇编中非常常用的一种优化指令。</p>
 <h1 id="CSEL-指令"><a href="#CSEL-指令" class="headerlink" title="CSEL 指令"></a>CSEL 指令</h1><p><strong><code>CSEL</code><strong>（Conditional Select）是 ARM 架构中用于实现</strong>条件选择</strong>的一条指令。它根据条件标志（由上一次指令的结果设置）来选择两个操作数之一，并将选择的结果存入目标寄存器。</p>
-<hr>
 <h3 id="指令功能-2"><a href="#指令功能-2" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
 <li><code>CSEL</code> 是一种<strong>无分支条件执行指令</strong>，可以避免传统分支指令（如 <code>B</code>）可能引入的分支预测失误问题。</li>
 <li>根据指定的条件（Condition Code, CC），选择一个值存入目标寄存器。</li>
 </ul>
-<hr>
 <h3 id="指令格式-3"><a href="#指令格式-3" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSEL &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;, &lt;cond&gt;</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-3"><a href="#参数说明-3" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
@@ -620,13 +600,11 @@ mjx-container[display="true"] + br {
 <li>**<code>Rm</code>**：第二个源寄存器（条件不满足时选择该值）。</li>
 <li>**<code>cond</code>**：条件码，指定选择 <code>Rn</code> 或 <code>Rm</code> 的条件。</li>
 </ul>
-<hr>
 <h3 id="工作原理-3"><a href="#工作原理-3" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
 <li>根据指定的条件码 <code>cond</code>，检查条件标志（由之前指令更新）。</li>
 <li>如果条件满足（<code>cond</code> 为真），将 <code>Rn</code> 的值存入 <code>Rd</code>。</li>
 <li>如果条件不满足（<code>cond</code> 为假），将 <code>Rm</code> 的值存入 <code>Rd</code>。</li>
 </ol>
-<hr>
 <h3 id="条件码（cond）"><a href="#条件码（cond）" class="headerlink" title="条件码（cond）"></a>条件码（<code>cond</code>）</h3><p>条件码是 4 位标志，常见的条件如下：</p>
 <table>
 <thead>
@@ -712,7 +690,6 @@ mjx-container[display="true"] + br {
 <td>总是执行</td>
 </tr>
 </tbody></table>
-<hr>
 <h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><h4 id="1-条件选择"><a href="#1-条件选择" class="headerlink" title="1. 条件选择"></a>1. 条件选择</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSEL X0, X1, X2, EQ</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果条件标志 Z=1（<code>EQ</code> 条件成立），则将 <code>X1</code> 的值存入 <code>X0</code>。</li>
@@ -728,24 +705,19 @@ mjx-container[display="true"] + br {
 <p>可以被简化为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CMP X6, X7</span><br><span class="line">CSEL X8, X6, X7, GT</span><br></pre></td></tr></table></figure>
 
-<hr>
 <h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
 <li><strong>无分支延迟</strong>：<code>CSEL</code> 避免了传统分支指令可能引起的分支预测失败问题，从而提升性能。</li>
 <li><strong>代码简洁</strong>：减少多条分支和跳转指令，优化指令数量。</li>
 <li><strong>高效性</strong>：非常适合需要快速选择结果而不需要复杂逻辑的场景。</li>
 </ol>
-<hr>
 <h3 id="相关指令"><a href="#相关指令" class="headerlink" title="相关指令"></a>相关指令</h3><ul>
 <li><strong><code>CSINC</code></strong>: 条件选择 + 增量操作。</li>
 <li><strong><code>CSINV</code></strong>: 条件选择 + 取反操作。</li>
 <li><strong><code>CSNEG</code></strong>: 条件选择 + 取负操作。</li>
 </ul>
-<hr>
 <p><code>CSEL</code> 是 ARM 汇编中一个强大的条件操作指令，在高效实现条件逻辑和优化分支跳转时非常有用。</p>
 <h1 id="UDIV-指令"><a href="#UDIV-指令" class="headerlink" title="UDIV 指令"></a>UDIV 指令</h1><p>在 <strong>ARM 汇编</strong>中，**<code>UDIV</code>** 是用于<strong>无符号整数除法</strong>的指令。</p>
-<hr>
 <h3 id="指令功能-3"><a href="#指令功能-3" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>UDIV</code></strong> 指令计算两个寄存器中值的无符号整数商，并将结果存储到目标寄存器中。</p>
-<hr>
 <h3 id="指令格式-4"><a href="#指令格式-4" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UDIV &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-4"><a href="#参数说明-4" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
@@ -753,7 +725,6 @@ mjx-container[display="true"] + br {
 <li><strong><code>Rn</code></strong>: 被除数（Dividend）。</li>
 <li><strong><code>Rm</code></strong>: 除数（Divisor）。</li>
 </ul>
-<hr>
 <h3 id="工作原理-4"><a href="#工作原理-4" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
 <li><strong>读取操作数</strong>：<ul>
 <li>从寄存器 <code>Rn</code> 中读取被除数（无符号整数）。</li>
@@ -769,13 +740,11 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UDIV X0, X1, X2</span><br></pre></td></tr></table></figure>
 <ul>
 <li>将寄存器 <code>X1</code>（被除数）的值除以 <code>X2</code>（除数）的值。</li>
 <li>将结果（无符号商）存储到寄存器 <code>X0</code>。</li>
 </ul>
-<hr>
 <h4 id="示例操作"><a href="#示例操作" class="headerlink" title="示例操作"></a>示例操作</h4><p>假设：</p>
 <ul>
 <li><code>X1 = 20</code></li>
@@ -788,7 +757,6 @@ mjx-container[display="true"] + br {
 <ul>
 <li><code>X0 = 6</code> （整数商，忽略余数）。</li>
 </ul>
-<hr>
 <h3 id="使用场景-3"><a href="#使用场景-3" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
 <li><strong>无符号整数运算</strong>：<ul>
 <li>对非负整数进行除法操作。</li>
@@ -803,7 +771,6 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
 <li><p><strong>除数为 0</strong>：</p>
 <ul>
@@ -817,7 +784,6 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="与其他指令的比较-2"><a href="#与其他指令的比较-2" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
 <li><strong><code>UDIV</code></strong>: 无符号除法。</li>
 <li><strong><code>SDIV</code></strong>: 有符号除法。</li>
@@ -825,13 +791,11 @@ mjx-container[display="true"] + br {
 <li><strong><code>SMULL</code></strong> 和 <strong><code>UMULL</code></strong>: 64 位乘法扩展</li>
 </ul>
 <h1 id="MSUB-指令"><a href="#MSUB-指令" class="headerlink" title="MSUB 指令"></a>MSUB 指令</h1><p>在 <strong>ARM 汇编</strong>中，**<code>MSUB</code>** 是一种<strong>乘法并减法</strong>的指令，它的功能是先进行乘法运算，然后将结果从另一个值中减去。</p>
-<hr>
 <h3 id="指令功能-4"><a href="#指令功能-4" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>MSUB</code></strong> 计算以下数学公式：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rd = Ra - (Rn * Rm)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>它会将两个操作数（<code>Rn</code> 和 <code>Rm</code>）相乘，然后从一个累加值（<code>Ra</code>）中减去乘积，并将结果存储在目标寄存器 <code>Rd</code> 中。</li>
 </ul>
-<hr>
 <h3 id="指令格式-5"><a href="#指令格式-5" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSUB &lt;Rd&gt;, &lt;Rn&gt;, &lt;Rm&gt;, &lt;Ra&gt;</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-5"><a href="#参数说明-5" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
@@ -840,7 +804,6 @@ mjx-container[display="true"] + br {
 <li><strong><code>Rm</code></strong>: 第二个乘数。</li>
 <li><strong><code>Ra</code></strong>: 被减数（累加值）。</li>
 </ul>
-<hr>
 <h3 id="工作原理-5"><a href="#工作原理-5" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
 <li><strong>计算乘积</strong>：<ul>
 <li>将 <code>Rn</code> 和 <code>Rm</code> 相乘，得到乘积 <code>P = Rn * Rm</code>。</li>
@@ -855,12 +818,10 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h3><h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSUB X0, X1, X2, X3</span><br></pre></td></tr></table></figure>
 <ul>
 <li>计算 <code>X0 = X3 - (X1 * X2)</code>。</li>
 </ul>
-<hr>
 <h4 id="示例操作-1"><a href="#示例操作-1" class="headerlink" title="示例操作"></a>示例操作</h4><p>假设：</p>
 <ul>
 <li><code>X1 = 4</code>（第一个乘数）</li>
@@ -874,7 +835,6 @@ mjx-container[display="true"] + br {
 <ul>
 <li><code>X0 = 20 - (4 * 3) = 20 - 12 = 8</code></li>
 </ul>
-<hr>
 <h3 id="使用场景-4"><a href="#使用场景-4" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
 <li><p><strong>优化计算公式</strong>：</p>
 <ul>
@@ -893,7 +853,6 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="与其他指令的比较-3"><a href="#与其他指令的比较-3" class="headerlink" title="与其他指令的比较"></a>与其他指令的比较</h3><ul>
 <li>**<code>MADD</code>**：执行乘法并加法（<code>Rd = Ra + (Rn * Rm)</code>）。</li>
 <li>**<code>MSUB</code>**：执行乘法并减法（<code>Rd = Ra - (Rn * Rm)</code>）。</li>
@@ -901,7 +860,6 @@ mjx-container[display="true"] + br {
 <li>**<code>SMULL</code>/<code>UMULL</code>**：进行乘法并扩展结果为 64 位。</li>
 <li>**<code>SDIV</code>/<code>UDIV</code>**：执行有符号/无符号除法。</li>
 </ul>
-<hr>
 <h3 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
 <li><p><strong>数据类型</strong>：</p>
 <ul>
@@ -914,10 +872,8 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <p><code>MSUB</code> 是 ARM 指令集中重要的数学运算指令之一，适合处理多步骤运算，帮助开发者简化代码逻辑并提高执行效率。</p>
 <h1 id="LDRSB-指令"><a href="#LDRSB-指令" class="headerlink" title="LDRSB 指令"></a>LDRSB 指令</h1><p><strong><code>LDRSB</code></strong> 是 ARM 汇编中的一条指令，用于从内存加载一个字节，并将其<strong>符号扩展</strong>为 32 位或 64 位，然后存储到目标寄存器中。</p>
-<hr>
 <h3 id="指令功能-5"><a href="#指令功能-5" class="headerlink" title="指令功能"></a>指令功能</h3><ul>
 <li><strong><code>LDRSB</code><strong>（</strong>Load Register Signed Byte</strong>）会从指定的内存地址加载一个字节（8 位）数据。</li>
 <li>将加载的 8 位数据按照其符号位（第 7 位）扩展为：<ul>
@@ -931,7 +887,6 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ul>
-<hr>
 <h3 id="指令格式-6"><a href="#指令格式-6" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB &lt;Rt&gt;, [&lt;Rn&gt;{, #&lt;offset&gt;}]</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-6"><a href="#参数说明-6" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
@@ -939,7 +894,6 @@ mjx-container[display="true"] + br {
 <li><strong><code>Rn</code></strong>: 基址寄存器，提供内存地址。</li>
 <li>**<code>offset</code>**（可选）：偏移量，可以是立即数或寄存器值，用于计算内存地址。</li>
 </ul>
-<hr>
 <h3 id="工作原理-6"><a href="#工作原理-6" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
 <li>计算目标地址：<ul>
 <li>从基址寄存器 <code>Rn</code> 读取地址。</li>
@@ -953,7 +907,6 @@ mjx-container[display="true"] + br {
 </li>
 <li>将结果存入目标寄存器 <code>Rt</code>。</li>
 </ol>
-<hr>
 <h3 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB W0, [X1]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>X1</code> 指向的内存地址加载一个字节。</li>
@@ -966,7 +919,6 @@ mjx-container[display="true"] + br {
 <li>符号扩展为 64 位。</li>
 <li>存入 <code>X2</code>。</li>
 </ul>
-<hr>
 <h3 id="示例操作-2"><a href="#示例操作-2" class="headerlink" title="示例操作"></a>示例操作</h3><p>假设内存地址 <code>0x1000</code> 存储值 <code>0xFF</code>（8 位，表示 <code>-1</code> 的补码形式），并执行以下指令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDRSB W0, [X1]</span><br></pre></td></tr></table></figure>
 
@@ -989,7 +941,6 @@ mjx-container[display="true"] + br {
 </li>
 <li>存入 <code>X0</code>。</li>
 </ul>
-<hr>
 <h3 id="使用场景-5"><a href="#使用场景-5" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
 <li><strong>处理有符号 8 位数据</strong>：<ul>
 <li>如读取字符（<code>char</code> 类型）或设备寄存器的有符号数据。</li>
@@ -1004,7 +955,6 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="注意事项-3"><a href="#注意事项-3" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
 <li><strong>符号扩展</strong>：<ul>
 <li>目标寄存器的大小（<code>Wn</code> 或 <code>Xn</code>）决定符号扩展的结果位宽（32 位或 64 位）。</li>
@@ -1019,18 +969,20 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="与其他加载指令的比较"><a href="#与其他加载指令的比较" class="headerlink" title="与其他加载指令的比较"></a>与其他加载指令的比较</h3><ul>
-<li>**<code>LDRB</code>**：无符号扩展加载字节（高位填充 <code>0</code>）。</li>
-<li>**<code>LDRSB</code>**：符号扩展加载字节（高位填充符号位）。</li>
-<li>**<code>LDR</code>**：加载 32 位或 64 位数据（不扩展）。</li>
-<li>**<code>LDRSH</code>**：符号扩展加载半字（16 位）。</li>
-<li>**<code>LDRSW</code>**：符号扩展加载字（32 位）。</li>
+<li><p>**<code>LDRB</code>**：无符号扩展加载字节（高位填充 <code>0</code>）。</p>
+</li>
+<li><p>**<code>LDRSB</code>**：符号扩展加载字节（高位填充符号位）。</p>
+</li>
+<li><p>**<code>LDR</code>**：加载 32 位或 64 位数据（不扩展）。</p>
+</li>
+<li><p>**<code>LDRSH</code>**：符号扩展加载半字（16 位）。</p>
+</li>
+<li><p>**<code>LDRSW</code>**：符号扩展加载字（32 位）。</p>
+</li>
 </ul>
 <h1 id="STRB-指令"><a href="#STRB-指令" class="headerlink" title="STRB 指令"></a>STRB 指令</h1><p><strong><code>STRB</code></strong> 是 ARM 汇编语言中用于将一个<strong>字节（8位）数据</strong>从寄存器存储到内存的指令。</p>
-<hr>
 <h3 id="指令功能-6"><a href="#指令功能-6" class="headerlink" title="指令功能"></a>指令功能</h3><p><strong><code>STRB</code></strong> 的全称是 <strong>Store Register Byte</strong>，它会将寄存器的低 8 位数据存储到内存中。</p>
-<hr>
 <h3 id="指令格式-7"><a href="#指令格式-7" class="headerlink" title="指令格式"></a>指令格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB &lt;Rt&gt;, [&lt;Rn&gt;{, #&lt;offset&gt;}]</span><br></pre></td></tr></table></figure>
 
 <h4 id="参数说明-7"><a href="#参数说明-7" class="headerlink" title="参数说明"></a>参数说明</h4><ul>
@@ -1038,7 +990,6 @@ mjx-container[display="true"] + br {
 <li><strong><code>Rn</code></strong>: 基址寄存器，指向内存地址的起始位置。</li>
 <li>**<code>offset</code>**（可选）：偏移量，指定从基址寄存器开始的内存偏移，单位为字节。</li>
 </ul>
-<hr>
 <h3 id="工作原理-7"><a href="#工作原理-7" class="headerlink" title="工作原理"></a>工作原理</h3><ol>
 <li>从源寄存器 <code>Rt</code> 的低 8 位提取字节数据。</li>
 <li>计算目标内存地址：<ul>
@@ -1048,25 +999,21 @@ mjx-container[display="true"] + br {
 </li>
 <li>将提取的 8 位数据存储到目标内存地址中。</li>
 </ol>
-<hr>
 <h3 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h3><h4 id="1-基本存储"><a href="#1-基本存储" class="headerlink" title="1. 基本存储"></a>1. 基本存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>W0</code> 中提取低 8 位数据（例如 <code>0x34</code>）。</li>
 <li>将其存储到 <code>X1</code> 指向的内存地址。</li>
 </ul>
-<hr>
 <h4 id="2-带偏移的存储"><a href="#2-带偏移的存储" class="headerlink" title="2. 带偏移的存储"></a>2. 带偏移的存储</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, #4]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>W0</code> 中提取低 8 位数据。</li>
 <li>将其存储到 <code>X1 + 4</code> 的内存地址。</li>
 </ul>
-<hr>
 <h4 id="3-使用寄存器作为偏移"><a href="#3-使用寄存器作为偏移" class="headerlink" title="3. 使用寄存器作为偏移"></a>3. 使用寄存器作为偏移</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRB W0, [X1, X2]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>从 <code>W0</code> 中提取低 8 位数据。</li>
 <li>将其存储到 <code>X1 + X2</code> 的内存地址。</li>
 </ul>
-<hr>
 <h3 id="示例操作-3"><a href="#示例操作-3" class="headerlink" title="示例操作"></a>示例操作</h3><p>假设：</p>
 <ul>
 <li><code>W0 = 0x12345678</code></li>
@@ -1082,7 +1029,6 @@ mjx-container[display="true"] + br {
 <li>存储到地址 <code>0x1000 + 4 = 0x1004</code>。</li>
 <li>内存中：<code>Mem[0x1004] = 0x78</code></li>
 </ul>
-<hr>
 <h3 id="使用场景-6"><a href="#使用场景-6" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
 <li><strong>存储单字节数据</strong>：<ul>
 <li>将 <code>char</code> 或其他 8 位数据类型存储到内存。</li>
@@ -1097,7 +1043,6 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="注意事项-4"><a href="#注意事项-4" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
 <li><strong>存储的数据仅为低 8 位</strong>：<ul>
 <li>只存储寄存器的低 8 位，忽略高 24 位（如果是 32 位寄存器）或高 56 位（如果是 64 位寄存器）。</li>
@@ -1112,14 +1057,11 @@ mjx-container[display="true"] + br {
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="相关指令-1"><a href="#相关指令-1" class="headerlink" title="相关指令"></a>相关指令</h3><ul>
 <li><strong><code>LDRB</code></strong>: 从内存加载一个字节数据到寄存器。</li>
 <li><strong><code>STR</code></strong>: 存储一个完整的 32 位或 64 位值到内存。</li>
 <li><strong><code>LDR</code></strong>: 从内存加载一个完整的 32 位或 64 位值。</li>
 </ul>
-<hr>
-<p><strong>总结</strong>：<br><code>STRB</code> 是 ARM 汇编中用于存储单字节数据的重要指令，通过精确控制存储的字节大小和目标地址，它在处理小范围数据和优化内存使用时非常实用。</p>
 
                     
                 </div>
